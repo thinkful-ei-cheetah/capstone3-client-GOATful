@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import './NavBar.css'
+import mySvg from '../../logo.svg'
 
 class NavBar extends Component {
   static contextType = UserContext
@@ -43,8 +44,14 @@ class NavBar extends Component {
         <h1 className='app-title'>
           <Link to='/'>
             Laconic
+            <img src={mySvg} />
           </Link>
         </h1>
+        <h3>
+          <Link to='/videos'>
+            My videos
+          </Link>
+        </h3>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
