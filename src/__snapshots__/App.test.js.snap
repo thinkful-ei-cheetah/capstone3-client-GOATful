@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar renders without crashing 1`] = `
+<div
+  className="App"
+>
+  <NavBar />
+  <main>
+    <Switch>
+      <PublicOnlyRoute
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/creator"
+      />
+      <PublicOnlyRoute
+        component={[Function]}
+        exact={true}
+        path="/add-video"
+      />
+      <PublicOnlyRoute
+        component={[Function]}
+        exact={true}
+        path="/login"
+      />
+      <PrivateRoute
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <PrivateRoute
+        component={[Function]}
+        exact={true}
+        path="/:vid-id/previews"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </main>
+</div>
+`;

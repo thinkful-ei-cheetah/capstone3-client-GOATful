@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar renders without crashing 1`] = `
+<header>
+  <h1
+    className="app-title"
+  >
+    <Link
+      replace={false}
+      to="/"
+    >
+      Laconic
+    </Link>
+  </h1>
+  <nav>
+    <Link
+      replace={false}
+      to="/login"
+    >
+      Login
+    </Link>
+     
+  </nav>
+</header>
+`;
