@@ -4,6 +4,8 @@ import logo from './logo.svg';
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 
+
+import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
@@ -59,9 +61,7 @@ export default class App extends Component {
 
     return(
       <div className="App">
-        <div>
-          this is the navBar
-        </div>
+        <NavBar />
         <main>
           <Switch>
             <PublicOnlyRoute
