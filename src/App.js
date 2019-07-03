@@ -10,7 +10,7 @@ import Creator from './routes/Creator'
 import Login from './routes/Login'
 import VidPrev from './routes/VidPreview'
 import Videos from './routes/Videos'
-import Oops from './routes/Oops'
+import NotFound from './routes/Oops'
 import './App.css';
 
 
@@ -56,7 +56,6 @@ export default class App extends Component {
         <Videos />
       )
     }
-    
 
     return(
       <div className="App">
@@ -66,66 +65,42 @@ export default class App extends Component {
         <main>
           <Switch>
             <PublicOnlyRoute
-            exact
+              exact
               path={'/'}
               component={landPage}
             />
-            <PublicOnlyRoute
-            exact
+            <Route
+              exact
               path={'/creator'}
               component={creatorPage}
             />
             <PublicOnlyRoute
-            exact
+              exact
               path={'/add-video'}
               component={addVidPage}
             />
             <PublicOnlyRoute
-            exact
+              exact
               path={'/login'}
               component={loginPage}
             />
             <PrivateRoute 
-            exact
               exact
               path={'/'}
               component={videosPage}
             />
             <PrivateRoute
-            exact
-              path={'/vid-id/previews'}
+              exact
+              path={'/:vid-id/previews'}
               component={vidPrevPage}
             />
             <Route
-              component={Oops}
+              component={NotFound}
             />
           </Switch>
         </main>
       </div>
     )
   }
-
 }
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
