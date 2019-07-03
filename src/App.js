@@ -10,7 +10,7 @@ import Creator from './routes/Creator'
 import Login from './routes/Login'
 import VidPrev from './routes/VidPreview'
 import Videos from './routes/Videos'
-import NotFound from './routes/Oops'
+import NotFound from './routes/NotFound'
 import './App.css';
 
 
