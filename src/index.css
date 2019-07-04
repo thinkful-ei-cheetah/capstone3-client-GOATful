@@ -28,8 +28,10 @@ a {
 
 button {
   padding: 10px 12px;
+  cursor: pointer;
   border: none;
   color: white;
-  background-color: rgb(235, 46, 46);
+  font-size: 16px;
+  background-color: #C4302B;
   border-radius: 3px;
 }
