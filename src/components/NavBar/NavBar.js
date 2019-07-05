@@ -38,19 +38,43 @@ class NavBar extends Component {
     )
   }
 
+
+  renderMyVideosLink(){
+    return (
+      <div>
+        <nav>
+          <Link
+            onClick={this.handleLogoutClick}
+            to='/videos'>
+             My videos
+          </Link>
+        </nav>
+      </div>
+    )
+  }
+
+  renderNoLink() {
+    return (
+      <div>
+        <nav>
+        </nav>
+      </div>
+    )
+  }
+
   render() {
     return (
       <header>
         <h1 className='app-title'>
           <Link to='/'>
             Laconic
-            <img src={mySvg} />
+            {/* <img src={mySvg} /> */}
           </Link>
         </h1>
         <h3>
-          <Link to='/videos'>
-            My videos
-          </Link>
+          {TokenService.hasAuthToken()
+            ? this.renderMyVideosLink()
+            : this.renderNoLink()}
         </h3>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
