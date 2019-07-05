@@ -7,8 +7,6 @@ const CreatorControls = ({handlePhoto, handleSave, fields, handleFields}) => {
 
   const loggedIn = TokenService.hasAuthToken();
 
-  // const [fields, setFields]= useForm({title: '', description: ''})
-
   return (
   <div className="aside-controls">
     <h4 className="controls-header">Create Preview</h4>
