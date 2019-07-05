@@ -11,7 +11,7 @@ export default class Creator extends Component {
     imageUrl: null
   }
 
-  defaultImage = '';
+  defaultImage = 'https://res.cloudinary.com/goatful/image/upload/v1562355377/goat-1270851_1920_cpgpf3.jpg';
 
   handleFields = e => {
     const { value, name } = e.target;
