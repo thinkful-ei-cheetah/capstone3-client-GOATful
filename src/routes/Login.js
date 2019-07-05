@@ -11,10 +11,6 @@ class Login extends Component {
     error: null
   }
 
-  componentDidMount() {
-    console.log('I was mounted')
-  }
-
   responseGoogle = async (response) => {
     if (!response.tokenObj) {
       this.props.userContext.setError('invalid login attempt')
