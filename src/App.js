@@ -1,6 +1,5 @@
 import React , {Component} from 'react';
 import { Route, Switch } from 'react-router-dom'
-import logo from './logo.svg';
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 
@@ -14,6 +13,8 @@ import VidPrev from './routes/VidPreview'
 import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';
+
+require('dotenv').config();
 
 
 export default class App extends Component {
