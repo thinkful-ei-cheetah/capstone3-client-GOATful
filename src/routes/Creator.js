@@ -7,8 +7,7 @@ export default class Creator extends Component {
   state = {
     title: '',
     description: '',
-    useDefaultPhoto: true,
-    imageUrl: null
+    thumbnailUrl: null
   }
 
   defaultImage = 'https://res.cloudinary.com/goatful/image/upload/v1562355377/goat-1270851_1920_cpgpf3.jpg';
@@ -28,8 +27,8 @@ export default class Creator extends Component {
     if (!e.target.files[0]) {
       return
     }
-    const imageUrl = await UploadService(e.target.files[0])
-    this.setState({imageUrl})
+    const thumbnailUrl = await UploadService(e.target.files[0])
+    this.setState({thumbnailUrl})
   }
 
   render() {
