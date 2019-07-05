@@ -14,6 +14,8 @@ import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';
 
+require('dotenv').config();
+
 
 export default class App extends Component {
   state = {
