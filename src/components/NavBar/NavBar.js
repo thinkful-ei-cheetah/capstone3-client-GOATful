@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
+import Logo from '../svg/Logo'
 import './NavBar.css'
 
 class NavBar extends Component {
@@ -40,11 +41,12 @@ class NavBar extends Component {
   render() {
     return (
       <header>
-        <h1 className='app-title'>
-          <Link to='/'>
-            Laconic
-          </Link>
-        </h1>
+        <div className="title-container">
+            <Link className="root-link" to='/'>
+              <Logo className="logo" />
+              <h2 className='app-title'>Laconic</h2>
+            </Link>
+        </div>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}
