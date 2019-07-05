@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class VidPrev extends Component {
+export default class Previews extends Component {
   componentDidMount() {
       console.log('I was mounted')
   }
@@ -9,7 +9,7 @@ export default class VidPrev extends Component {
 
     return (
       <section>
-        Video previews page goes here
+        Previews for a video
       </section>
     );
   }
