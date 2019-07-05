@@ -9,7 +9,7 @@ import Landing from './routes/Landing'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
 import Login from './routes/Login'
-import VidPrev from './routes/VidPreview'
+import Previews from './routes/Previews'
 import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';
@@ -48,9 +48,9 @@ export default class App extends Component {
       )
     }
 
-    const vidPrevPage = () => {
+    const PreviewsPage = () => {
       return(
-        <VidPrev />
+        <Previews />
       )
     }
 
@@ -93,7 +93,7 @@ export default class App extends Component {
             <PrivateRoute
               exact
               path={'/:vid-id/previews'}
-              component={vidPrevPage}
+              component={PreviewsPage}
             />
             <Route
               component={NotFound}

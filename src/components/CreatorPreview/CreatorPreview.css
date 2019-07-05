@@ -1,0 +1,14 @@
+.creator-preview {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.preview-controls {
+  margin-bottom: 20px;
+}
+
+.preview-controls  * {
+  margin-right: 15px;
+}
