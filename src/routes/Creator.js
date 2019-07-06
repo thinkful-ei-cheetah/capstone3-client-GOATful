@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { NavLink, } from 'react-router-dom';
 import CreatorControls from '../components/CreatorControls/CreatorControls'
 import UploadService from '../services/image-uploader'
 
@@ -17,10 +16,6 @@ export default class Creator extends Component {
     this.setState({
       [name]: value
     })
-  }
-
-  componentDidMount() {
-      console.log('I was mounted')
   }
 
   grabPhoto = async e => {

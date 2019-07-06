@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CreatorControls.css'
 import TokenService from '../../services/token-service'
 
