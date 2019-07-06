@@ -12,7 +12,7 @@ export default class AddVid extends Component {
 
   handleFields = e => {
     let { value, name } = e.target;
-
+    //not sure why validation below didnt work
     // if(name === 'tags'){
     //   value = checkTags(value);
     //   }
@@ -31,6 +31,7 @@ export default class AddVid extends Component {
       tags: this.state.tags
     }
     VideoStorage.saveVideo(video)
+    //redirect to creator page
   }
 
   render() {
