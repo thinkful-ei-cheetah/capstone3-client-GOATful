@@ -42,9 +42,9 @@ export default class App extends Component {
       )
     }
 
-    const addVidPage = () => {
+    const addVidPage = (props) => {
       return(
-        <AddVid />
+        <AddVid {...props}/>
       )
     }
 

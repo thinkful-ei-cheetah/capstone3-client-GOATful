@@ -12,10 +12,6 @@ export default class AddVid extends Component {
 
   handleFields = e => {
     let { value, name } = e.target;
-    //not sure why validation below didnt work
-    // if(name === 'tags'){
-    //   value = checkTags(value);
-    //   }
     
     this.setState({
       [name]: value
@@ -31,11 +27,11 @@ export default class AddVid extends Component {
       tags: this.state.tags
     }
     VideoStorage.saveVideo(video)
-    //redirect to creator page
+    this.props.history.push('/creator')
   }
 
   render() {
-
+    console.log(this.props)
     return (
       <section>
         <h2>Please provide information on your video below</h2>
@@ -48,27 +44,3 @@ export default class AddVid extends Component {
   }
 }
 
-const checkTags = value => {
-  let commaCount = 0;
-  let newValue;
-
-  const lastChar = value.substr(value.length - 1);
-      if (lastChar === " "){
-        console.log(lastChar)
-        const secondLast = value.substr(value.length - 2, value.length - 1);
-        console.log(value)
-        if (secondLast !== ','){
-        
-          newValue =  value.slice(0, value.length - 1) + ', '
-        }
-      }
-      console.log(newValue)
-      for(let char in value){
-        if (char === ','){
-          commaCount++
-        }
-        if(commaCount > 2)
-        return value.slice(0, value.length - 1)
-      }
-      return newValue;
-}
