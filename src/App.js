@@ -87,7 +87,7 @@ export default class App extends Component {
             />
             <PrivateRoute 
               exact
-              path={'/'}
+              path={'/videos'}
               component={videosPage}
             />
             <PrivateRoute

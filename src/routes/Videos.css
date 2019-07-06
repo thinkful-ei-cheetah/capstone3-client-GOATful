@@ -1,0 +1,12 @@
+.my-videos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  justify-items: center;
+  margin-top: 1rem;
+}
+
+.videos-page > .btn-container {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-around;
+}
