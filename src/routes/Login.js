@@ -4,15 +4,11 @@ import config from '../../src/config'
 import AuthApiService from '../services/auth-api-service'
 import { withUserContext } from '../contexts/UserContext'
 import { Link } from 'react-router-dom'
-
+import './Login.css'
 
 class Login extends Component {
   state = {
     error: null
-  }
-
-  componentDidMount() {
-    console.log('I was mounted')
   }
 
   responseGoogle = async (response) => {
@@ -30,12 +26,13 @@ class Login extends Component {
 
   render() {
     return (
-      <section>
-        <div className='loginForm'>
+      <section className='login-form-container'>
+        <div className='login-form'>
           <div>
-            <h2>Login With Google</h2>
+            <h2 className='lf-title'>Login With Google</h2>
             <p>Creating an account allows you to save your work!</p>
             <GoogleLogin
+              className='lf-submit'
               clientId={config.GOOGLE_CLIENT_ID}
               buttonText="Login"
               onSuccess={this.responseGoogle}
@@ -43,8 +40,8 @@ class Login extends Component {
               cookiePolicy={'single_host_origin'}
             />
           </div>
-          <div>
-            <Link to='/add-video'>or, checkout Laconic's tools without saving</Link>
+          <div className="trial-link-container">
+            <Link className='trial-link' to='/add-video'><button>Try Laconic without logging in!</button></Link>
           </div>
         </div>
         

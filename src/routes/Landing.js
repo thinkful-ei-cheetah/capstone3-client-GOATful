@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import './Landing.css'
 
 class Landing extends Component {
-  componentDidMount() {
-      console.log('I was mounted')
-  }
-
   render() {
 
     return (
@@ -72,7 +68,8 @@ class Landing extends Component {
 
           </div>
           <footer>
-            footer( Laconic: Better Thumbnails )
+            <span>Laconic: Better Thumbnails</span>
+            <span>Copyright GOATful 2019 </span>
           </footer>
       </div>
       </>
