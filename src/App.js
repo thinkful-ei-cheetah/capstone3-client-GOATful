@@ -6,6 +6,7 @@ import PublicOnlyRoute from './protected/PublicOnlyRoute'
 
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
+import Team from './routes/MeetTeam'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
 import Login from './routes/Login'
@@ -29,7 +30,11 @@ export default class App extends Component {
         <Landing />
       )
     }
-
+    const meetTeam = () => {
+      return (
+        <Team />
+      )
+    }
     const loginPage = () => {
       return(
         <Login />
@@ -69,6 +74,11 @@ export default class App extends Component {
               exact
               path={'/'}
               component={landPage}
+            />
+            <Route
+              exact
+              path={'/Team'}
+              component={meetTeam}
             />
             <Route
               exact
