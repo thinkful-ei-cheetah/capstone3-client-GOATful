@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import './CreatorPreview.css'
 import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
 import YoutubeApiService from '../../services/youtube-api'
+import mockData from '../../Utils/mock-youtube-data'
   
 export default class CreatorPreview extends Component {
   state = {
     userPreview: {},
-    youtubeSearchResults: [],
+    youtubeSearchResults: mockData || [],
     userVideo: {}
   }
 

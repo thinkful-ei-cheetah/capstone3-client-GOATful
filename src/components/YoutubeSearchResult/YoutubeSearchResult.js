@@ -34,7 +34,7 @@ export default class YoutubeSearchResult extends Component {
 
         <div className='right-col'>
           <h2>{title || 'this is a fake header'}</h2>
-          <h3>{youtube_display_name} * {view_count  || this.renderRandomViews()} views * published {Date.now - published_at || this.renderRandomDate()}</h3>
+          <p className='sub-headings' >{youtube_display_name} • {view_count  || this.renderRandomViews()} views • {Date.now - published_at || this.renderRandomDate()}</p>
           <p className='truncate'>{description || 'this is a fake description'}</p>
         </div>
       </div>

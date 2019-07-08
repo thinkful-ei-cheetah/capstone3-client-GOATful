@@ -5,8 +5,7 @@
 }  
 
 .aside-controls{
-  width: 240px;
-  height: 91vh;
+  width: 25%;
   border-right: 1px solid grey;
 }
 
@@ -19,7 +18,9 @@
 }
 
 .controls-form{
-  padding-left:15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .control-label{
@@ -46,7 +47,8 @@ input[type="file"] {
 }
 
 #creator-title{
-  width: 192px;
+  max-width: 75%;
+  padding: 8px 10px;
 }
 
 
@@ -57,6 +59,7 @@ input[type="file"] + label {
   padding: 5px 10px;
   border-radius: 4px;
   margin-bottom: 30px;
+  max-width: 75%;
 }
 
 input[type="file"] + label:hover{
@@ -70,15 +73,13 @@ input[type="file"] + label:active{
 }
 
 #creator-description{
-  width: 192px;
+  max-width: 85%;
   height: 150px;
   resize: none;
 }
 
 .save-preview-btn{
   display: block;
-  margin:auto;
-  margin-left: 30px;
   box-shadow: 1px 1px grey;
 }
 
