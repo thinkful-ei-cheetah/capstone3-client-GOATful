@@ -24,9 +24,9 @@ export default class App extends Component {
 
   render(){
 
-    const landPage = () => {
+    const landPage = (props) => {
       return(
-        <Landing />
+        <Landing {...props} />
       )
     }
 

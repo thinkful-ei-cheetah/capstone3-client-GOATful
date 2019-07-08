@@ -10,11 +10,6 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
   const videoInstructions = <p>Enter a duration in the format hh:mm:ss.<br/><br/> For eg: 04:20, or 11:22:33</p>
   const handleInstructions = <p>Enter your YouTube channel name.<br/><br/> For eg: Liverpool FC</p>
 
-  
-const stringifyTags = arr => {
-  return arr.join(', ')
-}
-
   return (
     <form className="add-video-form" onSubmit={handleSubmit}>
       <div className="flex-form">
@@ -23,7 +18,7 @@ const stringifyTags = arr => {
         <input className="add-video-input" type="text" id="add-video-title" name="title" value={fields.title} onChange={handleFields} required onFocus={()=>setView(titleInstructions)} placeholder="fitness 100"/>
 
         <label className="add-label" htmlFor="add-video-tags">Tags:</label>
-        <input className="add-video-input" type="text" id="add-video-tags" name="tags" value={fields.tags} onChange={handleFields} required onFocus={()=>setView(tagsInstructions)} placeHolder="workout, fitness, gym"/>
+        <input className="add-video-input" type="text" id="add-video-tags" name="tags" value={fields.tags} onChange={handleFields} required onFocus={()=>setView(tagsInstructions)} placeholder="workout, fitness, gym"/>
 
         <label className="add-label" htmlFor="add-video-length">Video Length:</label>
         <input className="add-video-input" name="video_length" type="text" id="add-video-length" value={fields.videoLength} onChange={handleFields} required onFocus={()=>setView(videoInstructions)} placeholder="04:13:22"/>

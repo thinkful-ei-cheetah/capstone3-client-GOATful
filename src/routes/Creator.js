@@ -34,7 +34,6 @@ export default class Creator extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <section className="creator-page">
         <CreatorControls 

@@ -41,7 +41,6 @@ export default class AddVid extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <section>
         <h2>Please provide information on your video below</h2>
@@ -55,8 +54,6 @@ export default class AddVid extends Component {
 }
 
 const  tagStringToArray = str => {
-  console.log(str)
-  console.log(typeof str)
   const tagsArr = str.split(', ').filter(Boolean);
   if (tagsArr.length > 3){
     tagsArr.length = 3;

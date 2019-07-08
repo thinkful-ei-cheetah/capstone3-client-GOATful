@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
 import './Landing.css'
 
 class Landing extends Component {
+  pushToLogin = () =>{
+    this.props.history.push('/login')
+  }
   render() {
-
     return (
       <>
       <section className='hero'>
@@ -63,7 +64,7 @@ class Landing extends Component {
             </p>
           </section>
           <div className="btn-container">
-            <button  className='create-laconic'>
+            <button  onClick={this.pushToLogin} className='create-laconic'>
               Create with Laconic
             </button>
 
