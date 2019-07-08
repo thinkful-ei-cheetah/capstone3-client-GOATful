@@ -1,0 +1,39 @@
+.youtube-search-result {
+  display: flex;
+  max-width: 500px;
+  border: 1px solid black;
+  padding: 8px;
+}
+
+.youtube-search-result .left-col {
+  flex: 1;
+  position: relative;
+}
+
+.youtube-search-result .left-col span {
+  color: white;
+  position: absolute;
+  bottom: 15px;
+  right: 5px;
+}
+
+.youtube-search-result .right-col {
+  flex: 3;
+  margin-left: 10px;
+}
+
+.youtube-search-result .right-col  h2, h3{
+  margin: 0;
+}
+
+/* .youtube-search-result .right-col  .truncate{
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+} */
+
+img.responsive-img {
+  width: 100%;
+  height: auto;
+}
