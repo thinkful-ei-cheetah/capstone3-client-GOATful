@@ -21,6 +21,9 @@
 .youtube-search-result .right-col {
   flex: 3;
   margin-left: 10px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 180px;
 }
 
 .youtube-search-result .right-col  h2, h3{
