@@ -28,9 +28,7 @@ export default class Creator extends Component {
   }
 
   grabPhoto = async e => {
-    if (!e.target.files[0]) {
-      return
-    }
+    if (!e.target.files[0]) { return }
     const thumbnailUrl = await UploadService(e.target.files[0])
     this.setState({thumbnailUrl})
   }

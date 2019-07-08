@@ -5,17 +5,15 @@ import VideoStorage from '../services/video-storage'
 export default class AddVid extends Component {
   state={
     title: "",
+    tags: '',
     video_length: "",
     youtube_name: "",
-    tags: ""
+    error: null,
   }
-
-  handleFields = e => {
-    let { value, name } = e.target;
-    
-    this.setState({
-      [name]: value
-    })
+  
+  errorHandler = err => {
+    this.setState({error: err.message})
+    setTimeout(()=>this.setState({error: null}), 3000)
   }
 
   handleSubmit = e =>{
@@ -24,10 +22,22 @@ export default class AddVid extends Component {
       title: this.state.title,
       video_length: this.state.video_length,
       youtube_name: this.state.youtube_name,
-      tags: this.state.tags
+      tags: tagStringToArray(this.state.tags),
+    }
+    const isError = errorCheck(video);
+    if (isError.status === true){
+      this.errorHandler(isError)
+      return
     }
     VideoStorage.saveVideo(video)
     this.props.history.push('/creator')
+  }
+  
+  handleFields = e => {
+    let { value, name } = e.target;
+      this.setState({
+      [name]: value
+    })
   }
 
   render() {
@@ -44,3 +54,28 @@ export default class AddVid extends Component {
   }
 }
 
+const  tagStringToArray = str => {
+  console.log(str)
+  console.log(typeof str)
+  const tagsArr = str.split(', ').filter(Boolean);
+  if (tagsArr.length > 3){
+    tagsArr.length = 3;
+    return tagsArr
+  }
+  return tagsArr;
+}
+
+const errorCheck = (video) =>{
+  for (let key in video){
+    if (key === 'tags'){
+      if (video[key][0].trim() === ""){
+        return {status: true, message: 'Invalid tags'}
+      } 
+    } else{
+      if (video[key].trim() === ""){
+        return {status: true, message: `Invalid ${key}`}
+      }
+    }
+  } 
+  return {status: false}
+}
