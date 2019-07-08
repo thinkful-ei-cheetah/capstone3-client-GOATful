@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import './Landing.css'
 
 class Landing extends Component {
@@ -62,7 +63,7 @@ class Landing extends Component {
             </p>
           </section>
           <div className="btn-container">
-            <button className='create-laconic'>
+            <button  className='create-laconic'>
               Create with Laconic
             </button>
 

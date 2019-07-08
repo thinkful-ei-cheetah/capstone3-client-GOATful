@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
+
 import CreatorControls from '../components/CreatorControls/CreatorControls'
 import UploadService from '../services/image-uploader'
+import TokenService from '../services/token-service';
 
 export default class Creator extends Component {
   state = {
@@ -18,22 +20,28 @@ export default class Creator extends Component {
     })
   }
 
-  grabPhoto = async e => {
-    if (!e.target.files[0]) {
-      return
+  handleSave = () => {
+    if (!TokenService.hasAuthToken()){
+      //redirect to add-video
     }
+    //save and redirect to previews page
+  }
+
+  grabPhoto = async e => {
+    if (!e.target.files[0]) { return }
     const thumbnailUrl = await UploadService(e.target.files[0])
     this.setState({thumbnailUrl})
   }
 
   render() {
+    console.log(this.props)
     return (
       <section className="creator-page">
         <CreatorControls 
           fields = {{title: this.state.title, description: this.state.description}}
           handleFields = {this.handleFields}
           handlePhoto = {this.grabPhoto}
-          savePreview = {this.savePreview}
+          handleSave = {this.handleSave}
         />
       </section>
     );
