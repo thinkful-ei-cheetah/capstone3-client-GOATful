@@ -7,7 +7,7 @@ export default class AddVid extends Component {
     title: "",
     tags: '',
     video_length: "",
-    youtube_name: "",
+    youtube_display_name: "",
     error: null,
   }
   
@@ -21,7 +21,7 @@ export default class AddVid extends Component {
     const video = {
       title: this.state.title,
       video_length: this.state.video_length,
-      youtube_name: this.state.youtube_name,
+      youtube_display_name: this.state.youtube_display_name,
       tags: tagStringToArray(this.state.tags),
     }
     const isError = errorCheck(video);

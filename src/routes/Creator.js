@@ -6,7 +6,7 @@ import CreatorPreview from '../components/CreatorPreview/CreatorPreview'
 
 export default class Creator extends Component {
   state = {
-    title: 'happy go lucky',
+    title: '',
     description: '',
     thumbnail_url: null,
     default_thumbnail: 'https://res.cloudinary.com/goatful/image/upload/v1562355377/goat-1270851_1920_cpgpf3.jpg'

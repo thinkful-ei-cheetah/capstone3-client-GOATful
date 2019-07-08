@@ -13,6 +13,7 @@ export default class CreatorPreview extends Component {
   async componentDidMount() {
     const video = JSON.parse(window.localStorage.getItem('public_user_video'))
     const results = await YoutubeApiService.search(video.tags)
+    console.log(results)
     this.setState({
       userPreview: this.props.userPreview,
       youtubeSearchResults: [...results],
@@ -56,11 +57,3 @@ export default class CreatorPreview extends Component {
     )
   }
 }
-  
-const videoData = {
-  title: 'My first test video',
-  tags: ['coding', 'interview', 'algorithm'],
-  youtube_display_name: 'Byte By Byte',
-  video_length: '8:56'
-}
-window.localStorage.setItem('public_user_video', JSON.stringify(videoData))

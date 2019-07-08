@@ -4,8 +4,8 @@ import {randomIntFromInterval, shuffle} from '../../Utils/Utils';
   
 export default class YoutubeSearchResult extends Component {
   state = {
-    title: 'Fake header to test!',
-    description: 'Here is some dummy text for a description'
+    title: 'A Placeholder Title - Update!',
+    description: 'A placeholder description - update to what you want!'
   }
 
   renderRandomDate = () => {
@@ -20,8 +20,6 @@ export default class YoutubeSearchResult extends Component {
     const num = randomIntFromInterval(1,999);
     return `${num}k views`
   }
-
-
 
   render() {
     const {
