@@ -79,3 +79,7 @@ img.responsive-img {
     bottom: 20px;
   }
 }
+
+.ellipsis-menu {
+  visibility: hidden;
+}
