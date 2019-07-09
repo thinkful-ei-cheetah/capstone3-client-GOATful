@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import VideoItem from '../components/VideoItem/VideoItem'
 import './Videos.css'
+import VideoApi from '../services/video-preview-api'
 
 export default class Videos extends Component {
   constructor(props) {
@@ -15,7 +16,11 @@ export default class Videos extends Component {
   async componentDidMount() {
     const videos = await axios.get(`${this.BASE_URL}/videos`)
     this.setState({ videos: videos.data })
+    const data = await VideoApi.getVideos()
+    console.log(data)
   }
+
+  
 
   renderVideos(){
     const { videos } = this.state
