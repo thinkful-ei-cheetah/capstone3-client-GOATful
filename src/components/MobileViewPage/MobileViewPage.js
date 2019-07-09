@@ -1,8 +1,9 @@
 import React from 'react'
 import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
 import Icon from '../Icon/Icon'
-import { faHome, faFire, faPlay, faEnvelope, faFolder } from '@fortawesome/free-solid-svg-icons'
+import { faHome, faFire, faPlay, faEnvelope, faFolder, faArrowLeft, faTimes, faFilter, faTv } from '@fortawesome/free-solid-svg-icons'
 import './MobileViewPage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 export default function MobileViewPage(props) {
   const renderPreviews = () => {
@@ -14,7 +15,13 @@ export default function MobileViewPage(props) {
   return (
     <div className="mobile-view-page">
       <div className="search-container">
-        
+        <FontAwesomeIcon icon={faArrowLeft} />
+        <span>Workout</span>
+        <div className="right-icons">
+          <FontAwesomeIcon icon={faTimes} />
+          <FontAwesomeIcon icon={faTv} />
+          <FontAwesomeIcon icon={faFilter} />
+        </div>
       </div>
       {renderPreviews()}
       <div className="icon-container">
