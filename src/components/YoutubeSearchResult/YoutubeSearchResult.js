@@ -27,7 +27,6 @@ export default class YoutubeSearchResult extends Component {
     const {
       video_length, youtube_display_name, thumbnail_url, default_thumbnail, title, description, published_at, view_count
     } = this.props
-    
     return (
       <div className='youtube-search-result'>
         <div className='left-col'>
@@ -37,7 +36,8 @@ export default class YoutubeSearchResult extends Component {
 
         <div className='right-col'>
           <h2>{title || 'this is a fake header'}</h2>
-          <p className='sub-headings' >{youtube_display_name} • {view_count  || this.renderRandomViews()} views • {Date.now - published_at || this.renderRandomDate()}</p>
+          <p className='sub-headings' >
+            {youtube_display_name} <span className='desktop-only'>•</span> <span className="mobile-clear">{view_count  || this.renderRandomViews()} views • {Date.now - published_at || this.renderRandomDate()}</span></p>
           <p className='truncate'>{description || 'this is a fake description'}</p>
         </div>
       </div>
