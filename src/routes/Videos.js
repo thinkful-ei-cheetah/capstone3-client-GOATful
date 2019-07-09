@@ -10,6 +10,13 @@ export default class Videos extends Component {
     current: [0, 3], //index of selected videos
   }
 
+  modifyVideo = (id, updates) => {
+    const {videos} = this.state;
+    const video = videos.find(video => video.id === id);
+    console.log(video)
+    this.setState({...videos})
+  }
+
   async componentDidMount() {
     const videos = await VideoService.getVideos();
     this.setState({ videos })
@@ -19,7 +26,7 @@ export default class Videos extends Component {
     const { videos } = this.state;
     //slice out videos that are needed from state
     const videoList = videos.slice(this.state.current[0], this.state.current[1] + 1)
-    return videoList.map(video => <VideoItem video={video} key={video.id}/>)
+    return videoList.map(video => <VideoItem modifyVideo={this.modifyVideo} video={video} key={video.id}/>)
   }
   //show next four
   showNextFourVideos = e => {
@@ -38,6 +45,7 @@ export default class Videos extends Component {
   }
 
   render() {
+    console.log(this.state.videos)
     return (
       <section className='videos-page'>
         <div className="btn-container">

@@ -19,3 +19,14 @@
   margin-top: 0px;
   margin-bottom: 20px;
 }
+
+.edit-video-btn{
+  position: relative; 
+  right: -260px; 
+  top:40px;
+  background-color: rgba(0,0,0,.2); 
+}
+
+.f-icon{
+  color: black;
+}
