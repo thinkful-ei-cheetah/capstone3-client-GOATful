@@ -8,6 +8,9 @@ export default {
         "Authorization": TokenService.getAuthToken()
       }
     })
+    if (!userVideos.ok) {
+      return userVideos.json().then(e => Promise.reject(e))
+    }
     return await userVideos.json();
   },
   
@@ -18,7 +21,10 @@ export default {
         "Authorization": TokenService.getAuthToken()
       },
       body: JSON.stringify(newVideo)
-    })  
+    }) 
+    if (!userVideos.ok) {
+      return userVideos.json().then(e => Promise.reject(e))
+    } 
     return await userVideos.json();
   },
 
@@ -29,17 +35,22 @@ export default {
         "Authorization": TokenService.getAuthToken()
       },
       body: JSON.stringify(updatedVideo)
-    })  
+    }) 
+    if (!res.ok) {
+      return res.json().then(e => Promise.reject(e))
+    } 
     return await res.json();
   },
 
-  async getVideoById(id, updatedVideo){
-    const userVIdeo = await fetch(`${config.API_ENDPOINT}/videos/${id}`, {
+  async getVideoById(id){
+    const userVideo = await fetch(`${config.API_ENDPOINT}/videos/${id}`, {
       headers:{
         "Authorization": TokenService.getAuthToken()
       },
-      body: JSON.stringify(updatedVideo)
     })  
-    return await userVIdeo.json();
+    if (!userVideo.ok) {
+      return userVideo.json().then(e => Promise.reject(e))
+    }
+    return await userVideo.json();
   }
 }

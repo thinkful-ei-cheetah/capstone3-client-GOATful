@@ -8,6 +8,9 @@ export default {
         "Authorization": TokenService.getAuthToken()
       }
     })
+    if (!userPreviews.ok) {
+      return userPreviews.json().then(e => Promise.reject(e))
+    }
     return await userPreviews.json();
   },
   
@@ -19,6 +22,9 @@ export default {
       },
       body: JSON.stringify(newPreview)
     })  
+    if (!insertedPreview.ok) {
+      return insertedPreview.json().then(e => Promise.reject(e))
+    }
     return await insertedPreview.json();
   },
 
@@ -30,6 +36,9 @@ export default {
       },
       body: JSON.stringify(updatedPreview)
     })  
+    if (!resPreview.ok) {
+      return resPreview.json().then(e => Promise.reject(e))
+    }
     return await resPreview.json();
   }
 }
