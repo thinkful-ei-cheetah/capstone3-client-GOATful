@@ -1,12 +1,21 @@
 import React from 'react';
 import './CreatorControls.css'
-import TokenService from '../../services/token-service'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
-const CreatorControls = ({handlePhoto, handleSave, fields, handleFields}) => {
+const FieldValidator = (props) => {
+  if (!props.isValid) {
+    return (
+      <p className='error-msg'>{props.message}</p>
+    )
+  }
+  return <></>
+}
 
-  const loggedIn = TokenService.hasAuthToken();
+const CreatorControls = (props) => {
+  const {
+    handlePhoto, handleSave, handleFields, loggedIn, formValid,
+    title, description, errorMessages, titleValid, descriptionValid, thumbnailValid} = props
 
   const handleSetOpen = (ev) => {
     ev.currentTarget.style.visibility = 'hidden';
@@ -43,11 +52,14 @@ const CreatorControls = ({handlePhoto, handleSave, fields, handleFields}) => {
       </div>
       <form className="controls-form">
         <label className="control-label" htmlFor="creator-title">Title:</label>
-        <input className="creator-input" id="creator-title" type="text" name="title" value={fields.title} maxLength="100" onChange={handleFields} required/>
+        <FieldValidator isValid={titleValid} message={errorMessages.title}/>
+        <input className="creator-input" id="creator-title" type="text" name="title" value={title} onChange={handleFields}/>
+        <FieldValidator isValid={thumbnailValid} message={errorMessages.thumbnail}/>
         <input type="file" id="upload-file-btn" onChange={handlePhoto} />
         <label htmlFor="upload-file-btn">Upload Thumbnail</label>
         <label className="control-label" htmlFor="creator-description">Description:</label>
-        <textarea className="creator-input" name="description" id="creator-description" value={fields.description} maxLength="5000" onChange={handleFields} required/>
+        <FieldValidator isValid={descriptionValid} message={errorMessages.description}/>
+        <textarea className="creator-input" name="description" id="creator-description" value={description} onChange={handleFields} />
         <button type="button" className="save-preview-btn" onClick={handleSave}>{loggedIn ? 'Save Preview' : 'Login to save'}</button>
       </form>
     </div>
