@@ -4,7 +4,7 @@ import './VideoItem.css'
 export default function VideoItem(props) {
   return (
     <div className='video-item'>
-      <img src={props.video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt="Video Thumbnail"/>
+      <img src={props.video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${props.video.title}`}/>
       <h2>{props.video.title}</h2>
       <p>{`Previews: ${props.video.preview_count}`}</p>
       <p>{props.video.is_active ? 'Active' : 'Inactive'}</p>
