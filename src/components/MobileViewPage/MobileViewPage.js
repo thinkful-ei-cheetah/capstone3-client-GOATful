@@ -13,23 +13,25 @@ export default function MobileViewPage(props) {
   }
 
   return (
-    <div className="mobile-view-page">
-      <div className="search-container">
-        <FontAwesomeIcon icon={faArrowLeft} />
-        <span>Workout</span>
-        <div className="right-icons">
-          <FontAwesomeIcon icon={faTimes} />
-          <FontAwesomeIcon icon={faTv} />
-          <FontAwesomeIcon icon={faFilter} />
+    <div className="smartphone">
+      <div className="mobile-view-page">
+        <div className="search-container">
+          <FontAwesomeIcon icon={faArrowLeft} />
+          <span>Workout</span>
+          <div className="right-icons">
+            <FontAwesomeIcon icon={faTimes} />
+            <FontAwesomeIcon icon={faTv} />
+            <FontAwesomeIcon icon={faFilter} />
+          </div>
         </div>
-      </div>
-      {renderPreviews()}
-      <div className="icon-container">
-        <Icon icon={faHome} id="home" name="Home" />
-        <Icon icon={faFire} id="trending" name="Trending" />
-        <Icon icon={faPlay} id="subscriptions" name="Subscriptions" className="active" />
-        <Icon icon={faEnvelope} id="inbox" name="Inbox" />
-        <Icon icon={faFolder} id="library" name="Library" />
+        {renderPreviews()}
+        <div className="icon-container">
+          <Icon icon={faHome} id="home" name="Home" />
+          <Icon icon={faFire} id="trending" name="Trending" />
+          <Icon icon={faPlay} id="subscriptions" name="Subscriptions" className="active" />
+          <Icon icon={faEnvelope} id="inbox" name="Inbox" />
+          <Icon icon={faFolder} id="library" name="Library" />
+        </div>
       </div>
     </div>
   )

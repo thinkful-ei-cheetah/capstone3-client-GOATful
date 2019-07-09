@@ -1,5 +1,6 @@
 import React from 'react'
 import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
+import './DesktopViewPage.css'
 
 export default function DesktopViewPage(props) {
   const renderPreviews = () => {
