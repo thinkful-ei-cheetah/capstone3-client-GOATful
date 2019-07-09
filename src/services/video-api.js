@@ -5,7 +5,7 @@ export default {
   async getVideos(){
     const userVideos = await fetch(`${config.API_ENDPOINT}/videos`, {
       headers:{
-        "Authorization": TokenService.getAuthToken()
+        "Authorization": `Bearer ${TokenService.getAuthToken()}`
       }
     })
     if (!userVideos.ok) {
@@ -18,7 +18,7 @@ export default {
     const userVideos = await fetch(`${config.API_ENDPOINT}/videos`, {
       method: 'POST',
       headers:{
-        "Authorization": TokenService.getAuthToken()
+        "Authorization": `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newVideo)
     }) 
@@ -32,7 +32,7 @@ export default {
     const res = await fetch(`${config.API_ENDPOINT}/videos/${id}`, {
       method: 'PATCH',
       headers:{
-        "Authorization": TokenService.getAuthToken()
+        "Authorization": `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(updatedVideo)
     }) 
@@ -45,7 +45,7 @@ export default {
   async getVideoById(id){
     const userVideo = await fetch(`${config.API_ENDPOINT}/videos/${id}`, {
       headers:{
-        "Authorization": TokenService.getAuthToken()
+        "Authorization": `Bearer ${TokenService.getAuthToken()}`
       },
     })  
     if (!userVideo.ok) {
