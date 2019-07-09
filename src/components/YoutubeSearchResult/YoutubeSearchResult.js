@@ -22,7 +22,7 @@ export default class YoutubeSearchResult extends Component {
 
   renderRandomViews = () => {
     const num = randomIntFromInterval(1,999);
-    return `${num}K views`
+    return `${num}K`
   }
 
   render() {
@@ -39,7 +39,7 @@ export default class YoutubeSearchResult extends Component {
         <div className='right-col'>
           <h2>{title || 'this is a fake header'}</h2>
           <p className='sub-headings' >
-            {youtube_display_name} <span className='desktop-only'>•</span> <span className="mobile-clear">{view_count  || this.renderRandomViews()} views • {Date.now - published_at || this.renderRandomDate()}</span></p>
+            {youtube_display_name} <span className='desktop-only'>•</span> <span className="mobile-clear">{formatViewCount(view_count)  || this.renderRandomViews()} views • {formatPublishedAtDate(published_at) || this.renderRandomDate()}</span></p>
           <p className='truncate'>{description || 'this is a fake description'}</p>
         </div>
         <div className="ellipsis-menu">

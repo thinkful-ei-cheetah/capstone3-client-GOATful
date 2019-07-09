@@ -10,10 +10,11 @@ export default function MobileViewPage(props) {
       return <YoutubeSearchResult {...video} key={i}/>
     })
   }
+
   return (
     <div className="mobile-view-page">
       <div className="search-container">
-
+        
       </div>
       {renderPreviews()}
       <div className="icon-container">

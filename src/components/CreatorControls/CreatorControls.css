@@ -9,6 +9,7 @@
   border-right: 1px solid grey;
   margin-left: -25%;
   transition: .6s;
+  height: 100vh
 }
 
 .controls-header{
