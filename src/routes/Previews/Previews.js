@@ -21,7 +21,7 @@ export default class Previews extends Component {
       youtubeSearchResults: [],
     }
     this.BASE_URL = 'http://localhost:8000/api'
-    this.vidId = this.props.match.params.vidId;
+    this.vidId = this.props.match.params.video_id;
     //? BASE_URL/videos/vidId/previews
   }
 

@@ -30,15 +30,15 @@ export default class App extends Component {
       )
     }
 
-    const loginPage = () => {
+    const loginPage = (props) => {
       return(
-        <Login />
+        <Login {...props}/>
       )
     }
 
-    const creatorPage = () => {
+    const creatorPage = (props) => {
       return(
-        <Creator />
+        <Creator {...props}/>
       )
     }
 
@@ -54,9 +54,9 @@ export default class App extends Component {
       )
     }
 
-    const videosPage = () => {
+    const videosPage = (props) => {
       return(
-        <Videos />
+        <Videos {...props}/>
       )
     }
 
@@ -91,7 +91,8 @@ export default class App extends Component {
               component={videosPage}
             />
             <PrivateRoute
-              path={'/videos/:vidId/previews'}
+              exact
+              path={'/videos/:video_id/previews'}
               component={PreviewsPage}
             />
             <Route
