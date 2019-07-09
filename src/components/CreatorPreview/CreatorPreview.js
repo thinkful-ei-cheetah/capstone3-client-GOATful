@@ -1,42 +1,56 @@
 import React, {Component} from 'react'
 import './CreatorPreview.css'
 import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
-import YoutubeApiService from '../../services/youtube-api'
-import mockData from '../../Utils/mock-youtube-data'
+// import YoutubeApiService from '../../services/youtube-api'
+import mockYoutubeData from '../../Utils/mock-youtube-date'
+import { shuffle } from '../../Utils/Utils'
   
 export default class CreatorPreview extends Component {
   state = {
     userPreview: {},
-    youtubeSearchResults: mockData || [],
-    userVideo: {}
+    youtubeSearchResults: [],
+    userVideo: {},
+    videos: []
   }
 
   async componentDidMount() {
     const video = JSON.parse(window.localStorage.getItem('public_user_video'))
-    const results = await YoutubeApiService.search(video.tags)
-    console.log(results)
+    // const results = await YoutubeApiService.search(video.tags)
+    const results = mockYoutubeData
+
+    this.props.userPreview.youtube_display_name = video.youtube_display_name
+    this.props.userPreview.video_length = video.video_length
+    
     this.setState({
       userPreview: this.props.userPreview,
       youtubeSearchResults: [...results],
-      userVideo: {...video}
+      userVideo: {...video},
+      videos: [this.props.userPreview, ...results]
     })
   }
 
   componentDidUpdate(prevProps, prevState) {
     if (this.props.userPreview !== prevProps.userPreview) {
+      const video = this.state.userVideo
+      this.props.userPreview.youtube_display_name = video.youtube_display_name
+      this.props.userPreview.video_length = video.video_length
+
       this.setState({
-        userPreview: this.props.userPreview
+        userPreview: this.props.userPreview,
+        videos: [this.props.userPreview, ...this.state.youtubeSearchResults]
       })
     }
   }
 
   renderPreviews = () => {
-    const {userPreview, youtubeSearchResults, userVideo} = this.state
-    userPreview.youtube_display_name = userVideo.youtube_display_name
-    userPreview.video_length = userVideo.video_length
-    const videos = [userPreview, ...youtubeSearchResults]
-    return videos.map((video, i) => {
+    return this.state.videos.map((video, i) => {
       return <YoutubeSearchResult {...video} key={i}/>
+    })
+  }
+
+  renderShuffledPreviews = () => {
+    this.setState({
+      videos: [...shuffle(this.state.videos)]
     })
   }
 
@@ -50,7 +64,7 @@ export default class CreatorPreview extends Component {
           <option value="iphone">iPhone</option>
           <option value="android">Android</option>
         </select>
-        <button className='button'>Randomize</button>
+        <button className='button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
         
         {this.renderPreviews()}
