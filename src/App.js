@@ -9,7 +9,7 @@ import Landing from './routes/Landing'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
 import Login from './routes/Login'
-import Previews from './routes/Previews'
+import Previews from './routes/Previews/Previews'
 import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';

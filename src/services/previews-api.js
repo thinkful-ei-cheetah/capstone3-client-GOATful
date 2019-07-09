@@ -5,7 +5,7 @@ export default {
   async getPreviews(video_id){
     const userPreviews = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews`, {
       headers:{
-        "Authorization": TokenService.getAuthToken()
+        "Authorization": `bearer ${TokenService.getAuthToken()}`
       }
     })
     if (!userPreviews.ok) {
