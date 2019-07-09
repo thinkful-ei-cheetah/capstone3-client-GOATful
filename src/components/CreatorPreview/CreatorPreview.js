@@ -4,8 +4,10 @@ import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
 // import YoutubeApiService from '../../services/youtube-api'
 import mockYoutubeData from '../../Utils/mock-youtube-date'
 import { shuffle } from '../../Utils/Utils'
+import VideoStorage from '../../services/video-storage'
+import { withUserContext } from '../../contexts/UserContext';
   
-export default class CreatorPreview extends Component {
+class CreatorPreview extends Component {
   state = {
     userPreview: {},
     youtubeSearchResults: [],
@@ -14,7 +16,12 @@ export default class CreatorPreview extends Component {
   }
 
   async componentDidMount() {
-    const video = JSON.parse(window.localStorage.getItem('public_user_video'))
+    let video;
+    if (this.props.userContext.user.id) {
+      video = VideoStorage.getVideo('laconic_current_video')
+    } else {
+      video = VideoStorage.getVideo('public_user_video')
+    }
     // const results = await YoutubeApiService.search(video.tags)
     const results = mockYoutubeData
 
@@ -72,3 +79,5 @@ export default class CreatorPreview extends Component {
     )
   }
 }
+
+export default withUserContext(CreatorPreview)

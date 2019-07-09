@@ -12,5 +12,5 @@ export default {
   API_ENDPOINT: apiPath,
   TOKEN_KEY: tokenKey,
   GOOGLE_CLIENT_ID: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-  YOUTUBE_API_KEY: process.env.REACT_APP_YOUTUBE_API_KEY
+  YOUTUBE_API_KEY: process.env.REACT_APP_YOUTUBE_API_KEY, 
 }
