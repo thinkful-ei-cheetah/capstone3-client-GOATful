@@ -5,5 +5,9 @@ export default {
   },
   getVideo(){
     return JSON.parse(localStorage.getItem('public_user_video'))
+  },
+  saveKey(key,value){
+    const stringifiedValue = JSON.stringify(value)
+    localStorage.setItem( key , stringifiedValue )
   }
 }
