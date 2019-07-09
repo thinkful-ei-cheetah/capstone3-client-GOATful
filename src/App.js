@@ -30,15 +30,15 @@ export default class App extends Component {
       )
     }
 
-    const loginPage = () => {
+    const loginPage = (props) => {
       return(
-        <Login />
+        <Login {...props}/>
       )
     }
 
-    const creatorPage = () => {
+    const creatorPage = (props) => {
       return(
-        <Creator />
+        <Creator {...props}/>
       )
     }
 
@@ -48,15 +48,15 @@ export default class App extends Component {
       )
     }
 
-    const PreviewsPage = () => {
+    const PreviewsPage = (props) => {
       return(
-        <Previews />
+        <Previews {...props}/>
       )
     }
 
-    const videosPage = () => {
+    const videosPage = (props) => {
       return(
-        <Videos />
+        <Videos {...props}/>
       )
     }
 
@@ -92,7 +92,7 @@ export default class App extends Component {
             />
             <PrivateRoute
               exact
-              path={'/:vid-id/previews'}
+              path={'/videos/:video_id/previews'}
               component={PreviewsPage}
             />
             <Route
