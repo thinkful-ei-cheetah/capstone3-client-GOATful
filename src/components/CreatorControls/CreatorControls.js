@@ -2,8 +2,7 @@ import React from 'react';
 import './CreatorControls.css'
 import TokenService from '../../services/token-service'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEdit } from '@fortawesome/free-solid-svg-icons'
-import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import { faEdit, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 const CreatorControls = ({handlePhoto, handleSave, fields, handleFields}) => {
 

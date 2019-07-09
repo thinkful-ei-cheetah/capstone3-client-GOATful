@@ -1,0 +1,17 @@
+.icon {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.fa-icon {
+  color: #8f8f8f;
+  font-size: 18px;
+}
+
+.icon > label {
+  font-size: 9px;
+  color: #8f8f8f;
+  margin-top: .6em;
+}

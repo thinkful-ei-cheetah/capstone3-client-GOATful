@@ -34,6 +34,7 @@
   font-size: 16px;
   line-height: normal;
   max-height: 40px;
+  max-width: 150px;
 }
 
 .mobile-view-page .right-col {
@@ -52,4 +53,20 @@
 
 .mobile-view-page .desktop-only {
   visibility: hidden;
+}
+
+.mobile-view-page .ellipsis-menu {
+  visibility: visible;
+  color: #8f8f8f;
+  font-size: 12px;
+  margin-top: .3em;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.icon:nth-child(3) > .fa-icon, .icon:nth-child(3) > label {
+  color: white;
 }

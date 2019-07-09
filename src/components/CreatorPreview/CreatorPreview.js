@@ -77,7 +77,7 @@ export default class CreatorPreview extends Component {
         </select>
         <button className='button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
-        {isDesktopView ? <DesktopViewPage videos={videos} /> : <MobileViewPage videos={videos} />}
+        {isDesktopView ? <DesktopViewPage videos={videos}/> : <MobileViewPage videos={videos} />}
       </div>
     )
   }
