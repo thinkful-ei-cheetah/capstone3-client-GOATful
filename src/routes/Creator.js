@@ -10,6 +10,7 @@ import config from '../../src/config'
 import AuthApiService from '../services/auth-api-service'
 import PublicUserService from '../services/public-user-service'
 import VideoStorage from '../services/video-storage'
+import PreviewsApiService from '../services/previews-api'
 
 class Creator extends Component {
   state = {
@@ -80,6 +81,10 @@ class Creator extends Component {
 
   componentDidMount() {
     const loggedIn = TokenService.hasAuthToken();
+    if (loggedIn) {
+      const video = VideoStorage.getVideo('laconic_current_video')
+      if (!video) return this.props.history.push('/videos')
+    }
     this.setState({loggedIn})
   }
 
@@ -96,17 +101,25 @@ class Creator extends Component {
     this.setState({thumbnail_url, thumbnailValid, errorMessages}, this.validateForm)
   }
 
-  handleSave = (e) => {
+  handleSave = async (e) => {
     e.preventDefault();
-    if (this.state.loggedIn) {
-      console.log('hit the previews post route')
+    const video = VideoStorage.getVideo('laconic_current_video')
+    if (this.state.loggedIn && video.id) {
+      const {title, description, thumbnail_url} = this.state
+      const preview = {title, description, thumbnail_url, video_id: video.id}
+      try {
+        await PreviewsApiService.postPreview(video.id, preview)
+        this.props.history.push(`/videos/${video.id}/previews`)
+      } catch(err) {
+        console.error(err.message)
+      }
     } else {
       this.googleLoginBtn.click()
     }
   }
 
   postVideoAndPreview = async () => {
-    const video = VideoStorage.getVideo();
+    const video = VideoStorage.getVideo('public_user_video');
     const {title, description, thumbnail_url} = this.state
     const preview = {title, description, thumbnail_url}
     const data = {video, preview}
