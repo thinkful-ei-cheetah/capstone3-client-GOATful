@@ -61,8 +61,7 @@ export default class CreatorPreview extends Component {
         <div className='preview-controls'>
         <select>
           <option value="desktop">Desktop</option>
-          <option value="iphone">iPhone</option>
-          <option value="android">Android</option>
+          <option value="mobile">Mobile</option>
         </select>
         <button className='button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>

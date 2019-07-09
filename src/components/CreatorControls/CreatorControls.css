@@ -7,11 +7,13 @@
 .aside-controls{
   width: 25%;
   border-right: 1px solid grey;
+  margin-left: -25%;
+  transition: .6s;
 }
 
 .controls-header{
   margin-top: 0px;
-  padding-top: 30px;
+  padding-top: 40px;
   border-bottom: 1px solid grey;
   padding-bottom: 20px;
   text-align: center;
