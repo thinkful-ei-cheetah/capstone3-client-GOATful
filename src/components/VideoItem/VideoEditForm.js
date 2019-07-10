@@ -1,26 +1,27 @@
 import React from 'react'
 import './VideoEditForm.css'
-export default function VideoEditForm({fields, handleFields}) {
+export default function VideoEditForm({video, handleForm, values}) {
+
+  
+
   return (
-    <div>
-      <div className="inputs">
+    <div className="edit-videos-container">
+      <div className="inputs-edit">
         <label className="edit-label" htmlFor="edit-video-title">Title:</label>
-        <input className="edit-video-input" type="text" id="edit-video-title" name="title" value={fields.title} onChange={handleFields} required/>
+        <input className="edit-video-input" type="text" id="edit-video-title" name="title" placeholder={video.title} value={values.title} onChange={handleForm} required/>
 
         <label className="edit-label" htmlFor="edit-video-tags">Tags:</label>
-        <input className="edit-video-input" type="text" id="edit-video-tags" name="tags" value={fields.tags} onChange={handleFields} required />
+        <input className="edit-video-input" type="text" id="edit-video-tags" name="tags" placeholder={video.tags} value={values.tags} onChange={handleForm} required />
 
         <label className="edit-label" htmlFor="edit-video-length">Video Length:</label>
-        <input className="edit-video-input" name="video_length" type="text" id="edit-video-length" value={fields.videoLength} onChange={handleFields} required/>
+        <input className="edit-video-input" name="video_length" type="text" id="edit-video-length" placeholder={video.video_length} value={values.video_length} onChange={handleForm} required/>
 
         <label className="edit-label" htmlFor="edit-video-youtube-name">YouTube Name:</label>
-        <input className="edit-video-input" type="text" id="edit-video-youtube-name"  name="youtube_display_name" value={fields.youtube_display_name} onChange={handleFields} required/>
+        <input className="edit-video-input" type="text" id="edit-video-youtube-name"  name="youtube_display_name" value={values.youtube_display_name} placeholder={video.youtube_display_name} onChange={handleForm} required/>
       </div>
-      <div className = "directions">
-        <h4>Instructions</h4>
-        <div className="instructions-text">{fields.error ? fields.error : ""}</div>
+      <div className = "edit-btn-container">
+        <button type="submit">Confirm</button>
       </div>
-      <button>Create!</button>
-      </div>
+    </div>
   )
 }

@@ -1,7 +1,11 @@
-.video-item > input {
+.video-item > div > input {
   max-width: 300px;
   margin: auto;
   text-align: center;
+}
+
+.image-section{
+  max-width: 300px;
 }
 
 .video-item > h2{
@@ -16,16 +20,23 @@
 }
 
 .video-item{
+  margin:auto;
   margin-top: 0px;
   margin-bottom: 20px;
+
 }
 
 .edit-video-btn{
-  position: relative; 
-  right: -260px; 
-  top:38px;
+  float:right;
+  position: relative;
+  top:40px;
+  /* position: absolute;
+    float: right; */
+    /* top:40px; */ 
   background-color: rgba(0,0,0,.2); 
 }
+
+
 
 .f-icon{
   color: black;

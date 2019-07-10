@@ -22,11 +22,15 @@ export default class Videos extends Component {
     this.setState({ videos })
   }
 
+  handleFormSubmission = (values) => {
+    
+  }
+
   renderVideos(){
     const { videos } = this.state;
     //slice out videos that are needed from state
     const videoList = videos.slice(this.state.current[0], this.state.current[1] + 1)
-    return videoList.map(video => <VideoItem modifyVideo={this.modifyVideo} video={video} key={video.id}/>)
+    return videoList.map(video => <VideoItem handleFormd ={this.handleFormd} modifyVideo={this.modifyVideo} video={video} key={video.id}/>)
   }
   //show next four
   showNextFourVideos = e => {

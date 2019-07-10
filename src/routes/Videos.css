@@ -1,11 +1,10 @@
 .my-videos-container {
   margin: auto; 
+  margin-top:0px;
   max-width: 750px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-margin: auto;
-  margin-top: 1rem;
-  padding-left: 70px;
+
 }
 
 .videos-page > .btn-container {

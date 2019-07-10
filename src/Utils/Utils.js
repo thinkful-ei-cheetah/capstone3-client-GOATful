@@ -96,3 +96,27 @@ export function formatViewCount(strNum) {
     return `${viewCount}`
   }
 }
+
+export const tagStringToArray = str => {
+  const tagsArr = str.split(', ').filter(Boolean);
+  if (tagsArr.length > 3){
+    tagsArr.length = 3;
+    return tagsArr
+  }
+  return tagsArr;
+}
+
+export const errorCheck = (video) =>{
+  for (let key in video){
+    if (key === 'tags'){
+      if (video[key][0].trim() === ""){
+        return {status: true, message: 'Invalid tags'}
+      } 
+    } else{
+      if (video[key].trim() === ""){
+        return {status: true, message: `Invalid ${key}`}
+      }
+    }
+  } 
+  return {status: false}
+}

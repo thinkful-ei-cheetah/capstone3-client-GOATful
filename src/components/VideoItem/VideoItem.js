@@ -5,22 +5,34 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import VideoEditForm from './VideoEditForm'
 
- function VideoItem({video, ...props}) {
-   const formFields = {
-     title: video.title,
-     tags: video.tags,
-     video_length: video.video_length
-   }
+ function VideoItem({video, handleFormSubmission, ...props}) {
+  const [values, setValues] = useState({
+    title: "",
+    tags: "",
+    video_length: "",
+    youtube_display_name: ""
+  })
    const [showForm, setToggleForm] = useState(false);
+  
+  const handleForm = e => {
+    const {value, name} = e.target;
+    setValues({...values, [name]: value})
+  }
+  const submitForm = e => {
+    e.preventDefault();
+    handleFormSubmission(values)
+  }
 
-   
   return (
     <div className='video-item'>
-      <button className="edit-video-btn" onClick={() => setToggleForm(!showForm)}><FontAwesomeIcon className="f-icon" icon={faPencilAlt} /></button>
-      <form className="edit-video-btn">
-        {showForm && <VideoEditForm />}
+      <div className="image-section">
+      <form className="edit-video-form" onSubmit={submitForm}>
+        {showForm && <VideoEditForm values={values} video={video} handleForm={handleForm}/>}
       </form>
+      <button className="edit-video-btn" onClick={() => setToggleForm(!showForm)}><FontAwesomeIcon className="f-icon" icon={faPencilAlt} /></button>
+      
       <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={() => props.history.push(`/videos/${video.id}`)}/>
+      </div>
       <h2>{video.title}</h2>
       <p>{`Previews: ${video.preview_count}`}</p>
       <p>{video.is_active ? 'Active' : 'Inactive'}</p>
