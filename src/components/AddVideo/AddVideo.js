@@ -7,7 +7,7 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
  
   const titleInstructions = <p>Enter a title that you can reference later to look up its previews.</p>
   const tagsInstructions = <p>Enter up to three tags, that are comma separated.<br/><br/>For eg: sports, soccer, liverpool</p>
-  const videoInstructions = <p>Enter a duration in the format hh:mm:ss.<br/><br/> For eg: 04:20, or 11:22:33</p>
+  const videoInstructions = <p>Enter a duration in the format mm:ss, or hhh:mm:ss.<br/><br/> For eg: 04:20, or 005:22:33</p>
   const handleInstructions = <p>Enter your YouTube channel name.<br/><br/> For eg: Liverpool FC</p>
 
   return (

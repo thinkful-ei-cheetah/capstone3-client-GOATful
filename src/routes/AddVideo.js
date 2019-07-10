@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AddVideos from '../components/AddVideo/AddVideo';
-import VideoStorage from '../services/video-storage'
+import VideoStorage from '../services/video-storage';
+import {errorCheckNewVideo, tagStringToArray, checkTime} from '../Utils/Utils'
 
 export default class AddVid extends Component {
   state={
@@ -18,13 +19,18 @@ export default class AddVid extends Component {
 
   handleSubmit = e =>{
     e.preventDefault();
+    const checkedTime =checkTime(this.state.video_length)
+    if (checkedTime.message){
+      this.errorHandler(checkedTime)
+      return;
+    }
     const video = {
       title: this.state.title,
-      video_length: this.state.video_length,
+      video_length: checkedTime.formattedTime,
       youtube_display_name: this.state.youtube_display_name,
       tags: tagStringToArray(this.state.tags),
     }
-    const isError = errorCheck(video);
+    const isError = errorCheckNewVideo(video);
     if (isError.status === true){
       this.errorHandler(isError)
       return
@@ -53,26 +59,26 @@ export default class AddVid extends Component {
   }
 }
 
-const  tagStringToArray = str => {
-  const tagsArr = str.split(', ').filter(Boolean);
-  if (tagsArr.length > 3){
-    tagsArr.length = 3;
-    return tagsArr
-  }
-  return tagsArr;
-}
+// const  tagStringToArray = str => {
+//   const tagsArr = str.split(', ').filter(Boolean);
+//   if (tagsArr.length > 3){
+//     tagsArr.length = 3;
+//     return tagsArr
+//   }
+//   return tagsArr;
+// }
 
-const errorCheck = (video) =>{
-  for (let key in video){
-    if (key === 'tags'){
-      if (video[key][0].trim() === ""){
-        return {status: true, message: 'Invalid tags'}
-      } 
-    } else{
-      if (video[key].trim() === ""){
-        return {status: true, message: `Invalid ${key}`}
-      }
-    }
-  } 
-  return {status: false}
-}
+// const errorCheck = (video) =>{
+//   for (let key in video){
+//     if (key === 'tags'){
+//       if (video[key][0].trim() === ""){
+//         return {status: true, message: 'Invalid tags'}
+//       } 
+//     } else{
+//       if (video[key].trim() === ""){
+//         return {status: true, message: `Invalid ${key}`}
+//       }
+//     }
+//   } 
+//   return {status: false}
+// }

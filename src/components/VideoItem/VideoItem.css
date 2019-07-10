@@ -1,3 +1,46 @@
-.video-item > img {
+.video-item > div > input {
   max-width: 300px;
+  margin: auto;
+  text-align: center;
+}
+
+.image-section{
+  max-width: 300px;
+}
+
+.video-item > h2{
+  margin: 0px;
+  font-size: 20px;
+}
+
+
+.video-item > p{
+  margin: 0px;
+  font-size: 17px;
+}
+
+.video-item{
+  margin:auto;
+  margin-top: 0px;
+  margin-bottom: 20px;
+
+}
+
+.edit-video-btn{
+  float:right;
+  position: relative;
+  top:40px;
+  /* position: absolute;
+    float: right; */
+    /* top:40px; */ 
+  background-color: rgba(0,0,0,.2); 
+}
+
+
+
+.black-btn{
+  color: black;
+}
+.white-btn{
+  color: black;
 }
