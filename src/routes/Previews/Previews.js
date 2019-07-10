@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import YoutubeSearchResult from '../../components/YoutubeSearchResult/YoutubeSearchResult'
-import YoutubeApiService from '../../services/youtube-api'
+// import YoutubeApiService from '../../services/youtube-api'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 
@@ -78,7 +78,7 @@ export default class Previews extends Component {
 
   previewClick = (e) => {
     let selected = this.state.vidPreviews.find(preview => {
-      return preview.id == e.target.id
+      return preview.id === e.target.id
     })
     this.setState({
       selectedPrev: selected
