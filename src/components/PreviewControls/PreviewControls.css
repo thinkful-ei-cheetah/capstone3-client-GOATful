@@ -1,5 +1,5 @@
 .preview-controls-container {
-  width: 25%;
+  width: 20%;
   height: 100vh;
   border-right: 1px solid grey;
   margin: 0;
@@ -15,6 +15,7 @@
   margin: 0;
   padding: 1em;
   border-bottom: 1px solid grey;
+  font-size: 1.3rem;
 }
 
 .add-new {
