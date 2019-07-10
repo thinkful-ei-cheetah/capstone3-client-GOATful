@@ -44,8 +44,8 @@ export default class Videos extends Component {
   tagStringToArray = str => {
    const tagsArr = str.split(', ').filter(Boolean);
    if (tagsArr.length > 3) {
-     tagsArr.length = 3;
-     return tagsArr
+     let threeTags = tagsArr.slice(1,4)
+     return threeTags;
    }
    return tagsArr;
   }
@@ -58,13 +58,16 @@ export default class Videos extends Component {
        }
      } else {
        if (video[key].trim() === "") {
-         return { status: true, message: `Invalid ${key}` }
+         return { status: true, message: `${key} is required` }
        }
      }
    }
    return { status: false }
   }
-
+  errorHandler = err => {
+    this.setState({ error: err.message })
+    setTimeout(() => this.setState({ error: null }), 3000)
+  }
 
   handleSubmit = e => {
     e.preventDefault();
