@@ -11,6 +11,7 @@ import AuthApiService from '../services/auth-api-service'
 import PublicUserService from '../services/public-user-service'
 import VideoStorage from '../services/video-storage'
 import PreviewsApiService from '../services/previews-api'
+import { withAppContext } from '../contexts/AppContext';
 
 class Creator extends Component {
   state = {
@@ -97,8 +98,12 @@ class Creator extends Component {
       errorMessages.thumbnail = 'failed to upload image'
       return
     }
-    const thumbnail_url = await UploadService(e.target.files[0])
-    this.setState({thumbnail_url, thumbnailValid, errorMessages}, this.validateForm)
+    try {
+      const thumbnail_url = await UploadService(e.target.files[0])
+      this.setState({thumbnail_url, thumbnailValid, errorMessages}, this.validateForm)
+    } catch(err) {
+      this.props.appContext.setAppError('failed to upload image')
+    }
   }
 
   handleSave = async (e) => {
@@ -111,7 +116,7 @@ class Creator extends Component {
         await PreviewsApiService.postPreview(video.id, preview)
         this.props.history.push(`/videos/${video.id}/previews`)
       } catch(err) {
-        console.error(err.message)
+        this.props.appContext.setAppError(err.message)
       }
     } else {
       this.googleLoginBtn.click()
@@ -129,14 +134,14 @@ class Creator extends Component {
 
   responseGoogle = async (response) => {
     if (!response.tokenObj) {
-      this.props.userContext.setError('invalid login attempt')
+      this.props.appContext.setAppError('unable to authenticate with Google')
     } else {
       try {
         const res = await AuthApiService.loginGoogle(response.tokenObj)
         this.props.userContext.processLogin(res.authToken)
         this.postVideoAndPreview()
       } catch(err){
-        this.props.userContext.setError(err.message)
+        this.props.appContext.setAppError('Unable to save your preview')
       }
     }
   }
@@ -166,4 +171,4 @@ class Creator extends Component {
   }
 }
 
-export default withUserContext(Creator)
+export default withUserContext(withAppContext(Creator))
