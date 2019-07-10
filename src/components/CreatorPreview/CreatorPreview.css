@@ -9,6 +9,6 @@
   margin-bottom: 20px;
 }
 
-.preview-controls  * {
+.preview-controls  > * {
   margin-right: 15px;
 }
