@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import './CreatorPreview.css'
 import YoutubeSearchResult from '../YoutubeSearchResult/YoutubeSearchResult'
+import DesktopViewPage from '../DesktopViewPage/DesktopViewPage'
+import MobileViewPage from '../MobileViewPage/MobileViewPage'
 // import YoutubeApiService from '../../services/youtube-api'
 import mockYoutubeData from '../../Utils/mock-youtube-date'
 import { shuffle } from '../../Utils/Utils'
@@ -12,7 +14,8 @@ class CreatorPreview extends Component {
     userPreview: {},
     youtubeSearchResults: [],
     userVideo: {},
-    videos: []
+    videos: [],
+    isDesktopView: true
   }
 
   async componentDidMount() {
@@ -61,20 +64,27 @@ class CreatorPreview extends Component {
     })
   }
 
+  handleViewChange = ev => {
+    // Get option value from select menu
+    let index = ev.nativeEvent.target.selectedIndex
+    // If value is mobile, change isDesktopView to false -> mobile view
+    let desktopOrMobile = ev.nativeEvent.target[index].text === 'Desktop' ? true : false
+    this.setState({ isDesktopView: desktopOrMobile })
+  }
+
   render() {
+    const { isDesktopView, videos } = this.state
     return (
       <div className='creator-preview'>
         <h2>How Your Video Will Look</h2>
         <div className='preview-controls'>
-        <select>
+        <select onChange={ev => this.handleViewChange(ev)}>
           <option value="desktop">Desktop</option>
-          <option value="iphone">iPhone</option>
-          <option value="android">Android</option>
+          <option value="mobile">Mobile</option>
         </select>
         <button className='button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
-        
-        {this.renderPreviews()}
+        {isDesktopView ? <DesktopViewPage videos={videos}/> : <MobileViewPage videos={videos} />}
       </div>
     )
   }

@@ -7,6 +7,8 @@ import {
   formatPublishedAtDate,
   formatViewCount
 } from '../../Utils/Utils';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
   
 export default class YoutubeSearchResult extends Component {
   
@@ -25,9 +27,8 @@ export default class YoutubeSearchResult extends Component {
 
   render() {
     const {
-      video_length, youtube_display_name, thumbnail_url, default_thumbnail, title, description, published_at, view_count
+      video_length, youtube_display_name, thumbnail_url, default_thumbnail, title, description, published_at, view_count, view
     } = this.props
-    
     return (
       <div className='youtube-search-result'>
         <div className='left-col'>
@@ -37,8 +38,12 @@ export default class YoutubeSearchResult extends Component {
 
         <div className='right-col'>
           <h2>{title || 'this is a fake header'}</h2>
-          <p className='sub-headings' >{youtube_display_name} • {formatViewCount(view_count)  || this.renderRandomViews()} • {formatPublishedAtDate(published_at) || this.renderRandomDate()}</p>
+          <p className='sub-headings' >
+            {youtube_display_name} <span className='desktop-only'>•</span> <span className="mobile-clear">{formatViewCount(view_count)  || this.renderRandomViews()} views • {formatPublishedAtDate(published_at) || this.renderRandomDate()}</span></p>
           <p className='truncate'>{description || 'this is a fake description'}</p>
+        </div>
+        <div className="ellipsis-menu">
+          <FontAwesomeIcon icon={faEllipsisV} />
         </div>
       </div>
     )
