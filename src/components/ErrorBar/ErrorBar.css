@@ -1,0 +1,10 @@
+.error-bar {
+  width: 100%;
+  padding: 15px;
+  background-color: red;
+  color: white;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -8,6 +8,7 @@ import mockYoutubeData from '../../Utils/mock-youtube-date'
 import { shuffle } from '../../Utils/Utils'
 import VideoStorage from '../../services/video-storage'
 import { withUserContext } from '../../contexts/UserContext';
+import { withAppContext } from '../../contexts/AppContext';
   
 class CreatorPreview extends Component {
   state = {
@@ -25,17 +26,23 @@ class CreatorPreview extends Component {
     } else {
       video = VideoStorage.getVideo('public_user_video')
     }
-    // const results = await YoutubeApiService.search(video.tags)
-    const results = mockYoutubeData
-
+    
+    let youtubeSearchResults;
+    try {
+      throw new Error('Youtube Api Quote Exceeded')
+      // youtubeSearchResults = await YoutubeApiService.search(video.tags)
+    } catch(err) {
+      youtubeSearchResults = mockYoutubeData
+    }
+      
     this.props.userPreview.youtube_display_name = video.youtube_display_name
     this.props.userPreview.video_length = video.video_length
     
     this.setState({
       userPreview: this.props.userPreview,
-      youtubeSearchResults: [...results],
+      youtubeSearchResults: [...youtubeSearchResults],
       userVideo: {...video},
-      videos: [this.props.userPreview, ...results]
+      videos: [this.props.userPreview, ...youtubeSearchResults]
     })
   }
 
@@ -90,4 +97,4 @@ class CreatorPreview extends Component {
   }
 }
 
-export default withUserContext(CreatorPreview)
+export default withUserContext(withAppContext(CreatorPreview))
