@@ -66,7 +66,6 @@ export default class Videos extends Component {
   }
 
 
-  ///////
   handleSubmit = e => {
     e.preventDefault();
     const video = {
@@ -86,7 +85,7 @@ export default class Videos extends Component {
   }
 
 
-////////
+
   handleFields = e => {
     let { value, name } = e.target;
     this.setState({
