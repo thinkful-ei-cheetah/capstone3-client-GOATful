@@ -17,11 +17,17 @@ export default class Videos extends Component {
     tags: '',
     video_length: '',
     youtube_display_name: '',
+    addError: ''
   }
 
   errorHandler = err => {
     this.setState({videoEditError: err.error})
     setTimeout(()=>this.setState({videoEditError: null}), 3000)
+  }
+
+  addErrorHandler = err => {
+    this.setState({addError: err.error})
+    setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
   async componentDidMount() {
@@ -99,13 +105,20 @@ export default class Videos extends Component {
     return { status: false }
   }
 
-  handleSubmit = (values) => {
+  handleSubmit = e => {
+    e.preventDefault();
+    const values = {
+      title: this.state.title,
+      video_length: this.state.video_length,
+      youtube_display_name: this.state.youtube_display_name,
+      tags: this.state.tags,
+  
+    }
     const checkedTime = checkTime(values.video_length);
     if (checkedTime.error){
-      this.errorHandler(checkedTime)
+      this.addErrorHandler(checkedTime)
       return;
     }
-
     const newVideo = {
       title: values.title,
       video_length: checkedTime.googleTimeString,
@@ -114,7 +127,7 @@ export default class Videos extends Component {
     }
     const isError = errorCheckNewVideo(newVideo);
     if (isError.status === true){
-      this.errorHandler(isError)
+      this.addErrorHandler(isError)
       return
     }
     VideoStorage.saveKey('laconic_current_video', newVideo)

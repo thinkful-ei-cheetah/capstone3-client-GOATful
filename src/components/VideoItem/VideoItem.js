@@ -23,9 +23,6 @@ import {formatDuration} from '../../Utils/Utils'
     e.preventDefault();
     handleFormSubmission(video.id, values)
   }
-<<<<<<< HEAD
-  console.log(props.formError)
-=======
 
   const redirectToPreviewsOrCreator = () => {
     if (video.preview_count > 0) {
@@ -35,7 +32,6 @@ import {formatDuration} from '../../Utils/Utils'
     }
   }
 
->>>>>>> master
   return (
     <div className='video-item'>
       <div className="image-section">

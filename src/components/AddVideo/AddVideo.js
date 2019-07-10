@@ -11,7 +11,7 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
   const handleInstructions = <p>Enter your YouTube channel name.<br/><br/> For eg: Liverpool FC</p>
 
   return (
-    <form className="add-video-form" onSubmit={handleSubmit}>
+    <form className="add-video-form" onSubmit={e => handleSubmit(e)}>
       <div className="flex-form">
       <div className="inputs">
         <label className="add-label" htmlFor="add-video-title">Title:</label>
@@ -28,7 +28,7 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
       </div>
       <div className = "directions">
         <h4>Instructions</h4>
-        <div className="instructions-text">{fields.error ? fields.error : view}</div>
+        <div className="instructions-text">{fields.addError ? fields.addError : view}</div>
       </div>
       </div>
       <button>Create!</button>
