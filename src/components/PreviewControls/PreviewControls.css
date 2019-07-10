@@ -1,6 +1,6 @@
 .preview-controls-container {
   width: 20%;
-  height: 100vh;
+  /* height: 100vh; */
   border-right: 1px solid grey;
   margin: 0;
 }
@@ -21,9 +21,4 @@
 .add-new {
   display: flex;
   justify-content: center;
-}
-
-.add-new > button {
-  position: absolute;
-  bottom: 25px;
 }

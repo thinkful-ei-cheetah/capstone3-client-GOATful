@@ -7,16 +7,17 @@ export default function PreviewItem({ preview, previewClick }) {
       <li
         className="preview-tile" 
         key={preview.id}>
-        <button
+        <a
           className='preview-btn'
           onClick={previewClick}
+          id={preview.id}
         >
           <img
             id={preview.id}
             src={preview.thumbnail_url}
             alt="preview thumbnail"
           />
-        </button>
+        </a>
       </li>
     )
   else {

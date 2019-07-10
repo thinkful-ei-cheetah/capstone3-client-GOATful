@@ -1,12 +1,19 @@
 .preview-tile > img {
-  max-width: 60%;
-  border: 3px solid #C4302B;
+  width: 60%;
   height: 90px;
 }
 
-.preview-tile > button > img {
-  max-width: 60%;
+.preview-tile > a {
   width: 60%;
+  margin-bottom: 1em;
+}
+
+.preview-tile > a:hover {
+  cursor: pointer;
+}
+
+.preview-tile > a > img {
+  width: 100%;
   height: 90px;
 }
 
