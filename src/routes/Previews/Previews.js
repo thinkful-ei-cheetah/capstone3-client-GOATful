@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import YoutubeSearchResult from '../../components/YoutubeSearchResult/YoutubeSearchResult'
-import YoutubeApiService from '../../services/youtube-api'
+// import YoutubeApiService from '../../services/youtube-api'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 
@@ -9,7 +9,7 @@ import MockYoutubeData from '../../Utils/mock-youtube-date'
 import pAPI from '../../services/previews-api'
 
 import { shuffle } from '../../Utils/Utils'
-import './Preview.css'
+import './Previews.css'
 
 export default class Previews extends Component {
   constructor(props) {
@@ -78,7 +78,7 @@ export default class Previews extends Component {
 
   previewClick = (e) => {
     let selected = this.state.vidPreviews.find(preview => {
-      return preview.id == e.target.id
+      return preview.id === e.target.id
     })
     this.setState({
       selectedPrev: selected
@@ -88,18 +88,18 @@ export default class Previews extends Component {
   render() {
     console.log(this.state.selectedPrev)
     return (
-      <section>
-        <h1>
+      <section className="previews-page">
+        {/* <h1>
           vidId: {this.vidId}
-        </h1>
-        <div className="previewControls">
-          <PreviewControls
-            prevList={this.state.vidPreviews}
-            displayId={this.state.selectedPrev}
-            previewClick={this.previewClick}
-          />
+        </h1> */}
+        <PreviewControls
+          prevList={this.state.vidPreviews}
+          selected={this.state.selectedPrev}
+          previewClick={this.previewClick}
+        />
+        <div className="previews-display-section">
+         {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
-        {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
       </section>
     );
   }

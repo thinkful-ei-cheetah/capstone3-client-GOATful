@@ -1,53 +1,41 @@
 import React from 'react';
-import './PreviewControls.css'
 import { Link } from 'react-router-dom'
+import PreviewItem from '../PreviewItem/PreviewItem'
+import './PreviewControls.css'
 
-const PreviewControls = ({ prevList, displayId, previewClick }) => {
+const PreviewControls = ({ prevList, selected, previewClick }) => {
 
-    let renderPreviews = () => {
-
-        return prevList.map(preview => {
-            console.log(displayId)
-            console.log(preview.id)
-            if (preview.id != displayId.id) {
-                return (<li>
-                    <button
-                        className='preview'
-                        onClick={previewClick}
-                    >
-                        <img
-                            id={preview.id}
-                            src={preview.thumbnail_url}
-                            alt="preview thumbnail"
-                        />
-                    </button>
-                </li>)
-            } else {
-                return (
-                    <li>
-                        {/* {console.log('false was hit')} */}
-                        <img src={preview.thumbnail_url} alt="preview thumbnail" />
-                        <button>
-                            set active
-                        </button>
-                    </li>
-                )
-            }
+  let renderPreviews = () => {
+    return prevList.map(preview => {
+      if (preview.id !== selected.id) {
+        return (
+          <PreviewItem
+            key={preview.id}
+            preview={preview}
+            previewClick={previewClick}
+          />)
+      } else {
+        return (
+          <PreviewItem
+            key={preview.id}
+            preview={preview}
+          />)
         }
-        )
-    }
+    })
+  }
 
-    return (
-        <div className="preview-controls">
-            <ul className="preview-tiles">
-
-                {(!displayId) ? false : renderPreviews()}
-
-            </ul>
-            <Link to='/creator'>
-                add new
-            </Link>
-        </div>
-    )
+  return (
+    <div className="preview-controls-container">
+      <h2 className="preview-title">Previews</h2>
+      <ul className="preview-tiles">
+        {(!selected) ? false : renderPreviews()}
+      </ul>
+      <Link to='/creator' className="add-new">
+        <button>
+          Add New
+        </button>
+      </Link>
+    </div>
+  )
 }
 export default PreviewControls;

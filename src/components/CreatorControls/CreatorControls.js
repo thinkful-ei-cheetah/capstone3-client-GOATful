@@ -50,7 +50,7 @@ const CreatorControls = (props) => {
         />
         <h3 className="controls-header">Create Preview</h3>
       </div>
-      <form className="controls-form">
+      <form className="controls-form" onSubmit={handleSave}>
         <label className="control-label" htmlFor="creator-title">Title:</label>
         <FieldValidator isValid={titleValid} message={errorMessages.title}/>
         <input className="creator-input" id="creator-title" type="text" name="title" value={title} onChange={handleFields}/>
@@ -60,7 +60,7 @@ const CreatorControls = (props) => {
         <label className="control-label" htmlFor="creator-description">Description:</label>
         <FieldValidator isValid={descriptionValid} message={errorMessages.description}/>
         <textarea className="creator-input" name="description" id="creator-description" value={description} onChange={handleFields} />
-        <button type="button" className="save-preview-btn" onClick={handleSave}>{loggedIn ? 'Save Preview' : 'Login to save'}</button>
+        <button type="submit" disabled={!formValid} className="save-preview-btn">{loggedIn ? 'Save Preview' : 'Login to save'}</button>
       </form>
     </div>
     <FontAwesomeIcon 

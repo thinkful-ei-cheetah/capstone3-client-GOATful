@@ -1,0 +1,28 @@
+.preview-controls-container {
+  width: 25%;
+  height: 100vh;
+  border-right: 1px solid grey;
+  margin: 0;
+}
+
+.preview-tiles {
+  list-style-type: none;
+  padding: 0;
+}
+
+.preview-title {
+  text-align: center;
+  margin: 0;
+  padding: 1em;
+  border-bottom: 1px solid grey;
+}
+
+.add-new {
+  display: flex;
+  justify-content: center;
+}
+
+.add-new > button {
+  position: absolute;
+  bottom: 25px;
+}
