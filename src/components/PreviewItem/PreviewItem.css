@@ -19,7 +19,7 @@
 
 .set-active-btn {
   width: 100px;
-  margin-top: 1em;
+  margin: 1em 0;
 }
 
 .preview-tile {
@@ -30,6 +30,5 @@
 
 .preview-btn {
   padding: 0;
-  margin-top: 1em;
   background: none;
 }
