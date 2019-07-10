@@ -9,8 +9,13 @@ export default class Videos extends Component {
   state = {
     videos: [],
     current: [0, 3], //index of selected videos
+    videoEditError: null
   }
 
+  errorHandler = err => {
+    this.setState({videoEditError: err.error})
+    setTimeout(()=>this.setState({videoEditError: null}), 3000)
+  }
 
   async componentDidMount() {
     const videos = await VideoService.getVideos();
@@ -21,24 +26,25 @@ export default class Videos extends Component {
     await VideoService.patchVideo(id, updates)   
     const videos = await VideoService.getVideos();
     this.setState({ videos })
-  }
+  } 
 
   handleFormSubmission = (id, values) => {
     const checkedTime = checkTime(values.video_length);
-    if (checkedTime.message){
-      // this.errorHandler(checkedTime)
-      // return;
+    if (checkedTime.error){
+      this.errorHandler(checkedTime)
+      return;
     }
+
     const updateVideo = {
       title: values.title,
-      video_length: checkedTime.formattedTime,
+      video_length: checkedTime.googleTimeString,
       youtube_display_name: values.youtube_display_name,
       tags: tagStringToArray(values.tags),
     }
     const isError = errorCheckNewVideo(updateVideo);
     if (isError.status === true){
-      // this.errorHandler(isError)
-      // return
+      this.errorHandler(isError)
+      return
     }
     this.updateSelectedVideo(id, updateVideo);
   }
@@ -53,6 +59,7 @@ export default class Videos extends Component {
       handleFormSubmission ={this.handleFormSubmission}
       video={video} 
       key={video.id}
+      formError = {this.state.videoEditError}
       />)
   }
   //show next four
@@ -65,7 +72,6 @@ export default class Videos extends Component {
 
   showLastFourVideos = e => {
       e.preventDefault()
-      // if(this.state.current === 0) { return }
       this.setState({
         current: [this.state.current[0] - 4, this.state.current[1] - 4]
       })

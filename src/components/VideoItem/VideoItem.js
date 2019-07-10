@@ -4,12 +4,13 @@ import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import VideoEditForm from './VideoEditForm'
+import {formatDuration} from '../../Utils/Utils'
 
  function VideoItem({video, handleFormSubmission, ...props}) {
   const [values, setValues] = useState({
     title: video.title,
     tags: video.tags.join(', '),
-    video_length: video.video_length,
+    video_length: formatDuration(video.video_length),
     youtube_display_name: video.youtube_display_name
   })
    const [showForm, setToggleForm] = useState(false);
@@ -22,12 +23,12 @@ import VideoEditForm from './VideoEditForm'
     e.preventDefault();
     handleFormSubmission(video.id, values)
   }
-
+  console.log(props.formError)
   return (
     <div className='video-item'>
       <div className="image-section">
       <form className="edit-video-form" onSubmit={submitForm}>
-        {showForm && <VideoEditForm values={values} video={video} handleForm={handleForm}/>}
+        {showForm && <VideoEditForm values={values} video={video} handleForm={handleForm} formError={props.formError}/>}
       </form>
       <button className="edit-video-btn" onClick={() => setToggleForm(!showForm)}><FontAwesomeIcon className="f-icon" icon={faPencilAlt} /></button>
       

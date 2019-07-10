@@ -108,6 +108,7 @@ export const tagStringToArray = str => {
 
 export const errorCheckNewVideo = (video) =>{
   for (let key in video){
+    
     if (key === 'tags'){
       if (video[key][0].trim() === ""){
         return {status: true, message: 'Invalid tags'}
@@ -122,43 +123,48 @@ export const errorCheckNewVideo = (video) =>{
 }
 
 export const checkTime = timeStr => {
-  const strLength = timeStr.length;
-  const allowedFormat = /^(\d{3}:)?\d{2}(:\d{2})$/;
+  const allowedFormat = /^(\d{1,3}:)?\d{1,2}(:\d{1,2})$/;
   const isLegit = allowedFormat.test(timeStr)
+  const formattedTime = {googleTimeString: "", error: null}
+
   if(!isLegit){
-    return { message: 'Invalid format. Please enter time in the format hhh:mm:ss or mm:ss'
+    formattedTime.error= 'Invalid format. Please enter time in the format h:m:s' 
+    return formattedTime      
+  }
+
+  const timeArray = timeStr.split(':');
+  const timeSectionCount = timeArray.length;
+ 
+  const mins = Number(timeArray[timeSectionCount - 2])
+  const secs = Number(timeArray[timeSectionCount - 1])
+  const hrs = (timeSectionCount === 3) ? Number(timeArray[0]) : null;
+
+  if(hrs){
+    if (hrs > 597){
+      formattedTime.error = 'YouTube videos cannot be longer than 597 hours'
+      return formattedTime;
+    }
+    if (hrs === 597 && (mins !== 0 || secs !== 0)){
+      formattedTime.error = 'YouTube videos cannot be longer than 597 hours'
+      return formattedTime;
     }
   }
-  const problem = { message: ''}
-  let hrs;
-  const secs = timeStr.substr(strLength - 2);
-  const mins = timeStr.substr(strLength - 5, 2);
-  if (timeStr.length > 5){
-    hrs = timeStr.substr(0, 3);
-    if (Number(hrs) > 597){
-      problem.message = 'YouTube videos cannot be longer than 597 hours'
-      return problem;
-    } else if (Number(hrs) === 597){
-      if (mins !== '00' || secs !== '00'){
-      problem.message = 'YouTube videos cannot be longer than 597 hours';
-      return problem;
-      }
-    } 
-  } else if(Number(mins) > 59 || Number(secs) > 59){
-    problem.message = 'Invalid time format.'
-    return problem;
-  }
+    if (mins > 59 || secs > 59){
+      formattedTime.error = 'Invalid time format'
+      return formattedTime;
+    }
+
   let google_hours, google_mins, google_secs
   if(hrs){
-    google_hours = (hrs === '000') ? null : Number(hrs);
+    google_hours = 0 ? null : hrs;
   }
-  google_mins = (mins === '00') ? null : Number(mins);
-  google_secs = (secs === '00') ? null : Number(secs);
+  google_mins = 0 ? null : mins;
+  google_secs = 0 ? null : secs;
 
-  const formattedTimeObject = {formattedTime: `PT${google_hours ? google_hours +'H' : ''}${google_mins ? google_mins +'M' : ''}${google_secs ? google_secs +'S' : ''}`}
-  if (formattedTimeObject.formattedTime === "PT"){
-    problem.message = 'Invalid time format.'
-    return problem;
+  formattedTime.googleTimeString = `PT${google_hours ? google_hours +'H' : ''}${google_mins ? google_mins +'M' : ''}${google_secs ? google_secs +'S' : ''}`
+
+  if (formattedTime.googleTimeString === "PT"){
+    formattedTime.error = 'Invalid time format'
   }
-  return formattedTimeObject;
+  return formattedTime;
 }

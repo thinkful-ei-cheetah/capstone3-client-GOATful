@@ -1,9 +1,9 @@
 import React from 'react'
 import './VideoEditForm.css'
-export default function VideoEditForm({video, handleForm, values}) {
+export default function VideoEditForm({video, handleForm, values, formError}) {
 
   
-
+console.log(formError)
   return (
     <div className="edit-videos-container">
       <div className="inputs-edit">
@@ -20,6 +20,7 @@ export default function VideoEditForm({video, handleForm, values}) {
         <input className="edit-video-input" type="text" id="edit-video-youtube-name"  name="youtube_display_name" value={values.youtube_display_name} onChange={handleForm} required/>
       </div>
       <div className = "edit-btn-container">
+        {formError}
         <button type="submit">Confirm</button>
       </div>
     </div>
