@@ -18,6 +18,7 @@ export default {
     const userVideos = await fetch(`${config.API_ENDPOINT}/videos`, {
       method: 'POST',
       headers:{
+        'Content-Type': 'application/json',
         "Authorization": `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newVideo)

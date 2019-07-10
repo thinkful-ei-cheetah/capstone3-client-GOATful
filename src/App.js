@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 
-
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
 import AddVid from './routes/AddVideo'
@@ -13,17 +12,25 @@ import Previews from './routes/Previews/Previews'
 import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';
+import { withAppContext } from './contexts/AppContext';
+import ErrorBar from './components/ErrorBar/ErrorBar'
+import Loader from '../src/components/Loader/Loader'
 
 require('dotenv').config();
 
 
-export default class App extends Component {
+class App extends Component {
   state = {
     hasError : null,
   }
 
-  render(){
+  renderErrorBar = () => {
+    const { appError, clearAppError } = this.props.appContext
+    if (appError) return <ErrorBar appError={appError} clearError={clearAppError}/>
+    return <></>
+  }
 
+  render(){
     const landPage = (props) => {
       return(
         <Landing {...props} />
@@ -62,38 +69,29 @@ export default class App extends Component {
 
     return(
       <div className="App">
+        <Loader/>
         <NavBar />
+        {this.renderErrorBar()}
+
         <main>
           <Switch>
             <PublicOnlyRoute
-              exact
-              path={'/'}
-              component={landPage}
+              exact path={'/'} component={landPage}
             />
             <Route
-              exact
-              path={'/creator'}
-              component={creatorPage}
+              exact path={'/creator'} component={creatorPage}
             />
             <PublicOnlyRoute
-              exact
-              path={'/add-video'}
-              component={addVidPage}
+              exact path={'/add-video'} component={addVidPage}
             />
             <PublicOnlyRoute
-              exact
-              path={'/login'}
-              component={loginPage}
+              exact path={'/login'} component={loginPage}
             />
             <PrivateRoute 
-              exact
-              path={'/videos'}
-              component={videosPage}
+              exact path={'/videos'} component={videosPage}
             />
             <PrivateRoute
-              exact
-              path={'/videos/:video_id/previews'}
-              component={PreviewsPage}
+              exact path={'/videos/:video_id/previews'} component={PreviewsPage}
             />
             <Route
               component={NotFound}
@@ -105,3 +103,4 @@ export default class App extends Component {
   }
 }
 
+export default withAppContext(App);

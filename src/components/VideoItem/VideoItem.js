@@ -23,7 +23,19 @@ import {formatDuration} from '../../Utils/Utils'
     e.preventDefault();
     handleFormSubmission(video.id, values)
   }
+<<<<<<< HEAD
   console.log(props.formError)
+=======
+
+  const redirectToPreviewsOrCreator = () => {
+    if (video.preview_count > 0) {
+      props.history.push(`/videos/${video.id}/previews`)
+    } else {
+      props.history.push('/creator')
+    }
+  }
+
+>>>>>>> master
   return (
     <div className='video-item'>
       <div className="image-section">
@@ -32,7 +44,7 @@ import {formatDuration} from '../../Utils/Utils'
       </form>
       <button className="edit-video-btn" onClick={() => setToggleForm(!showForm)}><FontAwesomeIcon className="f-icon" icon={faPencilAlt} /></button>
       
-      <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={() => props.history.push(`/videos/${video.id}/previews`)}/>
+      <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={redirectToPreviewsOrCreator}/>
       </div>
       <h2>{video.title}</h2>
       <p>{`Previews: ${video.preview_count}`}</p>

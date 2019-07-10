@@ -4,13 +4,16 @@ import './index.css';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './contexts/UserContext'
+import { AppProvider } from './contexts/AppContext'
 import AppError from './components/AppError/AppError'
 
 ReactDOM.render(
   <AppError>
     <BrowserRouter>
       <UserProvider>
-        <App />
+        <AppProvider>
+          <App />
+        </AppProvider>
       </UserProvider>
     </BrowserRouter>
   </AppError>,
