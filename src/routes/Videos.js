@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import VideoItem from '../components/VideoItem/VideoItem';
 import './Videos.css';
 import VideoService from '../services/video-api';
+import AddVideos from '../components/AddVideo/AddVideo';
+import VideoStorage from '../services/video-storage';
 
 export default class Videos extends Component {
 
@@ -37,9 +39,72 @@ export default class Videos extends Component {
       })
   }
 
+
+
+  tagStringToArray = str => {
+   const tagsArr = str.split(', ').filter(Boolean);
+   if (tagsArr.length > 3) {
+     tagsArr.length = 3;
+     return tagsArr
+   }
+   return tagsArr;
+  }
+  
+  errorCheck = (video) => {
+   for (let key in video) {
+     if (key === 'tags') {
+       if (video[key][0].trim() === "") {
+         return { status: true, message: 'Invalid tags' }
+       }
+     } else {
+       if (video[key].trim() === "") {
+         return { status: true, message: `Invalid ${key}` }
+       }
+     }
+   }
+   return { status: false }
+  }
+
+
+  ///////
+  handleSubmit = e => {
+    e.preventDefault();
+    const video = {
+      title: this.state.title,
+      video_length: this.state.video_length,
+      youtube_display_name: this.state.youtube_display_name,
+     tags: this.tagStringToArray(this.state.tags),
+     // ? will be changed when utils is updated
+    }
+    const isError = this.errorCheck(video);
+    if (isError.status === true) {
+      this.errorHandler(isError)
+      return
+    }
+    VideoStorage.saveKey('laconic_current_video', video)
+    this.props.history.push('/creator')
+  }
+
+
+////////
+  handleFields = e => {
+    let { value, name } = e.target;
+    this.setState({
+      [name]: value
+    })
+  }
+
+
+
   render() {
     return (
       <section className='videos-page'>
+        <div>
+          <AddVideos
+            fields={this.state}
+            handleFields={this.handleFields}
+            handleSubmit={this.handleSubmit} />
+        </div>
         <div className="btn-container">
           <button type="button" disabled={!this.state.current[0]} onClick ={this.showLastFourVideos}>Previous</button>
           <button type="button" onClick ={this.showNextFourVideos}>Next</button>
