@@ -32,6 +32,7 @@ export default {
     const res = await fetch(`${config.API_ENDPOINT}/videos/${id}`, {
       method: 'PATCH',
       headers:{
+        'Content-Type': 'application/json',
         "Authorization": `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(updatedVideo)
@@ -39,7 +40,7 @@ export default {
     if (!res.ok) {
       return res.json().then(e => Promise.reject(e))
     } 
-    return await res.json();
+    this.getVideos()
   },
 
   async getVideoById(id){
