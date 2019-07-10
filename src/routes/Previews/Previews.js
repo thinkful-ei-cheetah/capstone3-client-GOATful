@@ -28,7 +28,7 @@ export default class Previews extends Component {
   async componentDidMount() {
 
     const prevObj = await pAPI.getPreviews(this.vidId)
-    // console.log(prevObj)
+    console.log(prevObj)
 
     VideoStorage.saveKey('laconic_current_video', prevObj.video);
 
@@ -78,7 +78,7 @@ export default class Previews extends Component {
 
   previewClick = (e) => {
     let selected = this.state.vidPreviews.find(preview => {
-      return preview.id === e.target.id
+      return preview.id === parseInt(e.target.id)
     })
     this.setState({
       selectedPrev: selected
