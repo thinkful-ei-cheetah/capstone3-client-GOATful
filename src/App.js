@@ -3,7 +3,6 @@ import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 
-
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
 import AddVid from './routes/AddVideo'
@@ -15,6 +14,7 @@ import NotFound from './routes/NotFound'
 import './App.css';
 import { withAppContext } from './contexts/AppContext';
 import ErrorBar from './components/ErrorBar/ErrorBar'
+import Loader from '../src/components/Loader/Loader'
 
 require('dotenv').config();
 
@@ -69,6 +69,7 @@ class App extends Component {
 
     return(
       <div className="App">
+        <Loader/>
         <NavBar />
         {this.renderErrorBar()}
 
