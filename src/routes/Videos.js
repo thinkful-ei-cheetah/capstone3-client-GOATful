@@ -26,8 +26,8 @@ export default class Videos extends Component {
   handleFormSubmission = (id, values) => {
     const checkedTime = checkTime(values.video_length);
     if (checkedTime.message){
-      this.errorHandler(checkedTime)
-      return;
+      // this.errorHandler(checkedTime)
+      // return;
     }
     const updateVideo = {
       title: values.title,
@@ -37,8 +37,8 @@ export default class Videos extends Component {
     }
     const isError = errorCheckNewVideo(updateVideo);
     if (isError.status === true){
-      this.errorHandler(isError)
-      return
+      // this.errorHandler(isError)
+      // return
     }
     this.updateSelectedVideo(id, updateVideo);
   }
