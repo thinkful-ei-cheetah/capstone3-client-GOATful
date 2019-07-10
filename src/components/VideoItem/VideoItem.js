@@ -6,7 +6,11 @@ import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import VideoEditForm from './VideoEditForm'
 
  function VideoItem({video, ...props}) {
-  // const formFields = 
+   const formFields = {
+     title: video.title,
+     tags: video.tags,
+     video_length: video.video_length
+   }
    const [showForm, setToggleForm] = useState(false);
 
    
