@@ -7,10 +7,10 @@ import VideoEditForm from './VideoEditForm'
 
  function VideoItem({video, handleFormSubmission, ...props}) {
   const [values, setValues] = useState({
-    title: "",
-    tags: "",
-    video_length: "",
-    youtube_display_name: ""
+    title: video.title,
+    tags: video.tags.join(', '),
+    video_length: video.video_length,
+    youtube_display_name: video.youtube_display_name
   })
    const [showForm, setToggleForm] = useState(false);
   
@@ -20,7 +20,7 @@ import VideoEditForm from './VideoEditForm'
   }
   const submitForm = e => {
     e.preventDefault();
-    handleFormSubmission(values)
+    handleFormSubmission(video.id, values)
   }
 
   return (
@@ -31,7 +31,7 @@ import VideoEditForm from './VideoEditForm'
       </form>
       <button className="edit-video-btn" onClick={() => setToggleForm(!showForm)}><FontAwesomeIcon className="f-icon" icon={faPencilAlt} /></button>
       
-      <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={() => props.history.push(`/videos/${video.id}`)}/>
+      <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={() => props.history.push(`/videos/${video.id}/previews`)}/>
       </div>
       <h2>{video.title}</h2>
       <p>{`Previews: ${video.preview_count}`}</p>

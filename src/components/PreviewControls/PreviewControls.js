@@ -7,8 +7,6 @@ const PreviewControls = ({ prevList, displayId, previewClick }) => {
     let renderPreviews = () => {
 
         return prevList.map(preview => {
-            console.log(displayId)
-            console.log(preview.id)
             if (preview.id != displayId.id) {
                 return (<li>
                     <button

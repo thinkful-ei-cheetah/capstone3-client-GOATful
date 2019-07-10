@@ -1,7 +1,12 @@
 async function uploadPhoto(photo){
-  console.log(photo)
+  console.log(photo.size)
+  if (photo.size > 2000000){
+    //call error handler;
+    return
+  }
   const formData = new FormData();
   formData.append('file', photo);
+  
   formData.append('upload_preset', process.env.REACT_APP_TOKEN);
 
   try{
