@@ -67,9 +67,10 @@ export default class Previews extends Component {
     const { selectedPrev, youtubeSearchResults, video } = this.state
     video.title = selectedPrev.title
     video.thumbnail_url = selectedPrev.thumbnail_url
+    video.description = selectedPrev.description
 
     const videos = [video, ...youtubeSearchResults]
-    shuffle(videos)
+    // shuffle(videos)
     
     return videos.map((video, i) => {
       return <YoutubeSearchResult {...video} key={i} />

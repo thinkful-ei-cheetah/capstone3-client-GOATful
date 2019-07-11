@@ -1,5 +1,7 @@
 import React from 'react'
 import './PreviewItem.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default function PreviewItem({ preview, previewClick }) {
   if (previewClick) 
@@ -23,15 +25,20 @@ export default function PreviewItem({ preview, previewClick }) {
   else {
     return (
       <li 
-        className="preview-tile" 
+        className="preview-tile selection-card" 
         key={preview.id}>
-        <img 
-          src={preview.thumbnail_url} 
-          alt="preview thumbnail"
-          className="preview-thumbnail" />
-        <button className="set-active-btn">
-          Set Active
-        </button>
+
+        
+          <img 
+            src={preview.thumbnail_url} 
+            alt="preview thumbnail"
+            className="preview-thumbnail" />
+          <button className="set-active-btn">
+            Set Active
+          </button>
+          <button className="set-active-btn">
+          <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
+          </button>
       </li>
     )
   }
