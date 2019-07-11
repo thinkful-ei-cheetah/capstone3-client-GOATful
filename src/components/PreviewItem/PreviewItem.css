@@ -32,3 +32,8 @@
   padding: 0;
   background: none;
 }
+
+.selection-card {
+  border: 1px;
+  background-color:lightgray;
+}
