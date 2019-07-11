@@ -87,7 +87,7 @@ export default class Previews extends Component {
   }
 
   editClick = (e) => {
-    VideoStorage.saveKey('laconic_current_preview', {video : this.state.video, preview: this.state.selectedPrev})
+    VideoStorage.saveKey('laconic_current_preview', {...this.state.selectedPrev})
     }
   
 
