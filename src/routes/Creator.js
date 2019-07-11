@@ -25,6 +25,7 @@ class Creator extends Component {
     descriptionValid: false,
     thumbnailValid: false,
     formValid: false,
+    preview_id: null
   }
 
   handleFields = e => {
@@ -80,13 +81,39 @@ class Creator extends Component {
     this.setState({formValid})
   }
 
+  isEditing = () => {
+    return this.props.location.search.includes('edit=true')
+  }
+
   componentDidMount() {
+    let title = '';
+    let description = '';
+    let thumbnail_url = null;
+    let titleValid, descriptionValid, thumbnailValid, formValid, preview_id;
+  
+    if (this.isEditing()) {
+      const currentPreview = VideoStorage.getVideo('laconic_current_preview')
+      title = currentPreview.title
+      description = currentPreview.description
+      thumbnail_url = currentPreview.thumbnail_url
+      titleValid = true
+      descriptionValid = true
+      thumbnailValid = true
+      formValid = true
+      preview_id = currentPreview.id
+    }
     const loggedIn = TokenService.hasAuthToken();
     if (loggedIn) {
       const video = VideoStorage.getVideo('laconic_current_video')
       if (!video) return this.props.history.push('/videos')
     }
-    this.setState({loggedIn})
+    this.setState({
+      loggedIn,
+      title,
+      description,
+      thumbnail_url,
+      titleValid, descriptionValid, thumbnailValid, formValid, preview_id
+    })
   }
 
   grabPhoto = async e => {
@@ -113,7 +140,12 @@ class Creator extends Component {
       const {title, description, thumbnail_url} = this.state
       const preview = {title, description, thumbnail_url, video_id: video.id}
       try {
-        await PreviewsApiService.postPreview(video.id, preview)
+        if (this.isEditing()) {
+          preview.id = this.state.preview_id
+          await PreviewsApiService.patchPreview(video.id, preview)
+        } else {
+          await PreviewsApiService.postPreview(video.id, preview)
+        }
         this.props.history.push(`/videos/${video.id}/previews`)
       } catch(err) {
         this.props.appContext.setAppError(err.message)
