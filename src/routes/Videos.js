@@ -12,12 +12,23 @@ export default class Videos extends Component {
   state = {
     videos: [],
     current: [0, 3], //index of selected videos
+    videoEditError: null,
     title: '',
     tags: '',
     video_length: '',
     youtube_display_name: '',
+    addError: ''
   }
 
+  errorHandler = err => {
+    this.setState({videoEditError: err.error || err.message})
+    setTimeout(()=>this.setState({videoEditError: null}), 3000)
+  }
+
+  addErrorHandler = err => {
+    this.setState({addError: err.error || err.message})
+    setTimeout(()=>this.setState({addError: null}), 3000)
+  }
 
   async componentDidMount() {
     const videos = await VideoService.getVideos();
@@ -26,26 +37,32 @@ export default class Videos extends Component {
 
   async updateSelectedVideo(id, updates) {
     await VideoService.patchVideo(id, updates)
-    const videos = await VideoService.getVideos();
-    this.setState({ videos })
-  }
-
-  handleFormSubmission = (id, values) => {
-    const checkedTime = checkTime(values.video_length);
-    if (checkedTime.message) {
-      // this.errorHandler(checkedTime)
-      // return;
+    
+    try{
+      const videos = await VideoService.getVideos();
+      this.setState({ videos })
+    } catch(e){ 
+      this.errorHandler(e)
     }
+  } 
+
+  handleFormSubmission = async (id, values) => {
+    const checkedTime = checkTime(values.video_length);
+    if (checkedTime.error){
+      this.errorHandler(checkedTime)
+      return;
+    }
+
     const updateVideo = {
       title: values.title,
-      video_length: checkedTime.formattedTime,
+      video_length: checkedTime.googleTimeString,
       youtube_display_name: values.youtube_display_name,
       tags: tagStringToArray(values.tags),
     }
     const isError = errorCheckNewVideo(updateVideo);
-    if (isError.status === true) {
-      // this.errorHandler(isError)
-      // return
+    if (isError.status === true){
+      this.errorHandler(isError)
+      return
     }
     this.updateSelectedVideo(id, updateVideo);
   }
@@ -60,7 +77,8 @@ export default class Videos extends Component {
       handleFormSubmission={this.handleFormSubmission}
       video={video}
       key={video.id}
-    />)
+      formError = {this.state.videoEditError}
+      />)
   }
   //show next four
   showNextFourVideos = e => {
@@ -71,21 +89,13 @@ export default class Videos extends Component {
   }
 
   showLastFourVideos = e => {
-    e.preventDefault()
-    // if(this.state.current === 0) { return }
-    this.setState({
-      current: [this.state.current[0] - 4, this.state.current[1] - 4]
-    })
+      e.preventDefault()
+      this.setState({
+        current: [this.state.current[0] - 4, this.state.current[1] - 4]
+      })
   }
 
-
-
-  tagStringToArray = str => {
-    const tagsArr = str.split(', ').filter(Boolean).slice(0, 3);
-    return tagsArr;
-  }
-
-  errorCheck = (video) => {
+  errorCheckNewVideo = (video) => {
     for (let key in video) {
       if (key === 'tags') {
         if (video[key][0].trim() === "") {
@@ -99,28 +109,41 @@ export default class Videos extends Component {
     }
     return { status: false }
   }
-  errorHandler = err => {
-    this.setState({ error: err.message })
-    setTimeout(() => this.setState({ error: null }), 3000)
-  }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
-    const video = {
+    const values = {
       title: this.state.title,
       video_length: this.state.video_length,
       youtube_display_name: this.state.youtube_display_name,
-      tags: this.tagStringToArray(this.state.tags),
-      // ? will be changed when utils is updated
+      tags: this.state.tags,
+  
     }
-    const isError = this.errorCheck(video);
-    if (isError.status === true) {
-      this.errorHandler(isError)
+    const checkedTime = checkTime(values.video_length);
+    if (checkedTime.error){
+      this.addErrorHandler(checkedTime)
+      return;
+    }
+    const newVideo = {
+      title: values.title,
+      video_length: checkedTime.googleTimeString,
+      youtube_display_name: values.youtube_display_name,
+      tags: tagStringToArray(values.tags),
+    }
+    const isError = errorCheckNewVideo(newVideo);
+    console.log(isError)
+    if (isError.status === true){
+      this.addErrorHandler(isError)
       return
     }
-    VideoStorage.saveKey('laconic_current_video', video)
-    this.props.history.push('/creator')
-    VideoService.postVideo(video);
+    try{
+      await VideoService.postVideo(newVideo);
+      VideoStorage.saveKey('laconic_current_video', newVideo)
+      this.props.history.push('/creator')
+    }catch(e){
+      this.addErrorHandler(e)
+    }
+    
   }
 
 

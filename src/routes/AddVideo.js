@@ -13,20 +13,20 @@ export default class AddVid extends Component {
   }
   
   errorHandler = err => {
-    this.setState({error: err.message})
+    this.setState({error: err.error})
     setTimeout(()=>this.setState({error: null}), 3000)
   }
 
   handleSubmit = e =>{
     e.preventDefault();
     const checkedTime =checkTime(this.state.video_length)
-    if (checkedTime.message){
+    if (checkedTime.error){
       this.errorHandler(checkedTime)
       return;
     }
     const video = {
       title: this.state.title,
-      video_length: checkedTime.formattedTime,
+      video_length: checkedTime.googleTimeString,
       youtube_display_name: this.state.youtube_display_name,
       tags: tagStringToArray(this.state.tags),
     }
@@ -58,27 +58,3 @@ export default class AddVid extends Component {
     );
   }
 }
-
-// const  tagStringToArray = str => {
-//   const tagsArr = str.split(', ').filter(Boolean);
-//   if (tagsArr.length > 3){
-//     tagsArr.length = 3;
-//     return tagsArr
-//   }
-//   return tagsArr;
-// }
-
-// const errorCheck = (video) =>{
-//   for (let key in video){
-//     if (key === 'tags'){
-//       if (video[key][0].trim() === ""){
-//         return {status: true, message: 'Invalid tags'}
-//       } 
-//     } else{
-//       if (video[key].trim() === ""){
-//         return {status: true, message: `Invalid ${key}`}
-//       }
-//     }
-//   } 
-//   return {status: false}
-// }
