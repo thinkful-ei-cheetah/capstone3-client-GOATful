@@ -46,7 +46,7 @@ nav a:hover{
   margin: auto 5px;
   margin-top: 5px;
 }
-.logo:hover {
+.root-link:hover {
   fill: white;
   transition: .5s;
 }

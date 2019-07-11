@@ -1,0 +1,85 @@
+.youtube-search-result {
+  display: flex;
+  /* min-width: 500px; */
+  max-width: 65vw;
+  padding: 8px;
+  font-family: Roboto, Arial, sans-serif;
+}
+
+.youtube-search-result .left-col {
+  flex: 1;
+  position: relative;
+}
+
+.youtube-search-result > .left-col > img{
+  width:246px;
+  height: 138px;
+  margin-right: 16px;
+}
+
+.youtube-search-result .left-col span {
+  color: white;
+  position: absolute;
+  bottom: 10px;
+  right: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  background-color: black;
+  padding: 2px 3px;
+}
+
+.youtube-search-result .right-col {
+  flex: 3;
+  margin-left: 10px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  max-height: 154px;
+  width: 600px;
+  letter-spacing: .5px;
+}
+
+.youtube-search-result .right-col  h2{
+  margin: 0;
+}
+
+.right-col > h2 {
+  font-size: 18px;
+  overflow: hidden;
+  font-weight: 500;
+  text-overflow: ellipsis;
+  line-height: 1.5rem;
+  max-height: 48px;
+}
+
+.right-col > p {
+  font-size: 13px;
+  text-overflow: ellipsis;
+}
+
+
+.right-col > .sub-headings {
+  color: #606060;
+  margin: 0;
+  padding: 0;
+}
+
+.right-col > .truncate{
+  color: #606060;
+  overflow: hidden;
+  white-space: pre;
+}
+
+img.responsive-img {
+  width: 100%;
+  height: auto;
+}
+
+@media screen and (max-width: 570px) {
+  .youtube-search-result .left-col span {
+    bottom: 20px;
+  }
+}
+
+.ellipsis-menu {
+  visibility: hidden;
+}

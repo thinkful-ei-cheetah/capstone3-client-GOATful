@@ -35,3 +35,8 @@ button {
   background-color: #C4302B;
   border-radius: 3px;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: grey
+}

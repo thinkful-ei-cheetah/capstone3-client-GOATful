@@ -1,8 +1,7 @@
-import React , {Component} from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
-
 
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
@@ -10,24 +9,38 @@ import Team from './routes/MeetTeam'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
 import Login from './routes/Login'
-import VidPrev from './routes/VidPreview'
+import Previews from './routes/Previews/Previews'
 import Videos from './routes/Videos'
 import NotFound from './routes/NotFound'
 import './App.css';
+import { withAppContext } from './contexts/AppContext';
+import ErrorBar from './components/ErrorBar/ErrorBar'
+import Loader from '../src/components/Loader/Loader'
 
 require('dotenv').config();
 
 
-export default class App extends Component {
+class App extends Component {
   state = {
-    hasError : null,
+    hasError: null,
   }
 
-  render(){
+  renderErrorBar = () => {
+    const { appError, clearAppError } = this.props.appContext
+    if (appError) return <ErrorBar appError={appError} clearError={clearAppError} />
+    return <></>
+  }
 
-    const landPage = () => {
-      return(
-        <Landing />
+  render() {
+    const landPage = (props) => {
+      return (
+        <Landing {...props} />
+      )
+    }
+
+    const loginPage = (props) => {
+      return (
+        <Login {...props} />
       )
     }
     const meetTeam = () => {
@@ -35,75 +48,59 @@ export default class App extends Component {
         <Team />
       )
     }
-    const loginPage = () => {
-      return(
-        <Login />
+
+    const creatorPage = (props) => {
+      return (
+        <Creator {...props} />
       )
     }
 
-    const creatorPage = () => {
-      return(
-        <Creator />
+    const addVidPage = (props) => {
+      return (
+        <AddVid {...props} />
       )
     }
 
-    const addVidPage = () => {
-      return(
-        <AddVid />
+    const PreviewsPage = (props) => {
+      return (
+        <Previews {...props} />
       )
     }
 
-    const vidPrevPage = () => {
-      return(
-        <VidPrev />
+    const videosPage = (props) => {
+      return (
+        <Videos {...props} />
       )
     }
 
-    const videosPage = () => {
-      return(
-        <Videos />
-      )
-    }
-
-    return(
+    return (
       <div className="App">
+        <Loader />
         <NavBar />
+        {this.renderErrorBar()}
+
         <main>
           <Switch>
             <PublicOnlyRoute
-              exact
-              path={'/'}
-              component={landPage}
+              exact path={'/'} component={landPage}
             />
             <Route
-              exact
-              path={'/Team'}
-              component={meetTeam}
+              exact path={'/creator'} component={creatorPage}
             />
             <Route
-              exact
-              path={'/creator'}
-              component={creatorPage}
+              exact path={'/Team'} component={meetTeam}
             />
             <PublicOnlyRoute
-              exact
-              path={'/add-video'}
-              component={addVidPage}
+              exact path={'/add-video'} component={addVidPage}
             />
             <PublicOnlyRoute
-              exact
-              path={'/login'}
-              component={loginPage}
-            />
-            <PrivateRoute 
-              exact
-              path={'/videos'}
-              component={videosPage}
+              exact path={'/login'} component={loginPage}
             />
             <PrivateRoute
-              exact
-              path={'/:vid-id/previews'}
-              component={vidPrevPage}
+              exact path={'/videos'} component={videosPage}
+            />
+            <PrivateRoute
+              exact path={'/videos/:video_id/previews'} component={PreviewsPage}
             />
             <Route
               component={NotFound}
@@ -115,3 +112,4 @@ export default class App extends Component {
   }
 }
 
+export default withAppContext(App);
