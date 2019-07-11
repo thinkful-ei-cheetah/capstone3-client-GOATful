@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 import VideoEditForm from './VideoEditForm'
 import {formatDuration} from '../../Utils/Utils'
+import VideoStorage from '../../services/video-storage';
 
  function VideoItem({video, handleFormSubmission, ...props}) {
   const [values, setValues] = useState({
@@ -25,6 +26,7 @@ import {formatDuration} from '../../Utils/Utils'
   }
 
   const redirectToPreviewsOrCreator = () => {
+    VideoStorage.saveKey('laconic_current_video', video)
     if (video.preview_count > 0) {
       props.history.push(`/videos/${video.id}/previews`)
     } else {
