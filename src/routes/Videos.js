@@ -21,12 +21,12 @@ export default class Videos extends Component {
   }
 
   errorHandler = err => {
-    this.setState({videoEditError: err.error})
+    this.setState({videoEditError: err.error || err.message})
     setTimeout(()=>this.setState({videoEditError: null}), 3000)
   }
 
   addErrorHandler = err => {
-    this.setState({addError: err.error})
+    this.setState({addError: err.error || err.message})
     setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
@@ -37,11 +37,16 @@ export default class Videos extends Component {
 
   async updateSelectedVideo(id, updates) {
     await VideoService.patchVideo(id, updates)
-    const videos = await VideoService.getVideos();
-    this.setState({ videos })
+    
+    try{
+      const videos = await VideoService.getVideos();
+      this.setState({ videos })
+    } catch(e){ 
+      this.errorHandler(e)
+    }
   } 
 
-  handleFormSubmission = (id, values) => {
+  handleFormSubmission = async (id, values) => {
     const checkedTime = checkTime(values.video_length);
     if (checkedTime.error){
       this.errorHandler(checkedTime)
@@ -105,7 +110,7 @@ export default class Videos extends Component {
     return { status: false }
   }
 
-  handleSubmit = e => {
+  handleSubmit = async e => {
     e.preventDefault();
     const values = {
       title: this.state.title,
@@ -126,13 +131,19 @@ export default class Videos extends Component {
       tags: tagStringToArray(values.tags),
     }
     const isError = errorCheckNewVideo(newVideo);
+    console.log(isError)
     if (isError.status === true){
       this.addErrorHandler(isError)
       return
     }
-    VideoStorage.saveKey('laconic_current_video', newVideo)
-    this.props.history.push('/creator')
-    VideoService.postVideo(newVideo);
+    try{
+      await VideoService.postVideo(newVideo);
+      VideoStorage.saveKey('laconic_current_video', newVideo)
+      this.props.history.push('/creator')
+    }catch(e){
+      this.addErrorHandler(e)
+    }
+    
   }
 
 

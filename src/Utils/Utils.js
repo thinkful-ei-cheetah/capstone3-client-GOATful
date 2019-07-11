@@ -107,19 +107,30 @@ export const tagStringToArray = str => {
 }
 
 export const errorCheckNewVideo = (video) =>{
+  const errorObject = {status: false, error: ""}
   for (let key in video){
     
     if (key === 'tags'){
       if (video[key][0].trim() === ""){
-        return {status: true, message: 'Invalid tags'}
-      } 
+        return {status: true, error: 'Invalid tags'}
+      }
+    let allowedFormat = /[a-zA-Z0-9-_]$/;
+    video[key].forEach(item => {
+      if (!allowedFormat.test(item)){
+        errorObject.status = true;
+        errorObject.error = 'Invalid tags. Tags must be alphanumeric. "-", "_" are allowed.';
+      }
+    })
+
+    if (errorObject.status === true) return errorObject;
+    
     } else{
       if (video[key].trim() === ""){
-        return {status: true, message: `Invalid ${key}`}
+        return {status: true, error: `Invalid ${key}`}
       }
     }
   } 
-  return {status: false}
+  return errorObject
 }
 
 export const checkTime = timeStr => {
