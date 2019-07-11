@@ -131,7 +131,6 @@ export default class Videos extends Component {
       tags: tagStringToArray(values.tags),
     }
     const isError = errorCheckNewVideo(newVideo);
-    console.log(isError)
     if (isError.status === true){
       this.addErrorHandler(isError)
       return

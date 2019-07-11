@@ -98,7 +98,7 @@ export function formatViewCount(strNum) {
 }
 
 export const tagStringToArray = str => {
-  const tagsArr = str.split(', ').filter(Boolean);
+  const tagsArr = str.split(/,||, /).filter(Boolean);
   if (tagsArr.length > 3){
     tagsArr.length = 3;
     return tagsArr
