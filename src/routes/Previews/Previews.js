@@ -28,7 +28,7 @@ export default class Previews extends Component {
   async componentDidMount() {
 
     const prevObj = await pAPI.getPreviews(this.vidId)
-    console.log(prevObj)
+    // console.log(prevObj)
 
     VideoStorage.saveKey('laconic_current_video', prevObj.video);
 
@@ -59,7 +59,7 @@ export default class Previews extends Component {
       selectedPrev: selected,
       youtubeSearchResults: [...results]
     })
-    console.log(this.state)
+    // console.log(this.state)
   }
 
 
@@ -86,8 +86,13 @@ export default class Previews extends Component {
     })
   }
 
+  editClick = (e) => {
+    VideoStorage.saveKey('laconic_current_preview', {...this.state.selectedPrev})
+    }
+  
+
   render() {
-    console.log(this.state.selectedPrev)
+    // console.log(this.state.selectedPrev)
     return (
       <section className="previews-page">
         {/* <h1>
@@ -97,6 +102,7 @@ export default class Previews extends Component {
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}
           previewClick={this.previewClick}
+          editClick={this.editClick}
         />
         <div className="previews-display-section">
          {(this.state.selectedPrev === null) ? false : this.renderPreviews()}

@@ -1,9 +1,10 @@
 import React from 'react'
+import {Link} from 'react-router-dom';
 import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default function PreviewItem({ preview, previewClick }) {
+export default function PreviewItem({ preview, previewClick, editClick  }) {
   if (previewClick) 
     return (
       <li
@@ -36,9 +37,9 @@ export default function PreviewItem({ preview, previewClick }) {
           <button className="set-active-btn">
             Set Active
           </button>
-          <button className="set-active-btn">
+          <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
           <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
-          </button>
+          </Link>
       </li>
     )
   }
