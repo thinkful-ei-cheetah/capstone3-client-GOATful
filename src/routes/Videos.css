@@ -14,3 +14,7 @@
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+
+.previous, .next {
+  width: 85px;
+}

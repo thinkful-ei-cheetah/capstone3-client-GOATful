@@ -59,6 +59,9 @@
   line-height: normal;
   max-height: 40px;
   max-width: 150px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .mobile-view-page .right-col {
@@ -99,11 +102,11 @@
   margin-top: .5em;
   position: relative;
   width: 360px;
-  height: 600px;
   border: 16px black solid;
   border-top-width: 60px;
   border-bottom-width: 60px;
   border-radius: 36px;
+  margin-bottom: 1.5em;
 }
 
 /* The horizontal line on the top of the device */
@@ -132,4 +135,14 @@
   transform: translate(-50%, -50%);
   background: #333;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 450px) {
+  .smartphone {
+    width: 280px;
+  }
+
+  .creator-preview > h2 {
+    font-size: 20px;
+  }
 }

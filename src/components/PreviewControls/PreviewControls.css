@@ -22,3 +22,42 @@
   display: flex;
   justify-content: center;
 }
+
+@media screen and (max-width: 630px) {
+  .preview-controls-container {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid grey;
+  }
+
+  .preview-title {
+    padding-bottom: 0;
+    border: none;
+  }
+
+  .preview-tiles {
+    margin-bottom: 0;
+    display: flex;
+    overflow: scroll;
+  }
+
+  .add-new {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+  }
+
+  .add-new > button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .preview-tile > a > img{
+    height: 60px;
+    margin-top: 1em;
+  }
+
+  .preview-tile > img {
+    height: 60px;
+  }
+}
