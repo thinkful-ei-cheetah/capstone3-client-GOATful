@@ -74,6 +74,17 @@ img.responsive-img {
   height: auto;
 }
 
+@media screen and (max-width: 425px) {
+  .desktop-view-page > .youtube-search-result > .left-col > img {
+    width: 200px;
+    height: 118px;
+  }
+
+  .desktop-view-page > .youtube-search-result > .left-col > span {
+    bottom: 40px;
+  }
+}
+
 @media screen and (max-width: 570px) {
   .youtube-search-result .left-col span {
     bottom: 20px;

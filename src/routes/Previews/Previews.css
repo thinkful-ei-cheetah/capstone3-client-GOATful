@@ -5,3 +5,10 @@
 .previews-display-section {
   padding: 2em;
 }
+
+@media screen and (max-width: 630px) {
+  .previews-page {
+    flex-flow: row wrap;
+    justify-content: center;
+  }
+}

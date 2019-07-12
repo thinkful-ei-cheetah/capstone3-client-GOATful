@@ -5,16 +5,22 @@
 }  
 
 .aside-controls{
-  width: 25%;
-  border-right: 1px solid grey;
-  margin-left: -25%;
-  transition: .6s;
-  /* height: 100vh */
+  width: 0;
+  transition: .4s;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  /* padding-top: 60px; */
+  background-color: rgb(60, 57, 57);
+  color: white;
+  height: 100vh;
 }
 
 .controls-header{
   margin-top: 0px;
-  padding-top: 40px;
+  padding-top: 75px;
   border-bottom: 1px solid grey;
   padding-bottom: 20px;
   text-align: center;
@@ -68,7 +74,6 @@ input[type="file"] + label {
 input[type="file"] + label:hover{
   border: 1px solid rgb(196, 48, 43);
   cursor: pointer;
-  color: rgb(196, 48, 43);
 }
 
 input[type="file"] + label:active{
@@ -88,13 +93,4 @@ input[type="file"] + label:active{
 
 .save-preview-btn:hover{
   box-shadow: none;
-}
-
-@media screen and (min-width: 930px) {
-  #edit-form {
-    margin-left: 0;
-  }
-  #edit-btn {
-    visibility: hidden;
-  }
 }

@@ -158,7 +158,7 @@ export default class Videos extends Component {
   render() {
     return (
       <section className='videos-page'>
-        <div>
+        <div className="add-video-container">
           <AddVideos
             fields={this.state}
             handleFields={this.handleFields}
@@ -166,8 +166,15 @@ export default class Videos extends Component {
         </div>
         <div className="btn-container">
 
-          <button type="button" disabled={!this.state.current[0]} onClick={this.showLastFourVideos}>Previous</button>
-          <button type="button" onClick={this.showNextFourVideos}>Next</button>
+          <button 
+            type="button" 
+            className="previous"
+            disabled={!this.state.current[0]} 
+            onClick={this.showLastFourVideos}>Previous</button>
+          <button 
+            type="button" 
+            className="next"
+            onClick={this.showNextFourVideos}>Next</button>
         </div>
         <div className='my-videos-container'>
           {this.state.videos.length ? this.renderVideos() : ''}
