@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import './Landing.css'
+import './MeetTeam.css'
+import David from '../img/david.jpeg'
+import Kp from '../img/KP.jpg'
+import Elan from '../img/elan.jpg'
 
-class Landing extends Component {
+class Team extends Component {
   componentDidMount() {
     console.log('I was mounted')
   }
@@ -21,67 +24,62 @@ class Landing extends Component {
           </div>
         </section>
         <div className='landing-container'>
-          <section className='click-through'>
+          <section className='david'>
             <figure>
-              <img src="https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM" alt="Click through rate"
-                onMouseOver={e => (e.currentTarget.src = 'https://amp.businessinsider.com/images/5c48c7ea2bdd7f581f7508a0-750-375.jpg')}
-                onMouseOut={e => (e.currentTarget.src = 'https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM')} />
+              <img src={David} alt="David K. Nordeen"/>
             </figure>
             <h3>
               David K. Nordeen
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            Chief Marketing Officer, NBA Addict, GOAT  
+            </p>
           </section>
 
-          <section className='click-through'>
+          <section className='elan'>
             <figure>
-              <img src="https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM" alt="Click through rate"
-                onMouseOver={e => (e.currentTarget.src = 'https://amp.businessinsider.com/images/5c48c7ea2bdd7f581f7508a0-750-375.jpg')}
-                onMouseOut={e => (e.currentTarget.src = 'https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM')} />
+              <img src={Elan} alt="Elan Green" />
             </figure>
             <h3>
               Elan Green
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            Yeet 
+            </p>
           </section>
 
-          <section className='click-through'>
+          <section className='kp'>
             <figure>
-              <img src="https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM" alt="Click through rate"
-                onMouseOver={e => (e.currentTarget.src = 'https://amp.businessinsider.com/images/5c48c7ea2bdd7f581f7508a0-750-375.jpg')}
-                onMouseOut={e => (e.currentTarget.src = 'https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM')} />
+              <img src={Kp} alt="Kristof-Pierre Cummings"/>
             </figure>
             <h3>
               Kristof-Pierre Cummings
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            Nerd, Massive Manchester City Fan
+            </p>
           </section>
-          <section className='click-through'>
+          <section className='verdi'>
             <figure>
-              <img src="https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM" alt="Click through rate"
-                onMouseOver={e => (e.currentTarget.src = 'https://amp.businessinsider.com/images/5c48c7ea2bdd7f581f7508a0-750-375.jpg')}
-                onMouseOut={e => (e.currentTarget.src = 'https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM')} />
+              <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_843,w_1500,x_0,y_10/f_auto,q_auto,w_1100/v1555172614/shape/mentalfloss/iStock-177369626_1.jpg" alt="Michael Verdi" />
             </figure>
             <h3>
               Michael Verdi
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            yo 
+            </p>
           </section>
-          <section className='click-through'>
+          <section className='peter'>
             <figure>
-              <img src="https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM" alt="Click through rate"
-                onMouseOver={e => (e.currentTarget.src = 'https://amp.businessinsider.com/images/5c48c7ea2bdd7f581f7508a0-750-375.jpg')}
-                onMouseOut={e => (e.currentTarget.src = 'https://media.licdn.com/dms/image/C5103AQEIiVj4du7bpA/profile-displayphoto-shrink_800_800/0?e=1568246400&v=beta&t=U6TqAzgGvtL5TGHebfAwrywPbYb1nsGjea_A8_od3YM')} />
+              <img src="https://res.cloudinary.com/goatful/image/upload/v1562870755/prof_sygtha.png" alt="Peter Pae" />
             </figure>
             <h3>
               Peter Pae
             </h3>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+            Meme Lord  
+            </p>
           </section>
           <footer>
             footer( Laconic: Better Thumbnails )
@@ -92,4 +90,4 @@ class Landing extends Component {
   }
 }
 
-export default Landing
+export default Team
