@@ -4,7 +4,7 @@ import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default function PreviewItem({ preview, previewClick, editClick  }) {
+export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
   if (previewClick) 
     return (
       <li
@@ -40,6 +40,9 @@ export default function PreviewItem({ preview, previewClick, editClick  }) {
           <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
           <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
           </Link>
+          <button onClick={delClick}>
+            Delete
+          </button>
       </li>
     )
   }

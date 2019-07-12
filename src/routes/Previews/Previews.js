@@ -90,6 +90,9 @@ export default class Previews extends Component {
     VideoStorage.saveKey('laconic_current_preview', {...this.state.selectedPrev})
     }
   
+  delClick = (e) => {
+    console.log('i was clicked')
+  }
 
   render() {
     // console.log(this.state.selectedPrev)
@@ -103,6 +106,7 @@ export default class Previews extends Component {
           selected={this.state.selectedPrev}
           previewClick={this.previewClick}
           editClick={this.editClick}
+          delClick={this.delClick}
         />
         <div className="previews-display-section">
          {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
