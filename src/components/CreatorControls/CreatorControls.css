@@ -94,12 +94,3 @@ input[type="file"] + label:active{
 .save-preview-btn:hover{
   box-shadow: none;
 }
-
-@media screen and (min-width: 930px) {
-  #edit-form {
-    margin-left: 0;
-  }
-  #edit-btn {
-    visibility: hidden;
-  }
-}

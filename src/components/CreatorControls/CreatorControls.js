@@ -22,10 +22,12 @@ const CreatorControls = (props) => {
     const editForm = document.getElementById('edit-form')
     // get screen width 
     const screenWidth = document.documentElement.clientWidth
-    if (screenWidth < 630) {
+    if (screenWidth > 1000) {
+      editForm.style.width = '20%'
+    } else if (screenWidth < 630) {
       editForm.style.width = '50%'
     } else {
-      editForm.style.width = '30%'
+      editForm.style.width = '25%'
     }
   }
 
