@@ -136,8 +136,8 @@ export default class Videos extends Component {
       return
     }
     try{
-      await VideoService.postVideo(newVideo);
-      VideoStorage.saveKey('laconic_current_video', newVideo)
+     const createdVideo = await VideoService.postVideo(newVideo);
+      VideoStorage.saveKey('laconic_current_video', createdVideo)
       this.props.history.push('/creator')
     }catch(e){
       this.addErrorHandler(e)

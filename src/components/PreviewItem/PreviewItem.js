@@ -4,7 +4,7 @@ import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default function PreviewItem({ preview, previewClick, editClick  }) {
+export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
   if (previewClick) 
     return (
       <li
