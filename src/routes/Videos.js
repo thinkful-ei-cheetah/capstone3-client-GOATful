@@ -6,9 +6,21 @@ import AddVideos from '../components/AddVideo/AddVideo';
 import VideoStorage from '../services/video-storage';
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
-import Modal from '../components/Modal/Modal';
+import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
+import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
+const modalStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+Modal.setAppElement('#root')
 
 export default class Videos extends Component {
 
@@ -21,7 +33,7 @@ export default class Videos extends Component {
     video_length: '',
     youtube_display_name: '',
     addError: '',
-    modalOpen: false,
+    modalIsOpen: false,
   }
 
   errorHandler = err => {
@@ -72,11 +84,11 @@ export default class Videos extends Component {
   }
 
   openModal = () => {
-    this.setState({modalOpen: true})  
+    this.setState({modalIsOpen: true})  
   }
 
   closeModal = () => {
-    this.setState({modalOpen: false})
+    this.setState({modalIsOpen: false})
   }
 
   renderVideos() {
@@ -172,15 +184,24 @@ export default class Videos extends Component {
           />
         </button>
         <Modal 
-          isOpen={this.state.modalOpen}
-          closeModal={this.closeModal}
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+          contentLabel={'Add New Video Form'}
+          closeTimeoutMS={200}
         >
-          <div className="add-video-container">
-            <AddVideos
-              fields={this.state}
-              handleFields={this.handleFields}
-              handleSubmit={this.handleSubmit} />
-          </div>
+          <h2>Add New Video Project</h2>
+          <span className='close-modal-btn' onClick={this.closeModal}>
+            <FontAwesomeIcon 
+              icon={faWindowClose}
+            />
+          </span>
+          
+          <AddVideos
+            fields={this.state}
+            handleFields={this.handleFields}
+            handleSubmit={this.handleSubmit}
+          />
         </Modal>
         <div className="btn-container">
           <button 
