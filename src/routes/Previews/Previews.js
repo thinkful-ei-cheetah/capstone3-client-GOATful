@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router'
-
 import YoutubeSearchResult from '../../components/YoutubeSearchResult/YoutubeSearchResult'
-// import YoutubeApiService from '../../services/youtube-api'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
-
 import MockYoutubeData from '../../Utils/mock-youtube-date'
 import pAPI from '../../services/previews-api'
-
-import { shuffle } from '../../Utils/Utils'
 import './Previews.css'
-
+import YoutubeApi from '../../services/youtube-api'
 export default class Previews extends Component {
   constructor(props) {
     super(props)
@@ -20,39 +14,27 @@ export default class Previews extends Component {
       vidPreviews: [],
       selectedPrev: null,
       youtubeSearchResults: [],
-      redirect: false
     }
-    this.BASE_URL = 'http://localhost:8000/api'
     this.vidId = this.props.match.params.video_id;
   }
 
-
-  async componentDidMount() {
-
-    const prevObj = await pAPI.getPreviews(this.vidId)
-    // console.log(prevObj)
-
-    VideoStorage.saveKey('laconic_current_video', prevObj.video);
-
-    let findSelect = () => {
-      let select = null
-      if (this.state.selectedPrev !== null) {
-        select = this.state.selectedPrev
-      } else {
-        let temp = prevObj.previews.find(preview => {
-          return preview.is_active === true
-        })
-        if (temp !== undefined) {
-          select = temp
-        } else {
-          select = prevObj.previews[0]
-        }
-        return select
-      }
+  findSelect = (prevObj) => {
+    let select = null
+    let temp = prevObj.previews.find(preview => {
+      return preview.is_active === true
+    })
+    if (temp !== undefined) {
+      select = temp
+    } else {
+      select = prevObj.previews[0]
     }
-    let selected = findSelect()
-
-    // const results = await YoutubeApiService.search(video.tags)
+    return select
+  }
+  async componentDidMount() {
+    const prevObj = await pAPI.getPreviews(this.vidId)
+    VideoStorage.saveKey('laconic_current_video', prevObj.video);
+    let selected = this.findSelect(prevObj)
+    // const results = await YoutubeApi.search(prevObj.video.tags)
     const results = MockYoutubeData
 
     this.setState({
@@ -61,18 +43,18 @@ export default class Previews extends Component {
       selectedPrev: selected,
       youtubeSearchResults: [...results]
     })
-    // console.log(this.state)
+
   }
 
 
   renderPreviews = () => {
+    console.log(this.state)
     const { selectedPrev, youtubeSearchResults, video } = this.state
     video.title = selectedPrev.title
     video.thumbnail_url = selectedPrev.thumbnail_url
     video.description = selectedPrev.description
 
     const videos = [video, ...youtubeSearchResults]
-    // shuffle(videos)
 
     return videos.map((video, i) => {
       return <YoutubeSearchResult {...video} key={i} />
@@ -91,46 +73,34 @@ export default class Previews extends Component {
   editClick = (e) => {
     VideoStorage.saveKey('laconic_current_preview', { ...this.state.selectedPrev })
   }
- 
-   delClick = () => {
-    console.log(this.vidId)
-     pAPI.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
 
-    const deletedPrev = pAPI.getPreviews(this.vidId)
-    console.log(deletedPrev)
-    
-    if (!deletedPrev.previews) {
-      this.setState({
-        redirect: true
-      })
+  delClick = async () => {
+    console.log(this.props)
+    try {
+      await pAPI.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
+      const updatedPreviews = await pAPI.getPreviews(this.vidId)
+      if (updatedPreviews.previews.length === 0) {
+        this.props.history.push('/creator')
+      } else {
+        const selected = this.findSelect(updatedPreviews)
+        console.log(selected)
+        this.setState({
+          selectedPrev: selected,
+          vidPreviews: updatedPreviews.previews,
+
+        })
+      }
+    } catch (error) {
+      console.log(error)
     }
-    this.setState({
-      // video: deletedPrev.video,
-      // vidPreviews: [...deletedPrev.previews],
-      selectedPrev: {...deletedPrev.preview},
-
-    })
   }
 
-  renderRedirect = () => {
-    return (
-      <Redirect
-        to={{
-          pathname: '/creator',
-          // state: { from: componentProps.location },
-        }}
-      />
-    )
-  }
+
 
 
   render() {
-    // console.log(this.state.selectedPrev)
     return (
       <section className="previews-page">
-        {/* <h1>
-          vidId: {this.vidId}
-        </h1> */}
         <PreviewControls
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}
@@ -138,7 +108,6 @@ export default class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
-        {(this.state.redirect) ? this.renderRedirect() : false}
         <div className="previews-display-section">
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
