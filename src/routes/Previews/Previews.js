@@ -48,7 +48,6 @@ export default class Previews extends Component {
 
 
   renderPreviews = () => {
-    console.log(this.state)
     const { selectedPrev, youtubeSearchResults, video } = this.state
     video.title = selectedPrev.title
     video.thumbnail_url = selectedPrev.thumbnail_url
@@ -75,7 +74,6 @@ export default class Previews extends Component {
   }
 
   delClick = async () => {
-    console.log(this.props)
     try {
       await pAPI.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
       const updatedPreviews = await pAPI.getPreviews(this.vidId)
@@ -83,7 +81,6 @@ export default class Previews extends Component {
         this.props.history.push('/creator')
       } else {
         const selected = this.findSelect(updatedPreviews)
-        console.log(selected)
         this.setState({
           selectedPrev: selected,
           vidPreviews: updatedPreviews.previews,
@@ -91,7 +88,7 @@ export default class Previews extends Component {
         })
       }
     } catch (error) {
-      console.log(error)
+      this.props.appContext.setAppError(error.message)
     }
   }
 
