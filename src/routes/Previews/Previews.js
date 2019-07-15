@@ -2,11 +2,13 @@ import React, { Component } from 'react'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import MockYoutubeData from '../../Utils/mock-youtube-date'
-import pAPI from '../../services/previews-api'
+import PreviewsApi from '../../services/previews-api'
 import './Previews.css'
+import YoutubeApi from '../../services/youtube-api'
+import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
 
-export default class Previews extends Component {
+class Previews extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -14,6 +16,8 @@ export default class Previews extends Component {
       vidPreviews: [],
       selectedPrev: null,
       userPreview: {},
+      youtubeSearchResults: [],
+      isLoading: true
     }
     this.vidId = this.props.match.params.video_id;
   }
@@ -30,20 +34,26 @@ export default class Previews extends Component {
     }
     return select
   }
+
   async componentDidMount() {
-    const prevObj = await pAPI.getPreviews(this.vidId)
-    VideoStorage.saveKey('laconic_current_video', prevObj.video);
-    let selected = this.findSelect(prevObj)
-    const results = MockYoutubeData
-
-    this.setState({
-      video: prevObj.video,
-      vidPreviews: [...prevObj.previews],
-      selectedPrev: selected,
-    })
-
+    try {
+      const prevObj = await PreviewsApi.getPreviews(this.vidId)
+      VideoStorage.saveKey('laconic_current_video', prevObj.video);
+      let selected = this.findSelect(prevObj)
+      // const results = await YoutubeApi.search(prevObj.video.tags)
+      const results = MockYoutubeData
+  
+      this.setState({
+        video: prevObj.video,
+        vidPreviews: [...prevObj.previews],
+        selectedPrev: selected,
+        youtubeSearchResults: [...results],
+        isLoading: false
+      })
+    } catch(err) {
+      this.setState({isLoading: false}, this.props.withAppContext.setAppError(`An error occurred while trying to load your video previews, the server responded with: ${err.message}`))
+    }
   }
-
 
   renderPreviews = () => {
     const { selectedPrev, video } = this.state
@@ -51,10 +61,7 @@ export default class Previews extends Component {
     video.thumbnail_url = selectedPrev.thumbnail_url
     video.description = selectedPrev.description
 
-    return <CreatorPreview
-      userPreview={{ ...video }}
-
-    />
+    return <CreatorPreview userPreview={{ ...video }} setLoading={() => {}}/>
   }
 
   previewClick = (e) => {
@@ -71,9 +78,10 @@ export default class Previews extends Component {
   }
 
   delClick = async () => {
+    this.setState({isLoading: true})
     try {
-      await pAPI.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
-      const updatedPreviews = await pAPI.getPreviews(this.vidId)
+      await PreviewsApi.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
+      const updatedPreviews = await PreviewsApi.getPreviews(this.vidId)
       if (updatedPreviews.previews.length === 0) {
         this.props.history.push('/creator')
       } else {
@@ -81,14 +89,13 @@ export default class Previews extends Component {
         this.setState({
           selectedPrev: selected,
           vidPreviews: updatedPreviews.previews,
-
+          isLoading: false
         })
       }
     } catch (error) {
-      this.props.appContext.setAppError(error.message)
+      this.setState({isLoading: false}, this.props.appContext.setAppError(`An error occurred while trying to delete your video preview - the server responded with: ${error.message}`))
     }
   }
-
 
   render() {
     return (
@@ -108,3 +115,5 @@ export default class Previews extends Component {
     );
   }
 }
+
+export default withAppContext(Previews)
