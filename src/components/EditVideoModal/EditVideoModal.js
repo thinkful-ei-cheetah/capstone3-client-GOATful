@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import AddVideos from '../AddVideo/AddVideo';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
+import './EditVideoModal.css'
 
 const modalStyles = {
   content : {
@@ -18,17 +19,17 @@ const modalStyles = {
 };
 Modal.setAppElement('#root')
 
-export default class AddVideoModal extends Component {
+export default class EditVideoModal extends Component {
   render() {
     return (
       <Modal
       isOpen={this.props.isOpen}
       onRequestClose={this.props.onRequestClose}
       style={modalStyles}
-      contentLabel={'Add New Video Form'}
+      contentLabel={'Edit Video Form'}
       closeTimeoutMS={200}
         >
-          <h2 className="add-video-header">Add New Video Project</h2>
+          <h2 className="add-video-header">Edit Video Project</h2>
           <span className='close-modal-btn' onClick={this.props.onRequestClose}>
             <FontAwesomeIcon 
               icon={faWindowClose}

@@ -19,7 +19,6 @@ export class AppProvider extends Component {
   }
 
   setLoading(bool) {
-    console.log('hi')
     this.setState({isLoading: bool})
   }
 
