@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import YoutubeSearchResult from '../../components/YoutubeSearchResult/YoutubeSearchResult'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import MockYoutubeData from '../../Utils/mock-youtube-date'
 import pAPI from '../../services/previews-api'
 import './Previews.css'
-import YoutubeApi from '../../services/youtube-api'
+import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
+
 export default class Previews extends Component {
   constructor(props) {
     super(props)
@@ -13,7 +13,7 @@ export default class Previews extends Component {
       video: {},
       vidPreviews: [],
       selectedPrev: null,
-      youtubeSearchResults: [],
+      userPreview: {},
     }
     this.vidId = this.props.match.params.video_id;
   }
@@ -34,30 +34,27 @@ export default class Previews extends Component {
     const prevObj = await pAPI.getPreviews(this.vidId)
     VideoStorage.saveKey('laconic_current_video', prevObj.video);
     let selected = this.findSelect(prevObj)
-    // const results = await YoutubeApi.search(prevObj.video.tags)
     const results = MockYoutubeData
 
     this.setState({
       video: prevObj.video,
       vidPreviews: [...prevObj.previews],
       selectedPrev: selected,
-      youtubeSearchResults: [...results]
     })
 
   }
 
 
   renderPreviews = () => {
-    const { selectedPrev, youtubeSearchResults, video } = this.state
+    const { selectedPrev, video } = this.state
     video.title = selectedPrev.title
     video.thumbnail_url = selectedPrev.thumbnail_url
     video.description = selectedPrev.description
 
-    const videos = [video, ...youtubeSearchResults]
+    return <CreatorPreview
+      userPreview={{ ...video }}
 
-    return videos.map((video, i) => {
-      return <YoutubeSearchResult {...video} key={i} />
-    })
+    />
   }
 
   previewClick = (e) => {
@@ -93,8 +90,6 @@ export default class Previews extends Component {
   }
 
 
-
-
   render() {
     return (
       <section className="previews-page">
@@ -106,6 +101,7 @@ export default class Previews extends Component {
           delClick={this.delClick}
         />
         <div className="previews-display-section">
+        
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
       </section>
