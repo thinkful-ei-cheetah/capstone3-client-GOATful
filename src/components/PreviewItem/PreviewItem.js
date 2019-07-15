@@ -40,6 +40,12 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
           <button className="set-active-btn">
             Set Active
           </button>
+          <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
+          <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
+          </Link>
+          <button onClick={delClick}>
+            Delete
+          </button>
       </li>
     )
   }
