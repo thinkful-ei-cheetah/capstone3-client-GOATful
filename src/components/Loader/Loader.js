@@ -1,11 +1,9 @@
 import React from 'react';
 import './Loader.css';
 import Spinner from 'react-spinkit'
-import { withAppContext } from '../../contexts/AppContext';
   
-function Loader(props) {
-  const {isLoading} = props.appContext
-  if (isLoading) {
+export default function Loader(props) {
+  if (props.isLoading) {
     return (
       <div className='loader'>
         <Spinner name="cube-grid" color='white' fadeIn='quarter'/>
@@ -17,5 +15,3 @@ function Loader(props) {
   }
   
 }
-
-export default withAppContext(Loader);

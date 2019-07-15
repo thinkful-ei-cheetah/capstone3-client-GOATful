@@ -61,11 +61,11 @@ class App extends Component {
       )
     }
 
-    const videosPage = (props) => {
-      return(
-        <Videos {...props}/>
-      )
-    }
+    // const videosPage = (props) => {
+    //   return(
+    //     <Videos {...props}/>
+    //   )
+    // }
 
     return(
       <div className="App">
@@ -88,7 +88,7 @@ class App extends Component {
               exact path={'/login'} component={loginPage}
             />
             <PrivateRoute 
-              exact path={'/videos'} component={videosPage}
+              exact path={'/videos'} component={(props) => <Videos {...props} />}
             />
             <PrivateRoute
               exact path={'/videos/:video_id/previews'} component={PreviewsPage}

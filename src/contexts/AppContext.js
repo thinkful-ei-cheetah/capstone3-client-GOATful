@@ -12,29 +12,28 @@ export default AppContext
 export class AppProvider extends Component {
   state = {
     isLoading: false,
-    appError: null
+    appError: null,
+    setLoading: this.setLoading.bind(this),
+    setAppError: this.setAppError.bind(this),
+    clearAppError: this.clearAppError.bind(this)
   }
 
-  setLoading = (bool) => {
+  setLoading(bool) {
+    console.log('hi')
     this.setState({isLoading: bool})
   }
 
-  setAppError = (appError) => {
+  setAppError(appError) {
     this.setState({appError})
   }
 
-  clearAppError = () => {
+  clearAppError() {
     this.setState({appError: null})
   }
 
   render() {
     return (
-      <AppContext.Provider value={{
-        ...this.state,
-        setLoading: this.setLoading,
-        setAppError: this.setAppError,
-        clearAppError: this.clearAppError
-      }}>
+      <AppContext.Provider value={this.state}>
         {this.props.children}
       </AppContext.Provider>
     )
