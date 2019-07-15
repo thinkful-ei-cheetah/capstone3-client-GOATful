@@ -54,5 +54,20 @@ export default {
       return userVideo.json().then(e => Promise.reject(e))
     }
     return await userVideo.json();
+  },
+
+  async deleteVideo(video_id) {
+    const response = await fetch(`${config.API_ENDPOINT}/videos/${video_id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    if (!response.ok) {
+      return response.json().then(e => Promise.reject(e))
+    }
+    return response.json();
   }
+
 }
