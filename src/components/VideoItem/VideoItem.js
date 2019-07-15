@@ -2,12 +2,13 @@ import React, {useState} from 'react'
 import './VideoItem.css'
 import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 import {formatDuration} from '../../Utils/Utils'
 import VideoStorage from '../../services/video-storage';
 import EditVideoModal from '../../components/EditVideoModal/EditVideoModal'
+ import DeleteVideoModal from '../../components/DeleteVideoModal/DeleteVideoModal'
 
- function VideoItem({video, handleFormSubmission, ...props}) {
+ function VideoItem({video, deleteVideo, handleFormSubmission, ...props}) {
   const [values, setValues] = useState({
     title: video.title,
     tags: video.tags.join(', '),
@@ -16,9 +17,14 @@ import EditVideoModal from '../../components/EditVideoModal/EditVideoModal'
   })
   
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false);
 
   const closeModal = () => {
     setModalIsOpen(false)
+  }
+
+  const closeDeleteModal = () => {
+    setDeleteModalOpen(false)
   }
   
   const handleForm = e => {
@@ -29,6 +35,11 @@ import EditVideoModal from '../../components/EditVideoModal/EditVideoModal'
     e.preventDefault();
     handleFormSubmission(video.id, values)
     closeModal()
+  }
+
+  const handleDelete = () => {
+    setDeleteModalOpen(false);
+    deleteVideo(video.id)
   }
 
   const redirectToPreviewsOrCreator = () => {
@@ -47,6 +58,9 @@ import EditVideoModal from '../../components/EditVideoModal/EditVideoModal'
       <button className="edit-video-btn" onClick={() => setModalIsOpen(true)}>
         <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
       </button>
+      <button className="delete-video-btn" onClick={() => setDeleteModalOpen(true)}>
+        <FontAwesomeIcon className="f-icon" icon={faTrashAlt} />
+      </button>
 
       <EditVideoModal
         fields={values}
@@ -54,6 +68,13 @@ import EditVideoModal from '../../components/EditVideoModal/EditVideoModal'
         handleSubmit={submitForm}
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
+      />
+        <DeleteVideoModal
+        fields={values}
+        handleConfirm={handleDelete}
+        isOpen={deleteModalOpen}
+        previewCount = {video.preview_count}
+        onRequestClose={closeDeleteModal}
       />
 
       <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={redirectToPreviewsOrCreator}/>
