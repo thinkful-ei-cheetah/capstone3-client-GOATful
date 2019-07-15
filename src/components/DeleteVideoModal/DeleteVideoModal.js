@@ -18,7 +18,7 @@ const modalStyles = {
 };
 Modal.setAppElement('#root')
 
-export default class EditVideoModal extends Component {
+export default class DeleteVideoModal extends Component {
   render() {
     return (
       <Modal
