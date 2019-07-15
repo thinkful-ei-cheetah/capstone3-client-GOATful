@@ -35,6 +35,12 @@
     /* top:40px; */ 
   background-color: rgba(0,0,0,.2); 
 }
+.delete-video-btn{
+  float:right;
+  position: relative;
+  top:40px;
+  background-color: rgba(0,0,0,.2); 
+}
 
 
 

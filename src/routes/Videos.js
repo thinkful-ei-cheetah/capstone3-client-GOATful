@@ -75,6 +75,18 @@ class Videos extends Component {
     this.updateSelectedVideo(id, updateVideo);
   }
 
+  deleteVideo = async videoId => {
+    try{
+      this.setState({isLoading: true })
+
+      await VideoService.deleteVideo(videoId)
+      const videos = await VideoService.getVideos();
+      this.setState({ videos, isLoading: false })
+    } catch(err){ 
+      this.setState({ isLoading: false }, this.props.appContext.setAppError(err.message))
+    }
+  }
+
   openModal = () => {
     this.setState({modalIsOpen: true})  
   }
@@ -87,6 +99,7 @@ class Videos extends Component {
     const { videos } = this.state;
     return videos.map(video => <VideoItem
       handleFormSubmission={this.handleFormSubmission}
+      deleteVideo={this.deleteVideo}
       video={video}
       key={video.id}
       formError = {this.state.videoEditError}
