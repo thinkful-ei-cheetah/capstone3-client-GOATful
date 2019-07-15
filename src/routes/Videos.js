@@ -1,34 +1,20 @@
 import React, { Component } from 'react';
 import VideoItem from '../components/VideoItem/VideoItem';
 import './Videos.css';
+import Loader from '../components/Loader/Loader'
+import AddVideoModal from '../components/AddVideoModal/AddVideoModal'
 import VideoService from '../services/video-api';
-import AddVideos from '../components/AddVideo/AddVideo';
 import VideoStorage from '../services/video-storage';
+import FAB from '../components/FAB/FAB'
+import { withAppContext } from '../contexts/AppContext'
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
-import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
-const modalStyles = {
-  content : {
-    maxWidth              : '80%',
-    width                 : '350px',
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
-Modal.setAppElement('#root')
-
-export default class Videos extends Component {
+class Videos extends Component {
 
   state = {
     videos: [],
-    current: [0, 3], //index of selected videos
+    isLoading: true,
     videoEditError: null,
     title: '',
     tags: '',
@@ -49,8 +35,12 @@ export default class Videos extends Component {
   }
 
   async componentDidMount() {
-    const videos = await VideoService.getVideos();
-    this.setState({ videos })
+    try {
+      const videos = await VideoService.getVideos();
+      this.setState({ videos, isLoading: false })
+    } catch(err) {
+      this.setState({ isLoading: false }, this.props.appContext.setAppError(err.message))
+    }
   }
 
   async updateSelectedVideo(id, updates) {
@@ -96,27 +86,12 @@ export default class Videos extends Component {
   renderVideos() {
     const { videos } = this.state;
     //slice out videos that are needed from state
-    const videoList = videos.slice(this.state.current[0], this.state.current[1] + 1)
-    return videoList.map(video => <VideoItem
+    return videos.map(video => <VideoItem
       handleFormSubmission={this.handleFormSubmission}
       video={video}
       key={video.id}
       formError = {this.state.videoEditError}
       />)
-  }
-  //show next four
-  showNextFourVideos = e => {
-    if (this.state.current === 0) { return }
-    this.setState({
-      current: [this.state.current[0] + 4, this.state.current[1] + 4]
-    })
-  }
-
-  showLastFourVideos = e => {
-    e.preventDefault()
-    this.setState({
-      current: [this.state.current[0] - 4, this.state.current[1] - 4]
-    })
   }
 
   errorCheckNewVideo = (video) => {
@@ -159,11 +134,11 @@ export default class Videos extends Component {
       this.addErrorHandler(isError)
       return
     }
-    try{
+    try {
      const createdVideo = await VideoService.postVideo(newVideo);
       VideoStorage.saveKey('laconic_current_video', createdVideo)
       this.props.history.push('/creator')
-    }catch(e){
+    } catch(e){
       this.addErrorHandler(e)
     }
     
@@ -177,49 +152,23 @@ export default class Videos extends Component {
   }
 
   render() {
-    return (
-      <section className='videos-page'>
-        <button className='fab' onClick={this.openModal}>
-          <FontAwesomeIcon 
-            icon={faPlus} 
-            className='fab-icon'
-          />
-        </button>
-        <Modal 
-          isOpen={this.state.modalIsOpen}
-          onRequestClose={this.closeModal}
-          style={modalStyles}
-          contentLabel={'Add New Video Form'}
-          closeTimeoutMS={200}
-        >
-          <h2 className="add-video-header">Add New Video Project</h2>
-          <span className='close-modal-btn' onClick={this.closeModal}>
-            <FontAwesomeIcon 
-              icon={faWindowClose}
-            />
-          </span>
-          
-          <AddVideos
+      return (
+        <section className='videos-page'>
+          <Loader isLoading={this.state.isLoading} />
+          <FAB onClick={this.openModal}/>
+          <AddVideoModal 
             fields={this.state}
             handleFields={this.handleFields}
             handleSubmit={this.handleSubmit}
+            isOpen={this.state.modalIsOpen}
+            onRequestClose={this.closeModal}
           />
-        </Modal>
-        <div className="btn-container">
-          <button 
-            type="button" 
-            className="previous"
-            disabled={!this.state.current[0]} 
-            onClick={this.showLastFourVideos}>Previous</button>
-          <button 
-            type="button" 
-            className="next"
-            onClick={this.showNextFourVideos}>Next</button>
-        </div>
-        <div className='my-videos-container'>
-          {this.state.videos.length ? this.renderVideos() : ''}
-        </div>
-      </section>
-    );
-  }
+          <div className='my-videos-container'>
+            {this.state.videos.length ? this.renderVideos() : ''}
+          </div>
+        </section>
+      );
+    }
 }
+
+export default withAppContext(Videos)
