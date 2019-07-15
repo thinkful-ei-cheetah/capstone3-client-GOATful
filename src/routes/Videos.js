@@ -9,6 +9,26 @@ import FAB from '../components/FAB/FAB'
 import { withAppContext } from '../contexts/AppContext'
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
+<<<<<<< HEAD
+=======
+import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
+const modalStyles = {
+  content : {
+    maxWidth              : '80%',
+    width                 : '350px',
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+Modal.setAppElement('#root')
+>>>>>>> 7da37a485cae901f37df57971593ad0c1d66af77
 
 class Videos extends Component {
 
@@ -152,11 +172,37 @@ class Videos extends Component {
   }
 
   render() {
+<<<<<<< HEAD
       return (
         <section className='videos-page'>
           <Loader isLoading={this.state.isLoading} />
           <FAB onClick={this.openModal}/>
           <AddVideoModal 
+=======
+    return (
+      <section className='videos-page'>
+        <button className='fab' onClick={this.openModal}>
+          <FontAwesomeIcon 
+            icon={faPlus} 
+            className='fab-icon'
+          />
+        </button>
+        <Modal 
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+          contentLabel={'Add New Video Form'}
+          closeTimeoutMS={200}
+        >
+          <h2 className="add-video-header">Add New Video Project</h2>
+          <span className='close-modal-btn' onClick={this.closeModal}>
+            <FontAwesomeIcon 
+              icon={faWindowClose}
+            />
+          </span>
+          
+          <AddVideos
+>>>>>>> 7da37a485cae901f37df57971593ad0c1d66af77
             fields={this.state}
             handleFields={this.handleFields}
             handleSubmit={this.handleSubmit}
