@@ -9,26 +9,6 @@ import FAB from '../components/FAB/FAB'
 import { withAppContext } from '../contexts/AppContext'
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
-<<<<<<< HEAD
-=======
-import Modal from 'react-modal';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
-
-const modalStyles = {
-  content : {
-    maxWidth              : '80%',
-    width                 : '350px',
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
-Modal.setAppElement('#root')
->>>>>>> 7da37a485cae901f37df57971593ad0c1d66af77
 
 class Videos extends Component {
 
