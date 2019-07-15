@@ -61,7 +61,7 @@ class CreatorPreview extends Component {
 
   renderPreviews = () => {
     return this.state.videos.map((video, i) => {
-      return <YoutubeSearchResult {...video} key={i}/>
+      return <YoutubeSearchResult {...video} key={i}/> 
     })
   }
 
