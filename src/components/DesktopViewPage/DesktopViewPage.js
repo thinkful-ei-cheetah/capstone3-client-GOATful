@@ -9,7 +9,7 @@ export default function DesktopViewPage(props) {
     })
   }
   return (
-    <div className="desktop-view-page">
+    <div className="desktop-view-page" id="dvp">
       {renderPreviews()}
     </div>
   )

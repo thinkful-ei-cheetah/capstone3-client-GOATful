@@ -6,6 +6,21 @@ import AddVideos from '../components/AddVideo/AddVideo';
 import VideoStorage from '../services/video-storage';
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
+import Modal from 'react-modal';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
+
+const modalStyles = {
+  content : {
+    top                   : '50%',
+    left                  : '50%',
+    right                 : 'auto',
+    bottom                : 'auto',
+    marginRight           : '-50%',
+    transform             : 'translate(-50%, -50%)'
+  }
+};
+Modal.setAppElement('#root')
 
 export default class Videos extends Component {
 
@@ -17,7 +32,8 @@ export default class Videos extends Component {
     tags: '',
     video_length: '',
     youtube_display_name: '',
-    addError: ''
+    addError: '',
+    modalIsOpen: false,
   }
 
   errorHandler = err => {
@@ -67,7 +83,13 @@ export default class Videos extends Component {
     this.updateSelectedVideo(id, updateVideo);
   }
 
+  openModal = () => {
+    this.setState({modalIsOpen: true})  
+  }
 
+  closeModal = () => {
+    this.setState({modalIsOpen: false})
+  }
 
   renderVideos() {
     const { videos } = this.state;
@@ -89,10 +111,10 @@ export default class Videos extends Component {
   }
 
   showLastFourVideos = e => {
-      e.preventDefault()
-      this.setState({
-        current: [this.state.current[0] - 4, this.state.current[1] - 4]
-      })
+    e.preventDefault()
+    this.setState({
+      current: [this.state.current[0] - 4, this.state.current[1] - 4]
+    })
   }
 
   errorCheckNewVideo = (video) => {
@@ -145,8 +167,6 @@ export default class Videos extends Component {
     
   }
 
-
-
   handleFields = e => {
     let { value, name } = e.target;
     this.setState({
@@ -154,20 +174,45 @@ export default class Videos extends Component {
     })
   }
 
-
   render() {
     return (
       <section className='videos-page'>
-        <div>
+        <button className='fab' onClick={this.openModal}>
+          <FontAwesomeIcon 
+            icon={faPlus} 
+            className='fab-icon'
+          />
+        </button>
+        <Modal 
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          style={modalStyles}
+          contentLabel={'Add New Video Form'}
+          closeTimeoutMS={200}
+        >
+          <h2>Add New Video Project</h2>
+          <span className='close-modal-btn' onClick={this.closeModal}>
+            <FontAwesomeIcon 
+              icon={faWindowClose}
+            />
+          </span>
+          
           <AddVideos
             fields={this.state}
             handleFields={this.handleFields}
-            handleSubmit={this.handleSubmit} />
-        </div>
+            handleSubmit={this.handleSubmit}
+          />
+        </Modal>
         <div className="btn-container">
-
-          <button type="button" disabled={!this.state.current[0]} onClick={this.showLastFourVideos}>Previous</button>
-          <button type="button" onClick={this.showNextFourVideos}>Next</button>
+          <button 
+            type="button" 
+            className="previous"
+            disabled={!this.state.current[0]} 
+            onClick={this.showLastFourVideos}>Previous</button>
+          <button 
+            type="button" 
+            className="next"
+            onClick={this.showNextFourVideos}>Next</button>
         </div>
         <div className='my-videos-container'>
           {this.state.videos.length ? this.renderVideos() : ''}

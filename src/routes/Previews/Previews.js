@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router'
 
 import YoutubeSearchResult from '../../components/YoutubeSearchResult/YoutubeSearchResult'
 // import YoutubeApiService from '../../services/youtube-api'
@@ -19,6 +20,7 @@ export default class Previews extends Component {
       vidPreviews: [],
       selectedPrev: null,
       youtubeSearchResults: [],
+      redirect: false
     }
     this.BASE_URL = 'http://localhost:8000/api'
     this.vidId = this.props.match.params.video_id;
@@ -50,8 +52,8 @@ export default class Previews extends Component {
     }
     let selected = findSelect()
 
-        // const results = await YoutubeApiService.search(video.tags)
-        const results = MockYoutubeData
+    // const results = await YoutubeApiService.search(video.tags)
+    const results = MockYoutubeData
 
     this.setState({
       video: prevObj.video,
@@ -71,7 +73,7 @@ export default class Previews extends Component {
 
     const videos = [video, ...youtubeSearchResults]
     // shuffle(videos)
-    
+
     return videos.map((video, i) => {
       return <YoutubeSearchResult {...video} key={i} />
     })
@@ -87,12 +89,40 @@ export default class Previews extends Component {
   }
 
   editClick = (e) => {
-    VideoStorage.saveKey('laconic_current_preview', {...this.state.selectedPrev})
-    }
-  
-  delClick = (e) => {
-    console.log('i was clicked')
+    VideoStorage.saveKey('laconic_current_preview', { ...this.state.selectedPrev })
   }
+ 
+   delClick = () => {
+    console.log(this.vidId)
+     pAPI.deletePreview(parseInt(this.vidId), this.state.selectedPrev.id)
+
+    const deletedPrev = pAPI.getPreviews(this.vidId)
+    console.log(deletedPrev)
+    
+    if (!deletedPrev.previews) {
+      this.setState({
+        redirect: true
+      })
+    }
+    this.setState({
+      // video: deletedPrev.video,
+      // vidPreviews: [...deletedPrev.previews],
+      selectedPrev: {...deletedPrev.preview},
+
+    })
+  }
+
+  renderRedirect = () => {
+    return (
+      <Redirect
+        to={{
+          pathname: '/creator',
+          // state: { from: componentProps.location },
+        }}
+      />
+    )
+  }
+
 
   render() {
     // console.log(this.state.selectedPrev)
@@ -108,8 +138,9 @@ export default class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
+        {(this.state.redirect) ? this.renderRedirect() : false}
         <div className="previews-display-section">
-         {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
+          {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
       </section>
     );

@@ -5,10 +5,10 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
  const [view, setView] = useState("Let's go!")
    
  
-  const titleInstructions = <p>Enter a title that you can reference later to look up its previews.</p>
-  const tagsInstructions = <p>Enter up to three tags, that are comma separated.<br/><br/>For eg: sports, soccer, liverpool</p>
-  const videoInstructions = <p>Enter a duration in the format mm:ss, or hhh:mm:ss.<br/><br/> For eg: 04:20, or 005:22:33</p>
-  const handleInstructions = <p>Enter your YouTube channel name.<br/><br/> For eg: Liverpool FC</p>
+  const titleInstructions = <p>Enter a title for your new video project. This title does not have to be the title of your Youtube video. </p>
+  const tagsInstructions = <p>Enter up to three tags, that are comma separated.<br/><br/>For example:<br/> sports, soccer, liverpool</p>
+  const videoInstructions = <p>Enter a duration in the format mm:ss, or hhh:mm:ss.<br/><br/> For example: <br/> 04:20, or 005:22:33</p>
+  const handleInstructions = <p>Enter your YouTube channel name.<br/><br/> For example: <br/> Liverpool FC</p>
 
   return (
     <form className="add-video-form" onSubmit={e => handleSubmit(e)}>
