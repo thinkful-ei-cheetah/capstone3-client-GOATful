@@ -12,6 +12,7 @@ import PublicUserService from '../services/public-user-service'
 import VideoStorage from '../services/video-storage'
 import PreviewsApiService from '../services/previews-api'
 import { withAppContext } from '../contexts/AppContext';
+import Loader from '../components/Loader/Loader'
 
 class Creator extends Component {
   state = {
@@ -25,7 +26,8 @@ class Creator extends Component {
     descriptionValid: false,
     thumbnailValid: false,
     formValid: false,
-    preview_id: null
+    preview_id: null,
+    isLoading: true
   }
 
   handleFields = e => {
@@ -137,6 +139,7 @@ class Creator extends Component {
     e.preventDefault();
     const video = VideoStorage.getVideo('laconic_current_video')
     if (this.state.loggedIn && video.id) {
+      this.setState({isLoading: true})
       const {title, description, thumbnail_url} = this.state
       const preview = {title, description, thumbnail_url, video_id: video.id}
       try {
@@ -148,7 +151,7 @@ class Creator extends Component {
         }
         this.props.history.push(`/videos/${video.id}/previews`)
       } catch(err) {
-        this.props.appContext.setAppError(err.message)
+        this.setState({isLoading: false}, this.props.appContext.setAppError(err.message))
       }
     } else {
       this.googleLoginBtn.click()
@@ -169,18 +172,24 @@ class Creator extends Component {
       this.props.appContext.setAppError('unable to authenticate with Google')
     } else {
       try {
+        this.setState({isLoading: true})
         const res = await AuthApiService.loginGoogle(response.tokenObj)
         this.props.userContext.processLogin(res.authToken)
         this.postVideoAndPreview()
       } catch(err){
-        this.props.appContext.setAppError('Unable to save your preview')
+        this.setState({isLoading: false}, this.props.appContext.setAppError('Unable to save your preview'))
       }
     }
+  }
+
+  setLoading = (bool) => {
+    this.setState({isLoading: bool})
   }
 
   render() {
     return (
       <section className="creator-page">
+        <Loader isLoading={this.state.isLoading}></Loader>
         <CreatorControls 
           {...this.state}
           handleFields = {this.handleFields}
@@ -197,7 +206,7 @@ class Creator extends Component {
           onFailure={this.responseGoogle}
           cookiePolicy={'single_host_origin'}
         />
-        <CreatorPreview userPreview={{...this.state}}></CreatorPreview>
+        <CreatorPreview userPreview={{...this.state}} setLoading={this.setLoading}></CreatorPreview>
       </section>
     );
   }

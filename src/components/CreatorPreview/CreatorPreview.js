@@ -43,7 +43,7 @@ class CreatorPreview extends Component {
       youtubeSearchResults: [...youtubeSearchResults],
       userVideo: {...video},
       videos: [this.props.userPreview, ...youtubeSearchResults]
-    })
+    }, this.props.setLoading(false))
   }
 
   componentDidUpdate(prevProps, prevState) {
