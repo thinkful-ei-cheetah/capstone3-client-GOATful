@@ -85,7 +85,6 @@ class Videos extends Component {
 
   renderVideos() {
     const { videos } = this.state;
-    //slice out videos that are needed from state
     return videos.map(video => <VideoItem
       handleFormSubmission={this.handleFormSubmission}
       video={video}
@@ -152,49 +151,23 @@ class Videos extends Component {
   }
 
   render() {
-<<<<<<< HEAD
-      return (
-        <section className='videos-page'>
-          <Loader isLoading={this.state.isLoading} />
-          <FAB onClick={this.openModal}/>
-          <AddVideoModal 
-=======
     return (
       <section className='videos-page'>
-        <button className='fab' onClick={this.openModal}>
-          <FontAwesomeIcon 
-            icon={faPlus} 
-            className='fab-icon'
-          />
-        </button>
-        <Modal 
+        <Loader isLoading={this.state.isLoading} />
+        <FAB onClick={this.openModal}/>
+        <AddVideoModal 
+          fields={this.state}
+          handleFields={this.handleFields}
+          handleSubmit={this.handleSubmit}
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
-          style={modalStyles}
-          contentLabel={'Add New Video Form'}
-          closeTimeoutMS={200}
-        >
-          <h2 className="add-video-header">Add New Video Project</h2>
-          <span className='close-modal-btn' onClick={this.closeModal}>
-            <FontAwesomeIcon 
-              icon={faWindowClose}
-            />
-          </span>
-          
-          <AddVideos
->>>>>>> 7da37a485cae901f37df57971593ad0c1d66af77
-            fields={this.state}
-            handleFields={this.handleFields}
-            handleSubmit={this.handleSubmit}
-            isOpen={this.state.modalIsOpen}
-            onRequestClose={this.closeModal}
-          />
-          <div className='my-videos-container'>
-            {this.state.videos.length ? this.renderVideos() : ''}
-          </div>
-        </section>
-      );
-    }
+        />
+        <div className='my-videos-container'>
+          {this.state.videos.length ? this.renderVideos() : ''}
+        </div>
+      </section>
+    );
+  }
 }
 
 export default withAppContext(Videos)
