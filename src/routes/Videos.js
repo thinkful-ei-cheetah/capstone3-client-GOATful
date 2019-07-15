@@ -12,6 +12,8 @@ import { faPlus, faWindowClose } from '@fortawesome/free-solid-svg-icons'
 
 const modalStyles = {
   content : {
+    maxWidth              : '80%',
+    width                 : '350px',
     top                   : '50%',
     left                  : '50%',
     right                 : 'auto',
@@ -190,7 +192,7 @@ export default class Videos extends Component {
           contentLabel={'Add New Video Form'}
           closeTimeoutMS={200}
         >
-          <h2>Add New Video Project</h2>
+          <h2 className="add-video-header">Add New Video Project</h2>
           <span className='close-modal-btn' onClick={this.closeModal}>
             <FontAwesomeIcon 
               icon={faWindowClose}
