@@ -166,7 +166,7 @@ class Videos extends Component {
 
   render() {
     return (
-      <section className='videos-page'>
+      <section className='videos-page page'>
         <Loader isLoading={this.state.isLoading} />
         <FAB onClick={this.openModal}/>
         <AddVideoModal 

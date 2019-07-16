@@ -100,7 +100,7 @@ class Previews extends Component {
 
   render() {
     return (
-      <section className="previews-page">
+      <section className="previews-page page">
         <PreviewControls
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}

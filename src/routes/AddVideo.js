@@ -9,12 +9,23 @@ export default class AddVid extends Component {
     tags: '',
     video_length: "",
     youtube_display_name: "",
-    error: null,
+    addError: null,
+  }
+
+
+  cssRouteClasses = {
+    form: 'add-video-form-route',
+    instructions: 'add-video-form-instructions',
+    flex: 'flex-form-route',
+    directionsBox: 'directions-route',
+    inputBox: 'inputs-route',
+    labelBox: 'label-route'
   }
   
   errorHandler = err => {
-    this.setState({error: err.error})
-    setTimeout(()=>this.setState({error: null}), 3000)
+    this.setState({addError: err.error})
+    console.log('here')
+    setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
   handleSubmit = e =>{
@@ -48,9 +59,10 @@ export default class AddVid extends Component {
 
   render() {
     return (
-      <section>
-        <h2>Please provide information on your video below</h2>
+      <section className="add-video-container page">
+        <h2 className= "provide-info-text">Please provide information on your video below</h2>
         <AddVideos 
+          cssRouteProps = {this.cssRouteClasses}
           fields={this.state} 
           handleFields={this.handleFields}
           handleSubmit={this.handleSubmit}/>
