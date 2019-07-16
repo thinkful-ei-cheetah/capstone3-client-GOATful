@@ -9,7 +9,7 @@ export default class AddVid extends Component {
     tags: '',
     video_length: "",
     youtube_display_name: "",
-    error: null,
+    addError: null,
   }
 
 
@@ -23,8 +23,9 @@ export default class AddVid extends Component {
   }
   
   errorHandler = err => {
-    this.setState({error: err.error})
-    setTimeout(()=>this.setState({error: null}), 3000)
+    this.setState({addError: err.error})
+    console.log('here')
+    setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
   handleSubmit = e =>{
