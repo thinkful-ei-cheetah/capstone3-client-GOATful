@@ -5,6 +5,14 @@ const YoutubeApiService = {
   key: config.YOUTUBE_API_KEY,
   baseUrl: 'https://www.googleapis.com/youtube/v3',
    
+  _selectHighestQualityThumbnail(thumbnails) {
+    if (thumbnails.maxres) return thumbnails.maxres.url
+    if (thumbnails.standard) return thumbnails.standard.url
+    if (thumbnails.high) return thumbnails.high.url
+    if (thumbnails.medium) return thumbnails.medium.url
+    if (thumbnails.default) return thumbnails.default.url
+  },
+
   _formatResp(apiResult) {
     try {
       const data = apiResult.items[0];
@@ -16,7 +24,7 @@ const YoutubeApiService = {
         published_at: data.snippet.publishedAt,
         description: data.snippet.description,
         title: data.snippet.title,
-        thumbnail_url: data.snippet.thumbnails.maxres.url
+        thumbnail_url: this._selectHighestQualityThumbnail(data.snippet.thumbnails)
       }
     } catch(err) {
       return err.message;
