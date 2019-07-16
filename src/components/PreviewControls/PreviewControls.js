@@ -13,7 +13,8 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
             key={preview.id}
             preview={preview}
             previewClick={previewClick}
-          />)
+          />
+        )
       } else {
         return (
           <PreviewItem
@@ -21,8 +22,9 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
             preview={preview}
             editClick={editClick}
             delClick={delClick}
-          />)
-        }
+          />
+        )
+      }
     })
   }
 

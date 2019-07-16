@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './AddVideo.css'
 
-export default function AddVideo({fields, handleFields, handleSubmit}) {
+export default function AddVideo({fields, handleFields, handleSubmit, action}) {
  const [view, setView] = useState("Let's go!")
    
  
@@ -31,7 +31,7 @@ export default function AddVideo({fields, handleFields, handleSubmit}) {
         <div className="instructions-text">{fields.addError ? fields.addError : view}</div>
       </div>
       </div>
-      <button>Create!</button>
+      <button>{action === 'edit' ? 'Update!' : 'Create!'}</button>
     </form>
   )
 }

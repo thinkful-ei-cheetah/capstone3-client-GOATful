@@ -44,9 +44,8 @@ class Videos extends Component {
   }
 
   async updateSelectedVideo(id, updates) {
-    await VideoService.patchVideo(id, updates)
-    
     try{
+      await VideoService.patchVideo(id, updates)
       const videos = await VideoService.getVideos();
       this.setState({ videos })
     } catch(e){ 
@@ -67,6 +66,7 @@ class Videos extends Component {
       youtube_display_name: values.youtube_display_name,
       tags: tagStringToArray(values.tags),
     }
+
     const isError = errorCheckNewVideo(updateVideo);
     if (isError.status === true){
       this.errorHandler(isError)
@@ -128,19 +128,21 @@ class Videos extends Component {
       video_length: this.state.video_length,
       youtube_display_name: this.state.youtube_display_name,
       tags: this.state.tags,
-  
     }
+    
     const checkedTime = checkTime(values.video_length);
     if (checkedTime.error){
       this.addErrorHandler(checkedTime)
       return;
     }
+
     const newVideo = {
       title: values.title,
       video_length: checkedTime.googleTimeString,
       youtube_display_name: values.youtube_display_name,
       tags: tagStringToArray(values.tags),
     }
+
     const isError = errorCheckNewVideo(newVideo);
     if (isError.status === true){
       this.addErrorHandler(isError)
@@ -153,7 +155,6 @@ class Videos extends Component {
     } catch(e){
       this.addErrorHandler(e)
     }
-    
   }
 
   handleFields = e => {

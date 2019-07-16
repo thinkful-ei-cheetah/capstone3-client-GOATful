@@ -65,6 +65,7 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
+    e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
@@ -108,7 +109,6 @@ class Previews extends Component {
           delClick={this.delClick}
         />
         <div className="previews-display-section">
-        
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
       </section>

@@ -39,6 +39,7 @@ export default class EditVideoModal extends Component {
             fields={this.props.fields}
             handleFields={this.props.handleFields}
             handleSubmit={this.props.handleSubmit}
+            action='edit'
           />
       </Modal>
     )
