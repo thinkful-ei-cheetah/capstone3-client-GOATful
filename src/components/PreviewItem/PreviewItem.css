@@ -48,3 +48,14 @@
   margin-bottom: 0;
   width: 19px;
 }
+
+.preview-control-icons {
+  width: 30%;
+  margin-top: .5em;
+  display: flex;
+  justify-content: space-around;
+}
+
+.delete-preview-btn {
+  cursor: pointer;
+}
