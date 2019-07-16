@@ -4,7 +4,7 @@ export default class NotFound extends Component {
   render() {
 
     return (
-      <section>
+      <section className="page">
         404 Something went wrong
       </section>
     );
