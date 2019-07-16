@@ -68,6 +68,36 @@ export default {
       return response.json().then(e => Promise.reject(e))
     }
     return response.json();
-  }
+  },
+
+  async getYoutubeSearchResults(video_id) {
+    const response = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/youtube-search-results`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    if (!response.ok) {
+      return response.json().then(e => Promise.reject(e))
+    }
+    return response.json();
+  },
+
+  async postYoutubeSearchResults(video_id, searchResults) {
+    searchResults = JSON.stringify(searchResults)
+    const response = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/youtube-search-results`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({data: searchResults})
+    })
+    if (!response.ok) {
+      return response.json().then(e => Promise.reject(e))
+    }
+    return response.json();
+  },
 
 }
