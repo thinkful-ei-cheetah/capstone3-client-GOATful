@@ -13,6 +13,7 @@ class Login extends Component {
 
   responseGoogle = async (response) => {
     if (!response.tokenObj) {
+      console.log(response)
       this.props.userContext.setError('invalid login attempt')
     } else {
       try {
