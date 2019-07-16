@@ -188,7 +188,7 @@ class Creator extends Component {
 
   render() {
     return (
-      <section className="creator-page">
+      <section className="creator-page page">
         <Loader isLoading={this.state.isLoading}></Loader>
         <CreatorControls 
           {...this.state}

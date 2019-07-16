@@ -26,7 +26,7 @@ class Login extends Component {
 
   render() {
     return (
-      <section className='login-form-container'>
+      <section className='login-form-container page'>
         <div className='login-form'>
           <div>
             <h2 className='lf-title'>Login With Google</h2>
