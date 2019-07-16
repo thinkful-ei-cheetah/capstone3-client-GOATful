@@ -3,6 +3,7 @@ import './MeetTeam.css'
 import David from '../img/david.jpeg'
 import Kp from '../img/KP.jpg'
 import Elan from '../img/elan.jpg'
+import Verdi from '../img/verdi.jpg'
 
 class Team extends Component {
   componentDidMount() {
@@ -26,13 +27,13 @@ class Team extends Component {
         <div className='landing-container'>
           <section className='david'>
             <figure>
-              <img src={David} alt="David K. Nordeen"/>
+              <img src={David}  alt="David K. Nordeen"/>
             </figure>
             <h3>
               David K. Nordeen
             </h3>
             <p>
-            Chief Marketing Officer, NBA Addict, GOAT  
+            Fullstack developer located in Scottsdale, Arizona. I graduated from Drake University in 2016 with a Bachelor’s degree in marketing and entrepreneurial management.  
             </p>
           </section>
 
@@ -44,7 +45,7 @@ class Team extends Component {
               Elan Green
             </h3>
             <p>
-            Yeet 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
           </section>
 
@@ -56,18 +57,18 @@ class Team extends Component {
               Kristof-Pierre Cummings
             </h3>
             <p>
-            Nerd, Massive Manchester City Fan
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
             </p>
           </section>
           <section className='verdi'>
             <figure>
-              <img src="https://images2.minutemediacdn.com/image/upload/c_crop,h_843,w_1500,x_0,y_10/f_auto,q_auto,w_1100/v1555172614/shape/mentalfloss/iStock-177369626_1.jpg" alt="Michael Verdi" />
+              <img src={Verdi} alt="Michael Verdi" />
             </figure>
             <h3>
               Michael Verdi
             </h3>
             <p>
-            yo 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
             </p>
           </section>
           <section className='peter'>
@@ -78,7 +79,7 @@ class Team extends Component {
               Peter Pae
             </h3>
             <p>
-            Meme Lord  
+            Fullstack developer and data/AI enthusiast from the DMV. I like to make keyboards, listen to music, and I smoke a mean brisket. I stay open minded and always seek new ways to improve my craft.
             </p>
           </section>
           <footer>
