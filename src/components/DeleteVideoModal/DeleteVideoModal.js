@@ -29,8 +29,7 @@ export default class DeleteVideoModal extends Component {
       closeTimeoutMS={200}
         >
           <h2 className="add-video-header">Are you sure?</h2>
-          <p>Delete video</p>
-          <p>{this.props.fields.title}?</p>
+          <p>Delete {this.props.fields.title}?</p>
 
           <p>{this.props.previewCount ? 
             this.props.previewCount === 1 ? `1 preview will also be deleted.` : `${this.props.previewCount} previews will also be deleted.` : '' }</p>

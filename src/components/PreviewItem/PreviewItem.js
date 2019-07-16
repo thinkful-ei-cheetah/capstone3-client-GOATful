@@ -2,10 +2,10 @@ import React from 'react'
 import {Link} from 'react-router-dom';
 import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPencilAlt } from '@fortawesome/free-solid-svg-icons'
+import {faPencilAlt, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
-  if (previewClick) 
+  if (previewClick) {
     return (
       <li
         className="preview-tile" 
@@ -14,6 +14,7 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
           className='preview-btn'
           onClick={previewClick}
           id={preview.id}
+          href='#preview'
         >
           <img
             id={preview.id}
@@ -23,28 +24,24 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
         </a>
       </li>
     )
-  else {
+  } else {
     return (
       <li 
         className="preview-tile selection-card" 
         key={preview.id}>
-
-        
           <img 
             src={preview.thumbnail_url} 
             alt="preview thumbnail"
-            className="preview-thumbnail" />
+            className="preview-thumbnail"
+          />
           <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
             <FontAwesomeIcon className="pencil-f-icon" icon={faPencilAlt} />
           </Link>
+          
+          <FontAwesomeIcon className="delete-icon" icon={faTrash} onClick={delClick}/>
+          
           <button className="set-active-btn">
             Set Active
-          </button>
-          <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
-          <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
-          </Link>
-          <button onClick={delClick}>
-            Delete
           </button>
       </li>
     )
