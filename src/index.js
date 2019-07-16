@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './contexts/UserContext'
 import { AppProvider } from './contexts/AppContext'
 import AppError from './components/AppError/AppError'
+import * as serviceWorker from './serviceWorker'
 
 ReactDOM.render(
   <AppError>
@@ -19,3 +20,5 @@ ReactDOM.render(
   </AppError>,
   document.getElementById('root'),
 )
+
+serviceWorker.register()

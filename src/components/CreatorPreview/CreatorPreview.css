@@ -14,6 +14,7 @@
 }
 
 .device-selector {
+  cursor: pointer;
   background-color: white;
   border: thin solid #C4302B;
   border-radius: 4px;

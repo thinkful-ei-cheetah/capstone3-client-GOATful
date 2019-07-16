@@ -1,4 +1,6 @@
 .video-item > div > input {
+  width: 300px;
+  max-height: 200px;
   max-width: 300px;
   margin: auto;
   text-align: center;

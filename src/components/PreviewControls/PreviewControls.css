@@ -60,4 +60,22 @@
   .preview-tile > img {
     height: 60px;
   }
+  
+  .selection-card {
+    margin: 1em;
+    border: 1px;
+    background-color: lightgray;
+    margin-bottom: 1em;
+    padding-top: 1em;
+    margin-top: 0;
+  }
+
+  .preview-control-icons {
+    width: 40%;
+  }
+}
+
+.preview-controls > .randomize.button {
+  margin-right: 0;
+  width: 120px;
 }
