@@ -5,7 +5,7 @@
 }
 
 .add-video-form{
-  max-width: 450px;
+  max-width: 300px;
   /* border: 1px solid grey; */
   border-radius: 5px;
   margin: auto;
@@ -67,4 +67,90 @@
 .add-video-input:focus {
   background-color:#e8e8e8;
   outline: solid #C4302B;
+}
+
+/* Adding css classes to parent that will be passed to child on render */
+
+.add-video-form-route{
+  max-width: 800px;
+  min-width: 300px;
+  border: 1px solid black;
+  padding: 15px;
+  margin: 0 auto;
+  width: 60vw;
+  height: 35vh;
+  padding: 2em;
+  position: relative;
+  background:rgba(0, 0, 0, .15)
+}
+
+.add-video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0;
+  text-align: center;
+  background: linear-gradient(
+    135deg,
+    rgba(36, 46, 77, .9),
+    rgba(137, 126, 121, .9)
+  );
+  color: white;
+}
+
+.provide-info-text{
+  justify-self: normal;
+  margin-top: -100px;
+  margin-bottom: 100px;
+}
+
+.add-video-form-instructions{
+  font-size: 1.1em;
+}
+
+@media screen and (max-width: 500px){
+  
+  .provide-info-text{
+    display: none;
+  }
+
+  .flex-form-route{
+    flex-direction: column;
+  }
+
+  .directions-route{
+    order: -1;
+    height: 180px;
+  }
+
+  .add-video-form-route{
+    border: none;
+    padding: 0px;
+    margin: 0 auto;
+    width: 320px;
+    height: 85vh;
+    justify-self: unset;
+    background: none;
+    
+  }
+
+  .inputs-route{
+    margin-right: none;
+    border: none;
+    width: 100%;
+    padding-right: 0px;
+  }
+
+  .add-video-form-instructions{
+    font-size: .8em;
+  }
+
+  .inputs-route > input{
+    padding-right: 0px;
+    display: inline-block;
+    width: 70%;
+    margin-left: 20px;
+  }
 }
