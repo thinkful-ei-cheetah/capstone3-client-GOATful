@@ -107,7 +107,7 @@ class App extends Component {
           </Switch>
         </main>
         <footer>
-          footer( Laconic: Better Thumbnails )
+          Laconic: Better Thumbnails
           <div className='teamLink'>
             <Link to='/Team'>Meet the Team</Link>
           </div>
