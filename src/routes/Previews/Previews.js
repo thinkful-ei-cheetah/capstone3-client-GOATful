@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
-import { Link, Redirect } from 'react-router-dom'
+import {  Redirect } from 'react-router-dom'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import MockYoutubeData from '../../Utils/mock-youtube-date'
 import PreviewsApi from '../../services/previews-api'
 import './Previews.css'
-import YoutubeApi from '../../services/youtube-api'
 import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
 import FAB from '../../components/FAB/FAB'
