@@ -138,13 +138,13 @@
   border-radius: 50%;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 420px) {
   .smartphone {
     width: 280px;
     background: none;
     border: none;
     width: 100vw;
-    height: 178vw;
+    height: 100vw;
   }
 
   .smartphone:before, .smartphone:after{
@@ -154,10 +154,13 @@
 
   .smartphone:after{
     height: 0;
+    width: 0;
+    padding: 0;
   }
 
   .mobile-view-page > .youtube-search-result{
     max-width: 100%;
+    margin-left: .5em;
   }
 
   .creator-preview > h2 {
@@ -175,5 +178,9 @@
   .edit-menu-btn {
     top: 114px;
     left: 13%;
+  }
+
+  .mobile-view-page > .youtube-search-result .left-col {
+    max-width: 140px;
   }
 }
