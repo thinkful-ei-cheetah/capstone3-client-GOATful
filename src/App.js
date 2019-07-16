@@ -1,10 +1,10 @@
-import React , {Component} from 'react';
-import { Route, Switch } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Route, Switch, Link } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
-
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
+import Team from './routes/MeetTeam'
 import AddVid from './routes/AddVideo'
 import Creator from './routes/Creator'
 import Login from './routes/Login'
@@ -21,37 +21,42 @@ require('dotenv').config();
 
 class App extends Component {
   state = {
-    hasError : null,
+    hasError: null,
   }
 
   renderErrorBar = () => {
     const { appError, clearAppError } = this.props.appContext
-    if (appError) return <ErrorBar appError={appError} clearError={clearAppError}/>
+    if (appError) return <ErrorBar appError={appError} clearError={clearAppError} />
     return <></>
   }
 
-  render(){
+  render() {
     const landPage = (props) => {
-      return(
+      return (
         <Landing {...props} />
       )
     }
 
     const loginPage = (props) => {
-      return(
-        <Login {...props}/>
+      return (
+        <Login {...props} />
+      )
+    }
+    const meetTeam = () => {
+      return (
+        <Team />
       )
     }
 
     const creatorPage = (props) => {
-      return(
-        <Creator {...props}/>
+      return (
+        <Creator {...props} />
       )
     }
 
     const addVidPage = (props) => {
-      return(
-        <AddVid {...props}/>
+      return (
+        <AddVid {...props} />
       )
     }
 
@@ -67,9 +72,9 @@ class App extends Component {
       )
     }
 
-    return(
+    return (
       <div className="App">
-        <Loader/>
+        <Loader />
         <NavBar />
         {this.renderErrorBar()}
 
@@ -81,13 +86,16 @@ class App extends Component {
             <Route
               exact path={'/creator'} component={creatorPage}
             />
+            <Route
+              exact path={'/Team'} component={meetTeam}
+            />
             <PublicOnlyRoute
               exact path={'/add-video'} component={addVidPage}
             />
             <PublicOnlyRoute
               exact path={'/login'} component={loginPage}
             />
-            <PrivateRoute 
+            <PrivateRoute
               exact path={'/videos'} component={videosPage}
             />
             <PrivateRoute
