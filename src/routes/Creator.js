@@ -125,13 +125,16 @@ class Creator extends Component {
     if (!e.target.files[0]) {
       thumbnailValid = false
       errorMessages.thumbnail = 'failed to upload image'
+      this.setState({thumbnailValid, errorMessages})
       return
     }
     try {
       const thumbnail_url = await UploadService(e.target.files[0])
       this.setState({thumbnail_url, thumbnailValid, errorMessages}, this.validateForm)
     } catch(err) {
-      this.props.appContext.setAppError('failed to upload image')
+      thumbnailValid = false
+      errorMessages.thumbnail = err.message
+      this.setState({thumbnailValid, errorMessages})
     }
   }
 
@@ -188,7 +191,7 @@ class Creator extends Component {
 
   render() {
     return (
-      <section className="creator-page">
+      <section className="creator-page page">
         <Loader isLoading={this.state.isLoading}></Loader>
         <CreatorControls 
           {...this.state}

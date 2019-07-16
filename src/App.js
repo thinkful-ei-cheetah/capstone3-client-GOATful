@@ -61,14 +61,14 @@ class App extends Component {
     }
 
     const PreviewsPage = (props) => {
-      return (
-        <Previews {...props} />
+      return(
+        <Previews className='page' {...props}/>
       )
     }
 
     const videosPage = (props) => {
-      return (
-        <Videos {...props} />
+      return(
+        <Videos className='page' {...props}/>
       )
     }
 

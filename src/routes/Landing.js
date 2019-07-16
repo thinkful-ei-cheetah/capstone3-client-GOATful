@@ -9,7 +9,7 @@ class Landing extends Component {
   render() {
     return (
       <>
-      <section className='hero'>
+      <section className='hero page'>
         <h1>
         Let your thumbnail do the talking.
         </h1> 

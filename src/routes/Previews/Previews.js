@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
+import {  Redirect } from 'react-router-dom'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import MockYoutubeData from '../../Utils/mock-youtube-date'
 import PreviewsApi from '../../services/previews-api'
 import './Previews.css'
-import YoutubeApi from '../../services/youtube-api'
 import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
+import FAB from '../../components/FAB/FAB'
 
 class Previews extends Component {
   constructor(props) {
@@ -17,7 +18,8 @@ class Previews extends Component {
       selectedPrev: null,
       userPreview: {},
       youtubeSearchResults: [],
-      isLoading: true
+      isLoading: true,
+      isAdd:false,
     }
     this.vidId = this.props.match.params.video_id;
   }
@@ -98,9 +100,16 @@ class Previews extends Component {
     }
   }
 
+  handleFab = () => {
+    this.setState({
+      isAdd: true
+    })
+  }
+
   render() {
     return (
-      <section className="previews-page">
+      <section className="previews-page page">
+        <FAB onClick={this.handleFab} />
         <PreviewControls
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}
@@ -111,6 +120,7 @@ class Previews extends Component {
         <div className="previews-display-section">
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
+        {(this.state.isAdd)? <Redirect to='/creator' />: false}
       </section>
     );
   }
