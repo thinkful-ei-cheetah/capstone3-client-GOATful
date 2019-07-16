@@ -31,6 +31,19 @@
   border-radius: .5rem;
 }
 
+.picSwap .goat{
+  display: none; 
+}
+
+.picSwap:hover .goat{
+  display: inline;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  max-width: 850px;
+}
+
 .verdi > figure, .peter > figure, .elan > figure, .kp > figure, .david > figure, .click-through > figure, .AB-testing > figure, .about > figure {
   margin: auto;
   max-height: 600px;

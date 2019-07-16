@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Link } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
-
 import NavBar from './components/NavBar/NavBar'
 import Landing from './routes/Landing'
 import Team from './routes/MeetTeam'
@@ -107,6 +106,12 @@ class App extends Component {
             />
           </Switch>
         </main>
+        <footer>
+          footer( Laconic: Better Thumbnails )
+          <div className='teamLink'>
+            <Link to='/Team'>Meet the Team</Link>
+          </div>
+        </footer>
       </div>
     )
   }

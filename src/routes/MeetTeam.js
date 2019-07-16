@@ -3,7 +3,13 @@ import './MeetTeam.css'
 import David from '../img/david.jpeg'
 import Kp from '../img/KP.jpg'
 import Elan from '../img/elan.jpg'
-import Verdi from '../img/verdi.jpg'
+import Verdi from '../img/verdi.jpeg'
+import Peter from '../img/peter.png'
+import goat1 from '../img/goat1.jpg'
+import goat2 from '../img/goat2.jpg'
+import goat3 from '../img/goat3.jpg'
+import goat4 from '../img/goat4.jpg'
+import goat5 from '../img/goat5.jpg'
 
 class Team extends Component {
   componentDidMount() {
@@ -26,65 +32,70 @@ class Team extends Component {
         </section>
         <div className='landing-container'>
           <section className='david'>
-            <figure>
-              <img src={David}  alt="David K. Nordeen"/>
+            <figure className='picSwap'>
+              <img src={David} alt="David K. Nordeen" />
+              <img class='goat' src={goat1} alt="goat1" />
             </figure>
             <h3>
               David K. Nordeen
             </h3>
             <p>
-            Fullstack developer located in Scottsdale, Arizona. I graduated from Drake University in 2016 with a Bachelor’s degree in marketing and entrepreneurial management.  
+              Full stack developer web developer located in Scottsdale, AZ. I graduated from Drake University in 2016 with a Bachelor’s degree in marketing and entrepreneurial management. When i’m not programming, you can find me getting buckets at the local gym or watching a sci fi movie.
             </p>
           </section>
 
           <section className='elan'>
-            <figure>
+            <figure className='picSwap'>
               <img src={Elan} alt="Elan Green" />
+              <img class='goat' src={goat2} alt="goat1" />
             </figure>
             <h3>
               Elan Green
             </h3>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Full stack web developer currently living in Austin, TX. I am a classically trained cellist with 20 years of experience. I believe the intersection of music and technology is extremely powerful, and it is a great dream of mine to someday work for a music-focused tech company!
             </p>
           </section>
 
           <section className='kp'>
-            <figure>
-              <img src={Kp} alt="Kristof-Pierre Cummings"/>
+            <figure className='picSwap'>
+              <img src={Kp} alt="Kristof-Pierre Cummings" />
+              <img class='goat' src={goat3} alt="goat1" />
             </figure>
             <h3>
               Kristof-Pierre Cummings
             </h3>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              Full stack web developer located near Austin, TX. I love to camp, cook, and crack open a beer- especially in that order. Go Liverpool!
             </p>
           </section>
           <section className='verdi'>
-            <figure>
-              <img src={Verdi} alt="Michael Verdi" />
+            <figure className='picSwap'>
+              <img src={goat1} alt="Michael Verdi" />
+              <img class='goat' src={goat4} alt="goat1" />
             </figure>
             <h3>
               Michael Verdi
             </h3>
             <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+              Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies. Outside of programming, my passions include fitness and being sexy as hell.
             </p>
           </section>
           <section className='peter'>
-            <figure>
-              <img src="https://res.cloudinary.com/goatful/image/upload/v1562870755/prof_sygtha.png" alt="Peter Pae" />
+            <figure className='picSwap'>
+              <img src={Peter} alt="Peter Pae" />
+              <img class='goat' src={goat5} alt="goat1" />
             </figure>
             <h3>
               Peter Pae
             </h3>
             <p>
-            Fullstack developer and data/AI enthusiast from the DMV. I like to make keyboards, listen to music, and I smoke a mean brisket. I stay open minded and always seek new ways to improve my craft.
+              Full stack developer and data/AI enthusiast from the DMV. I like to make keyboards, listen to music, and I smoke a mean brisket. I stay open minded and always seek new ways to improve my craft.
             </p>
           </section>
-          <footer>
+          {/* <footer>
             footer( Laconic: Better Thumbnails )
-          </footer>
+          </footer> */}
         </div>
       </>
     );
