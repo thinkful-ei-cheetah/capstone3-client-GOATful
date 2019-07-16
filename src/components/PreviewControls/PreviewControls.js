@@ -34,11 +34,8 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
       <ul className="preview-tiles">
         {(!selected) ? false : renderPreviews()}
       </ul>
-      <Link to='/creator' className="add-new">
-        <button>
-          Add New
-        </button>
-      </Link>
+      {/* <Link to='/creator' className="add-new">
+      </Link> */}
     </div>
   )
 }
