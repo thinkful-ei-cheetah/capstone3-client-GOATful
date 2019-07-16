@@ -34,7 +34,7 @@ class Team extends Component {
           <section className='david'>
             <figure className='picSwap'>
               <img src={David} alt="David K. Nordeen" />
-              <img class='goat' src={goat1} alt="goat1" />
+              <img class='goat' src={goat1} alt="goat" />
             </figure>
             <h3>
               David K. Nordeen
@@ -47,7 +47,7 @@ class Team extends Component {
           <section className='elan'>
             <figure className='picSwap'>
               <img src={Elan} alt="Elan Green" />
-              <img class='goat' src={goat2} alt="goat1" />
+              <img class='goat' src={goat2} alt="goat" />
             </figure>
             <h3>
               Elan Green
@@ -60,7 +60,7 @@ class Team extends Component {
           <section className='kp'>
             <figure className='picSwap'>
               <img src={Kp} alt="Kristof-Pierre Cummings" />
-              <img class='goat' src={goat3} alt="goat1" />
+              <img class='goat' src={goat3} alt="goat" />
             </figure>
             <h3>
               Kristof-Pierre Cummings
@@ -72,7 +72,7 @@ class Team extends Component {
           <section className='verdi'>
             <figure className='picSwap'>
               <img src={goat1} alt="Michael Verdi" />
-              <img class='goat' src={goat4} alt="goat1" />
+              <img class='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
               Michael Verdi
@@ -84,7 +84,7 @@ class Team extends Component {
           <section className='peter'>
             <figure className='picSwap'>
               <img src={Peter} alt="Peter Pae" />
-              <img class='goat' src={goat5} alt="goat1" />
+              <img class='goat' src={goat5} alt="goat" />
             </figure>
             <h3>
               Peter Pae
@@ -93,9 +93,6 @@ class Team extends Component {
               Full stack developer and data/AI enthusiast from the DMV. I like to make keyboards, listen to music, and I smoke a mean brisket. I stay open minded and always seek new ways to improve my craft.
             </p>
           </section>
-          {/* <footer>
-            footer( Laconic: Better Thumbnails )
-          </footer> */}
         </div>
       </>
     );
