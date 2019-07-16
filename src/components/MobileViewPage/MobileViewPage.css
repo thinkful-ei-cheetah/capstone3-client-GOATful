@@ -90,6 +90,7 @@
 }
 
 .icon-container {
+  margin-top: .5em;
   display: flex;
   justify-content: space-around;
 }
@@ -140,9 +141,39 @@
 @media screen and (max-width: 450px) {
   .smartphone {
     width: 280px;
+    background: none;
+    border: none;
+    width: 100vw;
+    height: 178vw;
+  }
+
+  .smartphone:before, .smartphone:after{
+    background: none;
+    width: 100%;
+  }
+
+  .smartphone:after{
+    height: 0;
+  }
+
+  .mobile-view-page > .youtube-search-result{
+    max-width: 100%;
   }
 
   .creator-preview > h2 {
     font-size: 20px;
+  }
+
+  .device-selector {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    padding: 0;
+    position: fixed;
+  }
+
+  .edit-menu-btn {
+    top: 114px;
+    left: 13%;
   }
 }
