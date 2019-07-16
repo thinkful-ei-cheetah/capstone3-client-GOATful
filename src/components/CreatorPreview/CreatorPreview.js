@@ -89,11 +89,11 @@ class CreatorPreview extends Component {
       <div className='creator-preview'>
         <h2>How Your Video Will Look</h2>
         <div className='preview-controls'>
-        <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
-          <option value="desktop">Desktop</option>
-          <option value="mobile">Mobile</option>
-        </select>
-        <button className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
+          <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
+            <option value="desktop">Desktop</option>
+            <option value="mobile">Mobile</option>
+          </select>
+          <button className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
         {isDesktopView ? <DesktopViewPage videos={videos}/> : <MobileViewPage videos={videos} />}
       </div>
