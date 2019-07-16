@@ -176,7 +176,7 @@ class Videos extends Component {
           onRequestClose={this.closeModal}
         />
         <div className='my-videos-container'>
-          {this.state.videos.length ? this.renderVideos() : <p className="no-videos-text">'You currently have 0 videos'</p>}
+          {this.state.videos.length ? this.renderVideos() : <p className="no-videos-text">You currently have 0 videos</p>}
         </div>
       </section>
     );
