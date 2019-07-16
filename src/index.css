@@ -34,9 +34,34 @@ button {
   font-size: 16px;
   background-color: #C4302B;
   border-radius: 3px;
+  font-family: Raleway;
 }
 
 button:disabled {
   cursor: not-allowed;
   background-color: grey
+}
+
+.ReactModal__Overlay {
+  opacity: 0;
+  transition: opacity 200ms ease-in-out;
+}
+
+.ReactModal__Overlay--after-open{
+  opacity: 1;
+}
+
+.ReactModal__Overlay--before-close{
+  opacity: 0;
+}
+
+span.close-modal-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  cursor: pointer;
+}
+
+span.close-modal-btn i{
+  font-size: 10px;
 }

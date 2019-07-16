@@ -1,4 +1,6 @@
 .video-item > div > input {
+  width: 300px;
+  max-height: 200px;
   max-width: 300px;
   margin: auto;
   text-align: center;
@@ -33,6 +35,12 @@
   /* position: absolute;
     float: right; */
     /* top:40px; */ 
+  background-color: rgba(0,0,0,.2); 
+}
+.delete-video-btn{
+  float:right;
+  position: relative;
+  top:40px;
   background-color: rgba(0,0,0,.2); 
 }
 

@@ -12,6 +12,7 @@ import PublicUserService from '../services/public-user-service'
 import VideoStorage from '../services/video-storage'
 import PreviewsApiService from '../services/previews-api'
 import { withAppContext } from '../contexts/AppContext';
+import Loader from '../components/Loader/Loader'
 
 class Creator extends Component {
   state = {
@@ -25,6 +26,8 @@ class Creator extends Component {
     descriptionValid: false,
     thumbnailValid: false,
     formValid: false,
+    preview_id: null,
+    isLoading: true
   }
 
   handleFields = e => {
@@ -80,13 +83,39 @@ class Creator extends Component {
     this.setState({formValid})
   }
 
+  isEditing = () => {
+    return this.props.location.search.includes('edit=true')
+  }
+
   componentDidMount() {
+    let title = '';
+    let description = '';
+    let thumbnail_url = null;
+    let titleValid, descriptionValid, thumbnailValid, formValid, preview_id;
+  
+    if (this.isEditing()) {
+      const currentPreview = VideoStorage.getVideo('laconic_current_preview')
+      title = currentPreview.title
+      description = currentPreview.description
+      thumbnail_url = currentPreview.thumbnail_url
+      titleValid = true
+      descriptionValid = true
+      thumbnailValid = true
+      formValid = true
+      preview_id = currentPreview.id
+    }
     const loggedIn = TokenService.hasAuthToken();
     if (loggedIn) {
       const video = VideoStorage.getVideo('laconic_current_video')
       if (!video) return this.props.history.push('/videos')
     }
-    this.setState({loggedIn})
+    this.setState({
+      loggedIn,
+      title,
+      description,
+      thumbnail_url,
+      titleValid, descriptionValid, thumbnailValid, formValid, preview_id
+    })
   }
 
   grabPhoto = async e => {
@@ -110,13 +139,19 @@ class Creator extends Component {
     e.preventDefault();
     const video = VideoStorage.getVideo('laconic_current_video')
     if (this.state.loggedIn && video.id) {
+      this.setState({isLoading: true})
       const {title, description, thumbnail_url} = this.state
       const preview = {title, description, thumbnail_url, video_id: video.id}
       try {
-        await PreviewsApiService.postPreview(video.id, preview)
+        if (this.isEditing()) {
+          preview.id = this.state.preview_id
+          await PreviewsApiService.patchPreview(video.id, preview)
+        } else {
+          await PreviewsApiService.postPreview(video.id, preview)
+        }
         this.props.history.push(`/videos/${video.id}/previews`)
       } catch(err) {
-        this.props.appContext.setAppError(err.message)
+        this.setState({isLoading: false}, this.props.appContext.setAppError(err.message))
       }
     } else {
       this.googleLoginBtn.click()
@@ -137,18 +172,24 @@ class Creator extends Component {
       this.props.appContext.setAppError('unable to authenticate with Google')
     } else {
       try {
+        this.setState({isLoading: true})
         const res = await AuthApiService.loginGoogle(response.tokenObj)
         this.props.userContext.processLogin(res.authToken)
         this.postVideoAndPreview()
       } catch(err){
-        this.props.appContext.setAppError('Unable to save your preview')
+        this.setState({isLoading: false}, this.props.appContext.setAppError('Unable to save your preview'))
       }
     }
+  }
+
+  setLoading = (bool) => {
+    this.setState({isLoading: bool})
   }
 
   render() {
     return (
       <section className="creator-page">
+        <Loader isLoading={this.state.isLoading}></Loader>
         <CreatorControls 
           {...this.state}
           handleFields = {this.handleFields}
@@ -165,7 +206,7 @@ class Creator extends Component {
           onFailure={this.responseGoogle}
           cookiePolicy={'single_host_origin'}
         />
-        <CreatorPreview userPreview={{...this.state}}></CreatorPreview>
+        <CreatorPreview userPreview={{...this.state}} setLoading={this.setLoading}></CreatorPreview>
       </section>
     );
   }

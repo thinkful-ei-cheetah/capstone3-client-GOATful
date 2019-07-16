@@ -16,7 +16,7 @@ export default [
     youtube_display_name: 'TravelGuRu',
     published_at: '2018-07-08T18:28:49.514Z',
     description: 'Lorem ipsum dolor amet ethical tbh sint master cleanse, in sed occupy gluten-free readymade PBR&B ex non officia vice pour-over. Kogi everyday carry tumblr, retro squid literally cardigan selvage echo park occupy neutra hoodie. Offal organic brooklyn DIY, ramps meditation in chillwave. Artisan before they sold out distillery four loko portland. Pug eu cornhole labore viral, sint post-ironic dolor art party hot chicken leggings gastropub readymade velit.',
-    title: 'How to Fly Anywher for free',
+    title: 'How to Fly Anywhere for free',
     thumbnail_url: 'https://i.ytimg.com/vi/8YbZuaBP9B8/maxresdefault.jpg'
   },
   {

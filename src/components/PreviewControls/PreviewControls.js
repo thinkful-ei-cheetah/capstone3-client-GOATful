@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PreviewItem from '../PreviewItem/PreviewItem'
 import './PreviewControls.css'
 
-const PreviewControls = ({ prevList, selected, previewClick }) => {
+const PreviewControls = ({ prevList, selected, previewClick , editClick, delClick}) => {
 
   let renderPreviews = () => {
     return prevList.map(preview => {
@@ -13,14 +13,18 @@ const PreviewControls = ({ prevList, selected, previewClick }) => {
             key={preview.id}
             preview={preview}
             previewClick={previewClick}
-          />)
+          />
+        )
       } else {
         return (
           <PreviewItem
             key={preview.id}
             preview={preview}
-          />)
-        }
+            editClick={editClick}
+            delClick={delClick}
+          />
+        )
+      }
     })
   }
 

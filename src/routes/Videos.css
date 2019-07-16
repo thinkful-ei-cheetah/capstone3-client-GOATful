@@ -1,8 +1,10 @@
 .my-videos-container {
   margin: auto; 
+  padding: 0 1em;
   margin-top:0px;
-  max-width: 750px;
+  max-width: 1000px;
   display: grid;
+  grid-gap: .5em;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 
 }
@@ -13,4 +15,21 @@
   justify-content: space-around;
   margin-bottom: 0px;
   padding-bottom: 0px;
+}
+
+.previous, .next {
+  width: 85px;
+}
+
+.add-video-header {
+  text-align: center;
+}
+
+.no-videos-text{
+  width: 300px;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top:40%
 }

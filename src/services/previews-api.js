@@ -2,9 +2,9 @@ import config from '../config';
 import TokenService from './token-service'
 
 export default {
-  async getPreviews(video_id){
+  async getPreviews(video_id) {
     const userPreviews = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews`, {
-      headers:{
+      headers: {
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       }
     })
@@ -13,34 +13,52 @@ export default {
     }
     return userPreviews.json();
   },
-  
-  async postPreview(video_id, newPreview){
+
+  async postPreview(video_id, newPreview) {
     const insertedPreview = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews`, {
       method: 'POST',
-      headers:{
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(newPreview)
-    })  
+    })
     if (!insertedPreview.ok) {
       return insertedPreview.json().then(e => Promise.reject(e))
     }
     return insertedPreview.json();
   },
 
-  async patchPreview(video_id, updatedPreview){
+  async patchPreview(video_id, updatedPreview) {
     const resPreview = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews`, {
       method: 'PATCH',
-      headers:{
+      headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${TokenService.getAuthToken()}`
       },
       body: JSON.stringify(updatedPreview)
-    })  
+    })
     if (!resPreview.ok) {
       return resPreview.json().then(e => Promise.reject(e))
     }
     return resPreview.json();
+  },
+  async deletePreview(video_id, preview_id) {
+    const previewToDelete = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      },
+      body: JSON.stringify({
+        id: preview_id,
+        video_id
+      })
+    })
+    if (!previewToDelete.ok) {
+      return previewToDelete.json().then(e => Promise.reject(e))
+    }
+    return previewToDelete.json();
   }
+
 }

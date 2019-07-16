@@ -43,7 +43,7 @@ class CreatorPreview extends Component {
       youtubeSearchResults: [...youtubeSearchResults],
       userVideo: {...video},
       videos: [this.props.userPreview, ...youtubeSearchResults]
-    })
+    }, this.props.setLoading(false))
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -61,7 +61,7 @@ class CreatorPreview extends Component {
 
   renderPreviews = () => {
     return this.state.videos.map((video, i) => {
-      return <YoutubeSearchResult {...video} key={i}/>
+      return <YoutubeSearchResult {...video} key={i}/> 
     })
   }
 
@@ -85,11 +85,11 @@ class CreatorPreview extends Component {
       <div className='creator-preview'>
         <h2>How Your Video Will Look</h2>
         <div className='preview-controls'>
-        <select onChange={ev => this.handleViewChange(ev)}>
+        <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
           <option value="desktop">Desktop</option>
           <option value="mobile">Mobile</option>
         </select>
-        <button className='button' onClick={this.renderShuffledPreviews}>Randomize</button>
+        <button className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
         {isDesktopView ? <DesktopViewPage videos={videos}/> : <MobileViewPage videos={videos} />}
       </div>
