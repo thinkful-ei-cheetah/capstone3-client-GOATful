@@ -20,10 +20,12 @@ const CreatorControls = (props) => {
   const handleSetOpen = (ev) => {
     ev.currentTarget.style.visibility = 'hidden';
     const editForm = document.getElementById('edit-form')
+    const creatorPreview = document.getElementById('creator-preview')
     // get screen width 
     const screenWidth = document.documentElement.clientWidth
     if (screenWidth > 1000) {
       editForm.style.width = '20%'
+      creatorPreview.style.marginLeft = '200px'
     } else if (screenWidth < 630) {
       editForm.style.width = '50%'
     } else {
@@ -33,7 +35,9 @@ const CreatorControls = (props) => {
 
   const handleSetClose = (ev) => {
     const editForm = document.getElementById('edit-form')
+    const creatorPreview = document.getElementById('creator-preview')
     editForm.style.width = '0'
+    creatorPreview.style.marginLeft = '0'
     const editBtn = document.getElementById('edit-btn')
     editBtn.style.visibility = 'visible'
   }

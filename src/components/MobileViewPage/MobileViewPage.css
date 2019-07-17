@@ -30,7 +30,8 @@
 }
 
 .mobile-view-page > .youtube-search-result {
-  max-height: 100px;
+  max-height: 85px;
+  margin: 1em 0;
 }
 
 .mobile-view-page > .youtube-search-result > .left-col > img {
@@ -49,7 +50,7 @@
 
 .mobile-view-page > .youtube-search-result .left-col span {
   right: 5px;
-  bottom: 18px;
+  bottom: 3px;
   font-weight: 100;
 }
 
@@ -182,5 +183,6 @@
 
   .mobile-view-page > .youtube-search-result .left-col {
     max-width: 140px;
+    max-height: 85px;
   }
 }

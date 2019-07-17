@@ -78,15 +78,24 @@ class CreatorPreview extends Component {
   handleViewChange = ev => {
     // Get option value from select menu
     let index = ev.nativeEvent.target.selectedIndex
+    // check to see if browser is mobile (only mobile browsers have window.orientation)
+    function isMobileDevice() {
+      return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
+    };
     // If value is mobile, change isDesktopView to false -> mobile view
-    let desktopOrMobile = ev.nativeEvent.target[index].text === 'Desktop' ? true : false
+    let desktopOrMobile
+    if (ev.nativeEvent.target[index].text === 'Desktop' && isMobileDevice() === false) {
+      desktopOrMobile = true
+    } else {
+      desktopOrMobile = false
+    }
     this.setState({ isDesktopView: desktopOrMobile })
   }
 
   render() {
     const { isDesktopView, videos } = this.state
     return (
-      <div className='creator-preview'>
+      <div className='creator-preview' id='creator-preview'>
         <h2>How Your Video Will Look</h2>
         <div className='preview-controls'>
           <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
