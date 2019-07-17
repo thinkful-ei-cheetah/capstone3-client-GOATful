@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './AddVideo.css'
+import './AddVideoForm.css'
 
 export default function AddVideo({cssRouteProps, fields, handleFields, handleSubmit, action}) {
  const [view, setView] = useState("Let's go!")
@@ -35,4 +35,15 @@ export default function AddVideo({cssRouteProps, fields, handleFields, handleSub
       <button>{action === 'edit' ? 'Update!' : 'Create!'}</button>
     </form>
   )
+}
+
+AddVideo.defaultProps = {
+  fields: {
+    title: '',
+    tags: '',
+    video_length: '00:00',
+    youtube_display_name: ''
+  },
+  handleFields: () => {},
+  handleSubmit: () => {}
 }

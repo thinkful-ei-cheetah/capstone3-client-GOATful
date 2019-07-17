@@ -47,3 +47,12 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
   }
 }
 
+PreviewItem.defaultProps = {
+  preview: {
+    id: 0,
+    thumbnail_url: ''
+  },
+  previewClick: () => {},
+  editClick: () => {}
+}
+

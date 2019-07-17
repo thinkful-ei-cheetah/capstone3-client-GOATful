@@ -1,16 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import VideoItem from './VideoItem';
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom';
+import LandingPage from './LandingPage';
 
-describe('VideoItem Component', () => {
+describe('LandingPage Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
     ReactDOM.render(
-      <BrowserRouter>
-        < VideoItem />
-      </BrowserRouter>
-      , div);
+    <BrowserRouter>
+      <LandingPage />
+    </BrowserRouter>, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
