@@ -78,11 +78,10 @@ class CreatorPreview extends Component {
   handleViewChange = ev => {
     // Get option value from select menu
     let index = ev.nativeEvent.target.selectedIndex
-    // check to see if browser is mobile 
+    // check to see if browser is mobile (only mobile browsers have window.orientation)
     function isMobileDevice() {
       return (typeof window.orientation !== "undefined") || (navigator.userAgent.indexOf('IEMobile') !== -1);
     };
-    console.log(isMobileDevice())
     // If value is mobile, change isDesktopView to false -> mobile view
     let desktopOrMobile
     if (ev.nativeEvent.target[index].text === 'Desktop' && isMobileDevice() === false) {
