@@ -28,8 +28,8 @@ class Videos extends Component {
     try{
       this.setState({isLoading: true })
       await VideoService.deleteVideo(videoId)
-      const videos = await VideoService.getVideos();
-      this.setState({ videos, isLoading: false })
+      this.getVideoList(true)
+
     } catch(err){ 
       this.setState({ isLoading: false }, this.props.appContext.setAppError(err.message))
     }
