@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Modal from 'react-modal';
-import AddVideos from '../AddVideo/AddVideo';
+import AddVideoForm from '../AddVideoForm/AddVideoForm';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import VideoStorage from '../../services/video-storage';
@@ -26,7 +26,8 @@ const modalStyles = {
   }
 };
 
-Modal.setAppElement('#root')
+// Fix for React Modal testing
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export default class VideoModalForm extends Component {
   state = {
@@ -100,8 +101,6 @@ export default class VideoModalForm extends Component {
     }
   }
 
-
-
   addErrorHandler(err) {
     this.setState({addError: err.error || err.message})
   }
@@ -126,7 +125,7 @@ export default class VideoModalForm extends Component {
               icon={faWindowClose}
             />
           </span>
-          <AddVideos
+          <AddVideoForm
             fields={{...this.state}}
             handleFields={this.handleFields}
             handleSubmit={this.handleSubmit}

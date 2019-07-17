@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import VideoItem from '../../components/VideoItem/VideoItem';
 import './VideosPage.css';
 import Loader from '../../components/Loader/Loader'
-import AddVideoModal from '../../components/AddVideoModal/AddVideoModal'
+import VideoModalForm from '../../components/VideoModalForm/VideoModalForm'
 import VideoService from '../../services/video-api';
-import VideoStorage from '../../services/video-storage';
 import FAB from '../../components/FAB/FAB'
 import { withAppContext } from '../../contexts/AppContext'
 import InfiniteScroll from 'react-infinite-scroll-component';
-import { checkTime, tagStringToArray, errorCheckNewVideo } from '../../Utils/Utils'
 
 class Videos extends Component {
 
