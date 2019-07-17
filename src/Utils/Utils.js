@@ -139,8 +139,8 @@ export const checkTime = timeStr => {
   const formattedTime = {googleTimeString: "", error: null}
 
   if(!isLegit){
-    formattedTime.error= 'Invalid format. Please enter time in the format h:m:s' 
-    return formattedTime      
+    formattedTime.error= `Invalid format. Please enter time in the format h:m:s` 
+    return formattedTime    
   }
 
   const timeArray = timeStr.split(':');

@@ -6,9 +6,6 @@ export default function AddVideo({cssRouteProps, fields, handleFields, handleSub
    
 //if this component is being rendered by add-video route, then below will be rendered giving add video more properties
  const cssProperties = cssRouteProps ? cssRouteProps : {};
-
-
- 
   const titleInstructions = <p>Enter a title for your new video project. </p>
   const tagsInstructions = <p>Enter up to three tags, that are comma separated.<br/><br/>For example:<br/> sports, soccer, lfc</p>
   const videoInstructions = <p>Enter a duration in the format mm:ss, or hhh:mm:ss.<br/><br/> For example: <br/> 04:20, or 005:22:33</p>
