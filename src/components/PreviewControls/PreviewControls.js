@@ -2,7 +2,7 @@ import React from 'react';
 import PreviewItem from '../PreviewItem/PreviewItem'
 import './PreviewControls.css'
 
-const PreviewControls = ({ prevList, selected, previewClick , editClick, delClick}) => {
+const PreviewControls = ({prevList, selected, previewClick , editClick, delClick}) => {
 
   let renderPreviews = () => {
     return prevList.map(preview => {
@@ -29,7 +29,7 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
 
   return (
     <div className="preview-controls-container">
-      <h2 className="preview-title">Previews</h2>
+      <h2 className="preview-title">Created Previews</h2>
       <ul className="preview-tiles">
         {(!selected) ? false : renderPreviews()}
       </ul>
