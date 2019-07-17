@@ -3,7 +3,7 @@ import './MeetTeam.css'
 import David from '../img/david.jpeg'
 import Kp from '../img/KP.jpg'
 import Elan from '../img/elan.jpg'
-import Verdi from '../img/verdi.jpeg'
+import Verdi from '../img/verdi.JPG'
 import Peter from '../img/peter.png'
 import goat1 from '../img/goat1.jpg'
 import goat2 from '../img/goat2.jpg'
@@ -71,7 +71,7 @@ class Team extends Component {
           </section>
           <section className='verdi'>
             <figure className='picSwap'>
-              <img src={goat1} alt="Michael Verdi" />
+              <img src={Verdi} alt="Michael Verdi" />
               <img class='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
