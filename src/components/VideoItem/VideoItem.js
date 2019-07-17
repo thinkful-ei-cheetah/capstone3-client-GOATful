@@ -8,6 +8,20 @@ import DeleteVideoModal from '../../components/DeleteVideoModal/DeleteVideoModal
 import VideoModalForm from '../VideoModalForm/VideoModalForm'
 
 class VideoItem extends Component {
+  static defaultProps = {
+    video: {
+      active_thumbnail_url: 'https://picsum.photos/',
+      title: '',
+      tags: [],
+      is_active: false,
+      preview_count: 0,
+      video_length: '00:00',
+      youtube_display_name: '',
+      youtube_url: '',
+      updated_at: '',
+      created_at: ''
+    }
+  }
 
   state = {
     editModalIsOpen: false,
@@ -82,3 +96,5 @@ class VideoItem extends Component {
 }
 
 export default withRouter(VideoItem)
+
+

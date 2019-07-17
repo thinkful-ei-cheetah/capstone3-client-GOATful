@@ -12,7 +12,7 @@ const FieldValidator = (props) => {
   return <></>
 }
 
-const CreatorControls = (props) => {
+export default function CreatorControls(props) {
   const {
     handlePhoto, handleSave, handleFields, loggedIn, formValid,
     title, description, errorMessages, titleValid, descriptionValid, thumbnailValid} = props
@@ -86,4 +86,12 @@ const CreatorControls = (props) => {
   ) 
 }
 
-export default CreatorControls;
+CreatorControls.defaultProps = {
+  title: '',
+  description: '',
+  errorMessages: {},
+  thumbnail_url: null,
+  handleFields: () => {},
+  handlePhoto: () => {},
+  handleSave: () => {}
+}

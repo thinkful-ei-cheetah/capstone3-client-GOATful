@@ -1,15 +1,15 @@
 import React, { Component } from 'react'
-import './MeetTeam.css'
-import David from '../img/david.jpeg'
-import Kp from '../img/KP.jpg'
-import Elan from '../img/elan.jpg'
-import Verdi from '../img/verdi.jpeg'
-import Peter from '../img/peter.png'
-import goat1 from '../img/goat1.jpg'
-import goat2 from '../img/goat2.jpg'
-import goat3 from '../img/goat3.jpg'
-import goat4 from '../img/goat4.jpg'
-import goat5 from '../img/goat5.jpg'
+import './MeetTeamPage.css'
+import David from '../../img/david.jpeg'
+import Kp from '../../img/KP.jpg'
+import Elan from '../../img/elan.jpg'
+import Verdi from '../../img/verdi.jpeg'
+import Peter from '../../img/peter.png'
+import goat1 from '../../img/goat1.jpg'
+import goat2 from '../../img/goat2.jpg'
+import goat3 from '../../img/goat3.jpg'
+import goat4 from '../../img/goat4.jpg'
+import goat5 from '../../img/goat5.jpg'
 
 class Team extends Component {
   componentDidMount() {
@@ -34,7 +34,7 @@ class Team extends Component {
           <section className='david'>
             <figure className='picSwap'>
               <img src={David} alt="David K. Nordeen" />
-              <img class='goat' src={goat1} alt="goat" />
+              <img className='goat' src={goat1} alt="goat" />
             </figure>
             <h3>
               David K. Nordeen
@@ -47,7 +47,7 @@ class Team extends Component {
           <section className='elan'>
             <figure className='picSwap'>
               <img src={Elan} alt="Elan Green" />
-              <img class='goat' src={goat2} alt="goat" />
+              <img className='goat' src={goat2} alt="goat" />
             </figure>
             <h3>
               Elan Green
@@ -60,7 +60,7 @@ class Team extends Component {
           <section className='kp'>
             <figure className='picSwap'>
               <img src={Kp} alt="Kristof-Pierre Cummings" />
-              <img class='goat' src={goat3} alt="goat" />
+              <img className='goat' src={goat3} alt="goat" />
             </figure>
             <h3>
               Kristof-Pierre Cummings
@@ -72,7 +72,7 @@ class Team extends Component {
           <section className='verdi'>
             <figure className='picSwap'>
               <img src={goat1} alt="Michael Verdi" />
-              <img class='goat' src={goat4} alt="goat" />
+              <img className='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
               Michael Verdi
@@ -84,7 +84,7 @@ class Team extends Component {
           <section className='peter'>
             <figure className='picSwap'>
               <img src={Peter} alt="Peter Pae" />
-              <img class='goat' src={goat5} alt="goat" />
+              <img className='goat' src={goat5} alt="goat" />
             </figure>
             <h3>
               Peter Pae

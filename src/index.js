@@ -8,6 +8,8 @@ import { AppProvider } from './contexts/AppContext'
 import AppError from './components/AppError/AppError'
 import * as serviceWorker from './serviceWorker'
 
+require('dotenv').config()
+
 ReactDOM.render(
   <AppError>
     <BrowserRouter>

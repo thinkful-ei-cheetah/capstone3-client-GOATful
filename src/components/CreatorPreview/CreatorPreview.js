@@ -12,6 +12,14 @@ import { withAppContext } from '../../contexts/AppContext';
 import VideoApi from '../../services/video-api';
   
 class CreatorPreview extends Component {
+  static defaultProps = {
+    userPreview: {
+      description: '',
+      thumbnail_url: '',
+      title: ''
+    }
+  }
+  
   state = {
     userPreview: {},
     youtubeSearchResults: [],

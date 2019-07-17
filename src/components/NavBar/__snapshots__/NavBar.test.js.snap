@@ -2,19 +2,25 @@
 
 exports[`NavBar renders without crashing 1`] = `
 <header>
-  <h1
-    className="app-title"
+  <div
+    className="title-container"
   >
     <Link
-      replace={false}
+      className="root-link"
       to="/"
     >
-      Laconic
+      <Logo
+        className="logo"
+      />
+      <h2
+        className="app-title"
+      >
+        Laconic
+      </h2>
     </Link>
-  </h1>
+  </div>
   <nav>
     <Link
-      replace={false}
       to="/login"
     >
       Login
