@@ -57,6 +57,7 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
         
         {(!selected) ? false : renderPreviews()}
       </div>
+    </div>
   )
 }
 
