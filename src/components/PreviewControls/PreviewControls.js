@@ -30,9 +30,9 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
   return (
     <div className="preview-controls-container">
       <h2 className="preview-title">Previews</h2>
-      <ul className="preview-tiles">
+      <div className="preview-tiles"  onWheel={(e) => console.log('wheeeel')}>
         {(!selected) ? false : renderPreviews()}
-      </ul>
+      </div>
       {/* <Link to='/creator' className="add-new">
       </Link> */}
     </div>

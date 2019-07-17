@@ -2,7 +2,9 @@
     animation-name: test;
     animation-duration: .5s;
 }
-
+body{
+    pointer-events:none;
+}
 @keyframes test {
     0% {
         opacity: 0;

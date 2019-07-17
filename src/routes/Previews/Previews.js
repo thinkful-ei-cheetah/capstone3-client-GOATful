@@ -128,7 +128,7 @@ class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
-        <div className="previews-display-section">
+        <div className="previews-display-section" >
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
         {(this.state.isAdd)? <Redirect to='/creator' />: false}
