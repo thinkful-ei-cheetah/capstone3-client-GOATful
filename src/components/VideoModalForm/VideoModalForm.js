@@ -93,13 +93,14 @@ export default class VideoModalForm extends Component {
         this.props.history.push('/creator')
       } else {
         await VideoService.patchVideo(this.props.video.id, video)
-        this.props.getVideoList()
-        this.props.onRequestClose()
+        this.props.getVideoList(true)
       }
     } catch(e){
       this.addErrorHandler(e)
     }
-  } 
+  }
+
+
 
   addErrorHandler(err) {
     this.setState({addError: err.error || err.message})
