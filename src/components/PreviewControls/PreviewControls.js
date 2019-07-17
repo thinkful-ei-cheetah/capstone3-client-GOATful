@@ -31,8 +31,6 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
   }
 
   let horizontalScroll = (e) => {
-    // e.preventDefault();
-    // window.scrollTo(0, 0);
     const left = document.getElementById('hScroll')
     left.scrollLeft += e.deltaY
     
@@ -59,9 +57,6 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
         
         {(!selected) ? false : renderPreviews()}
       </div>
-      {/* <Link to='/creator' className="add-new">
-      </Link> */}
-    </div>
   )
 }
 
