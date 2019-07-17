@@ -31,8 +31,11 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
   }
 
   let horizontalScroll = (e) => {
+<<<<<<< HEAD
     // e.preventDefault();
     // window.scrollTo(0, 0);
+=======
+>>>>>>> 9003bed0344b0aaaae6c8ebd3b255ea6dbdd4ba3
     const left = document.getElementById('hScroll')
     left.scrollLeft += e.deltaY
     
@@ -59,7 +62,10 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
         
         {(!selected) ? false : renderPreviews()}
       </div>
+<<<<<<< HEAD
     </div>
+=======
+>>>>>>> 9003bed0344b0aaaae6c8ebd3b255ea6dbdd4ba3
   )
 }
 
