@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditVideoModal from './EditVideoModal';
+import VideoModalForm from './VideoModalForm';
 
-describe('EditVideoModal Component', () => {
+describe('VideoModalForm Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(< EditVideoModal />, div);
+    ReactDOM.render(< VideoModalForm />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
