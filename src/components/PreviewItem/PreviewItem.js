@@ -6,6 +6,7 @@ import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
 export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
   if (previewClick) {
+    console.log(previewClick)
     return (
       <div
         className="preview-tile" 
@@ -26,6 +27,7 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
       </div>
     )
   } else {
+    console.log('selected item elsed')
     return (
       <div 
         className="preview-tile selection-card" 
@@ -53,7 +55,7 @@ PreviewItem.defaultProps = {
     id: 0,
     thumbnail_url: ''
   },
-  previewClick: () => {},
+  // previewClick: () => {},
   editClick: () => {}
 }
 

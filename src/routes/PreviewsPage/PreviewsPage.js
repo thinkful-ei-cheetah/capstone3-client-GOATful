@@ -85,10 +85,12 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
+    // console.log(e.target.id)
     e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
+    console.log(selected)
     this.setState({
       selectedPrev: selected
     })

@@ -5,7 +5,10 @@ import './PreviewControls.css'
 export default function PreviewControls({ prevList, selected, previewClick , editClick, delClick}) {
   let renderPreviews = () => {
     return prevList.map(preview => {
-      if (preview.id !== selected.id) {
+      console.log(preview.id)
+      console.log(selected.id)
+      if (preview.id !== selected.id) { 
+      
         return (
           <PreviewItem
             key={preview.id}
@@ -14,6 +17,7 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
           />
         )
       } else {
+      console.log("i am elsed")
         return (
           <PreviewItem
             key={preview.id}
@@ -44,7 +48,6 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
 
   return (
     <div className="preview-controls-container">
-<<<<<<< HEAD
       <h2 className="preview-title">Previews</h2>
       <div 
       className="preview-tiles" 
@@ -54,10 +57,6 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
       onMouseLeave={(e)=> handleMouseOut(e)}
       >
         
-=======
-      <h2 className="preview-title">Created Previews</h2>
-      <ul className="preview-tiles">
->>>>>>> a808723e447cc1cae8a9ec3d5f3a51813b08053f
         {(!selected) ? false : renderPreviews()}
       </div>
       {/* <Link to='/creator' className="add-new">
