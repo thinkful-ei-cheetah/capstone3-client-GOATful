@@ -27,7 +27,7 @@ export default class YoutubeSearchResult extends Component {
 
   render() {
     const {
-      video_length, youtube_display_name, thumbnail_url, default_thumbnail, title, description, published_at, view_count, view
+      video_length, youtube_display_name, thumbnail_url, default_thumbnail, title, description, published_at, view_count
     } = this.props
     return (
       <div className='youtube-search-result'>
