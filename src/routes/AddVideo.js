@@ -59,7 +59,7 @@ export default class AddVid extends Component {
 
   render() {
     return (
-      <section className="add-video-container">
+      <section className="add-video-container page">
         <h2 className= "provide-info-text">Please provide information on your video below</h2>
         <AddVideos 
           cssRouteProps = {this.cssRouteClasses}

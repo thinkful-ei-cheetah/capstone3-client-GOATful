@@ -2,26 +2,17 @@ import React, { Component } from 'react';
 import VideoItem from '../components/VideoItem/VideoItem';
 import './Videos.css';
 import Loader from '../components/Loader/Loader'
-import AddVideoModal from '../components/AddVideoModal/AddVideoModal'
+import VideoModalForm from '../components/VideoModalForm/VideoModalForm'
 import VideoService from '../services/video-api';
-import VideoStorage from '../services/video-storage';
 import FAB from '../components/FAB/FAB'
 import { withAppContext } from '../contexts/AppContext'
 import InfiniteScroll from 'react-infinite-scroll-component';
-
-import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
 
 class Videos extends Component {
 
   state = {
     videos: [],
     isLoading: true,
-    videoEditError: null,
-    title: '',
-    tags: '',
-    video_length: '',
-    youtube_display_name: '',
-    addError: '',
     modalIsOpen: false,
     //for infinite scroll
       currentPage: 1,
@@ -29,81 +20,13 @@ class Videos extends Component {
       hasMoreVideosForScroll: true
   }
 
-  errorHandler = err => {
-    this.setState({videoEditError: err.error || err.message})
-    setTimeout(()=>this.setState({videoEditError: null}), 3000)
-  }
-
-  addErrorHandler = err => {
-    this.setState({addError: err.error || err.message})
-    setTimeout(()=>this.setState({addError: null}), 3000)
-  }
-
-  componentDidMount() {
-    this.grabVideos();
-  }
-
-  grabVideos = async () => {
-    try{
-      const videos = await VideoService.getVideos(this.state.currentPage++);
-    
-      this.setState({ videos: [...this.state.videos, ...videos.data],
-       isLoading: false, 
-       lastPage: videos.last_page
-      });
-
-      if (this.state.currentPage === this.state.lastPage + 1 ){
-        this.setState({
-          hasMoreVideosForScroll: false,
-        })
-      }
-    
-    } catch (e){
-      console.log(e);
-    }
-  }
-
-  async updateSelectedVideo(id, updates) {
-    try{
-      await VideoService.patchVideo(id, updates)
-      this.setState({
-        currentPage: 1,
-        lastPage: null,
-        hasMoreVideosForScroll: true,
-        videos:[]
-      })
-      this.grabVideos();
-    } catch(e){ 
-      console.log(e)
-    }
+  async componentDidMount() {
+    this.getVideoList()
   } 
-
-  handleFormSubmission = async (id, values) => {
-    const checkedTime = checkTime(values.video_length);
-    if (checkedTime.error){
-      this.errorHandler(checkedTime)
-      return;
-    }
-
-    const updateVideo = {
-      title: values.title,
-      video_length: checkedTime.googleTimeString,
-      youtube_display_name: values.youtube_display_name,
-      tags: tagStringToArray(values.tags),
-    }
-
-    const isError = errorCheckNewVideo(updateVideo);
-    if (isError.status === true){
-      this.errorHandler(isError)
-      return
-    }
-    this.updateSelectedVideo(id, updateVideo);
-  }
 
   deleteVideo = async videoId => {
     try{
       this.setState({isLoading: true })
-
       await VideoService.deleteVideo(videoId)
       const videos = await VideoService.getVideos();
       this.setState({ videos, isLoading: false })
@@ -122,103 +45,90 @@ class Videos extends Component {
 
   renderVideos() {
     const { videos } = this.state;
-    return videos.map(video => <VideoItem
-      handleFormSubmission={this.handleFormSubmission}
-      deleteVideo={this.deleteVideo}
-      video={video}
-      key={video.id}
-      formError = {this.state.videoEditError}
-      />)
+    return videos.map(video => 
+      <VideoItem
+        deleteVideo={this.deleteVideo}
+        video={video}
+        key={video.id}
+        getVideoList={this.getVideoList}
+      />
+    )
   }
 
-  errorCheckNewVideo = (video) => {
-    for (let key in video) {
-      if (key === 'tags') {
-        if (video[key][0].trim() === "") {
-          return { status: true, message: 'Invalid tags' }
-        }
-      } else {
-        if (video[key].trim() === "") {
-          return { status: true, message: `${key} is required` }
-        }
-      }
-    }
-    return { status: false }
-  }
+  getVideoList = async (resetScroll = false) => {
 
-  handleSubmit = async e => {
-    e.preventDefault();
-    const values = {
-      title: this.state.title,
-      video_length: this.state.video_length,
-      youtube_display_name: this.state.youtube_display_name,
-      tags: this.state.tags,
-    }
-    
-    const checkedTime = checkTime(values.video_length);
-    if (checkedTime.error){
-      this.addErrorHandler(checkedTime)
-      return;
+    if (resetScroll){
+      this.setState({
+        isLoading: true,
+        currentPage : 1,
+        lastPage: null,
+        hasMoreVideosForScroll: true,
+        videos: [] 
+      })
+    } else {
+      this.setState({
+        isLoading: true
+      })
     }
 
-    const newVideo = {
-      title: values.title,
-      video_length: checkedTime.googleTimeString,
-      youtube_display_name: values.youtube_display_name,
-      tags: tagStringToArray(values.tags),
-    }
-
-    const isError = errorCheckNewVideo(newVideo);
-    if (isError.status === true){
-      this.addErrorHandler(isError)
-      return
-    }
     try {
-     const createdVideo = await VideoService.postVideo(newVideo);
-      VideoStorage.saveKey('laconic_current_video', createdVideo)
-      this.props.history.push('/creator')
-    } catch(e){
-      this.addErrorHandler(e)
+      const videos = await VideoService.getVideos(this.state.currentPage++);
+      this.setState({ videos: [...this.state.videos, ...videos.data],
+        isLoading: false, 
+        lastPage: videos.last_page
+       });
+
+       if (this.state.currentPage === this.state.lastPage + 1 ){
+        this.setState({
+          hasMoreVideosForScroll: false,
+        })
+      }
+    } catch(err) {
+      this.setState({ isLoading: false }, this.props.appContext.setAppError(err.message))
     }
   }
 
-  handleFields = e => {
-    let { value, name } = e.target;
-    this.setState({
-      [name]: value
-    })
+  displayVideos = () => {
+    if (this.state.videos.length){
+      return (
+        <div>
+          <div className='filter-container'>
+            <form id='filter-videos'>
+              <label htmlFor='title'>Filter by title</label>
+              <input type='text' name='title' id='title'/>
+            </form>
+          </div>
+          <InfiniteScroll
+            dataLength={this.state.videos.length} //This is important field to render the next data
+            next={this.getVideoList}
+            hasMore={this.state.hasMoreVideosForScroll}
+            loader={<h4>Grabbing Videos...</h4>}
+            endMessage={
+              <p style={{textAlign: 'center'}}>
+                <b>No more videos</b>
+              </p>
+            }
+          >
+            <div className='my-videos-container'>{this.renderVideos()} </div>
+          </InfiniteScroll>
+        </div>
+      )
+    } else return <p className="no-videos-text">You currently have 0 videos</p>
   }
 
   render() {
     return (
-      
-      <section className='videos-page'>
+      <section className='videos-page page'>
         <Loader isLoading={this.state.isLoading} />
         <FAB onClick={this.openModal}/>
-        <AddVideoModal 
-          fields={this.state}
-          handleFields={this.handleFields}
-          handleSubmit={this.handleSubmit}
+        <VideoModalForm
+          history={this.props.history}
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
+          action='new'
         />
-          {this.state.videos.length ? 
-          
-          <InfiniteScroll
-          dataLength={this.state.videos.length} //This is important field to render the next data
-          next={this.grabVideos}
-          hasMore={this.state.hasMoreVideosForScroll}
-          loader={<h4>Grabbing Videos...</h4>}
-          endMessage={
-            <p style={{textAlign: 'center'}}>
-              <b>No more videos</b>
-            </p>
-          }>
-            <div className='my-videos-container'>{this.renderVideos()} </div>
-          </InfiniteScroll> 
-            
-            : <p className="no-videos-text">You currently have 0 videos</p>}
-
+        <h2>Your Video Dashboard</h2>
+        {this.displayVideos()}
       </section>
     );
   }

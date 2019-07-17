@@ -1,0 +1,13 @@
+.page{
+    animation-name: test;
+    animation-duration: .5s;
+}
+
+@keyframes test {
+    0% {
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
