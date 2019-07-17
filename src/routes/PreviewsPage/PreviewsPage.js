@@ -3,7 +3,7 @@ import {  Redirect } from 'react-router-dom'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import PreviewsApi from '../../services/previews-api'
-import './Previews.css'
+import './PreviewsPage.css'
 import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
 import FAB from '../../components/FAB/FAB'
@@ -12,6 +12,13 @@ import mockYoutubeData from '../../Utils/mock-youtube-date'
 import VideoApi from '../../services/video-api'
 
 class Previews extends Component {
+  static defaultProps = {
+    match: {
+      params: {
+        video_id: 0
+      }
+    }
+  }
   constructor(props) {
     super(props)
     this.state = {

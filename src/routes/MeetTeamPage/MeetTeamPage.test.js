@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import AddVideoModal from './AddVideoModal';
+import MeetTeamPage from './MeetTeamPage';
 
-describe('AddVideoModal Component', () => {
+describe('MeetTeamPage Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(< AddVideoModal />, div);
+    ReactDOM.render(< MeetTeamPage />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

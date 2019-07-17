@@ -1,20 +1,26 @@
 import React, { Component } from 'react'
 
-import CreatorControls from '../components/CreatorControls/CreatorControls'
-import UploadService from '../services/image-uploader'
-import CreatorPreview from '../components/CreatorPreview/CreatorPreview'
-import TokenService from '../../src/services/token-service'
-import { withUserContext } from '../contexts/UserContext'
+import CreatorControls from '../../components/CreatorControls/CreatorControls'
+import UploadService from '../../services/image-uploader'
+import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
+import TokenService from '../../services/token-service'
+import { withUserContext } from '../../contexts/UserContext'
 import GoogleLogin from 'react-google-login';
-import config from '../../src/config'
-import AuthApiService from '../services/auth-api-service'
-import PublicUserService from '../services/public-user-service'
-import VideoStorage from '../services/video-storage'
-import PreviewsApiService from '../services/previews-api'
-import { withAppContext } from '../contexts/AppContext';
-import Loader from '../components/Loader/Loader'
+import config from '../../config'
+import AuthApiService from '../../services/auth-api-service'
+import PublicUserService from '../../services/public-user-service'
+import VideoStorage from '../../services/video-storage'
+import PreviewsApiService from '../../services/previews-api'
+import { withAppContext } from '../../contexts/AppContext';
+import Loader from '../../components/Loader/Loader'
 
 class Creator extends Component {
+  static defaultProps = {
+    location: {
+      search: []
+    }
+  }
+
   state = {
     title: '',
     description: '',

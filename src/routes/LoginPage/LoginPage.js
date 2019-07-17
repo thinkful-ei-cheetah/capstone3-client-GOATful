@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import GoogleLogin from 'react-google-login';
-import config from '../../src/config'
-import AuthApiService from '../services/auth-api-service'
-import { withUserContext } from '../contexts/UserContext'
+import config from '../../config'
+import AuthApiService from '../../services/auth-api-service'
+import { withUserContext } from '../../contexts/UserContext'
 import { Link } from 'react-router-dom'
-import './Login.css'
+import './LoginPage.css'
 
 class Login extends Component {
   state = {

@@ -12,6 +12,14 @@ import { withAppContext } from '../../contexts/AppContext';
 import VideoApi from '../../services/video-api';
   
 class CreatorPreview extends Component {
+  static defaultProps = {
+    userPreview: {
+      description: '',
+      thumbnail_url: '',
+      title: ''
+    }
+  }
+  
   state = {
     userPreview: {},
     youtubeSearchResults: [],
@@ -96,13 +104,13 @@ class CreatorPreview extends Component {
     const { isDesktopView, videos } = this.state
     return (
       <div className='creator-preview' id='creator-preview'>
-        <h2>How Your Video Will Look</h2>
+        <h2>Video Project: {this.state.userVideo.title}</h2>
         <div className='preview-controls'>
           <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
             <option value="desktop">Desktop</option>
             <option value="mobile">Mobile</option>
           </select>
-          <button className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
+          <button title='change the ordering in which your thumbnail appears to ensure it stands out' className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
         {isDesktopView ? <DesktopViewPage videos={videos}/> : <MobileViewPage videos={videos} />}
       </div>

@@ -5,7 +5,7 @@
 }
 
 .hero {
-  background: url('../img/sfr.jpg');
+  background: url('../../img/sfr.jpg');
   background-size: cover;
   background-position: center;
   padding: 4rem 2rem;
@@ -23,7 +23,7 @@
   color: white;
 }
 
-.click-through, .AB-testing, .about {
+.verdi, .peter, .elan, .david, .kp, .click-through, .AB-testing, .about {
   max-width: 850px;
   margin: 1.5rem;
   padding: 2rem;
@@ -31,16 +31,30 @@
   border-radius: .5rem;
 }
 
-.click-through > figure, .AB-testing > figure, .about > figure {
+.picSwap .goat{
+  display: none; 
+}
+
+.picSwap:hover .goat{
+  display: inline;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  max-width: 850px;
+}
+
+.verdi > figure, .peter > figure, .elan > figure, .kp > figure, .david > figure, .click-through > figure, .AB-testing > figure, .about > figure {
   margin: auto;
-  max-height: 400px;
-  max-width: 600px;
+  max-height: 600px;
+  width: 600px;
   overflow: hidden;
   position: relative;
 }
 
-.click-through > figure > img, .AB-testing > figure > img, .about > figure > img {
-  width: 100%;
+.peter > figure > img, .verdi > figure > img, .elan > figure > img, .kp > figure > img, .david >figure > img, .click-through > figure > img, .AB-testing > figure > img, .about > figure > img {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 footer {

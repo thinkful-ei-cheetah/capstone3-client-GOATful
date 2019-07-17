@@ -1,14 +1,11 @@
 import React, { useState } from 'react'
-import './AddVideo.css'
+import './AddVideoForm.css'
 
 export default function AddVideo({cssRouteProps, fields, handleFields, handleSubmit, action}) {
  const [view, setView] = useState("Let's go!")
    
 //if this component is being rendered by add-video route, then below will be rendered giving add video more properties
  const cssProperties = cssRouteProps ? cssRouteProps : {};
-
-
- 
   const titleInstructions = <p>Enter a title for your new video project. </p>
   const tagsInstructions = <p>Enter up to three tags, that are comma separated.<br/><br/>For example:<br/> sports, soccer, lfc</p>
   const videoInstructions = <p>Enter a duration in the format mm:ss, or hhh:mm:ss.<br/><br/> For example: <br/> 04:20, or 005:22:33</p>
@@ -38,4 +35,15 @@ export default function AddVideo({cssRouteProps, fields, handleFields, handleSub
       <button>{action === 'edit' ? 'Update!' : 'Create!'}</button>
     </form>
   )
+}
+
+AddVideo.defaultProps = {
+  fields: {
+    title: '',
+    tags: '',
+    video_length: '00:00',
+    youtube_display_name: ''
+  },
+  handleFields: () => {},
+  handleSubmit: () => {}
 }

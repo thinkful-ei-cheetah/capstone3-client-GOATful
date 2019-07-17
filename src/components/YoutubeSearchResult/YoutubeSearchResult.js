@@ -11,6 +11,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons'
   
 export default class YoutubeSearchResult extends Component {
+  static defaultProps = {
+    video_length: '00:00',
+    youtube_display_name: '',
+    thumbnail_url: '',
+    title: '',
+    description: '',
+    published_at: '',
+    view_count: 0
+  }
   
   renderRandomDate = () => {
     const nums = ['2', '3', '4', '5', '6', '7', '8', '9'];

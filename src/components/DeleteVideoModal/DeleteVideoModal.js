@@ -16,33 +16,48 @@ const modalStyles = {
     transform             : 'translate(-50%, -50%)'
   }
 };
-Modal.setAppElement('#root')
+
+// Fix for React Modal testing
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export default class DeleteVideoModal extends Component {
+  static defaultProps = {
+    video: {},
+    isOpen: false,
+    onRequestClose: () => {},
+    handleDelete: () => {}
+  }
+  
+  renderPreviewCount = (video) => {
+    if (video.preview_count > 0) {
+      return video.preview_count === 1 ? `1 preview will also be deleted.` : `${video.preview_count} previews will also be deleted.`
+    }
+    return ''
+  }
+
   render() {
+    const {video} = this.props
     return (
       <Modal
-      isOpen={this.props.isOpen}
-      onRequestClose={this.props.onRequestClose}
-      style={modalStyles}
-      contentLabel={'Delete Video'}
-      closeTimeoutMS={200}
-        >
-          <h2 className="add-video-header">Are you sure?</h2>
-          <p>Delete {this.props.fields.title}?</p>
-
-          <p>{this.props.previewCount ? 
-            this.props.previewCount === 1 ? `1 preview will also be deleted.` : `${this.props.previewCount} previews will also be deleted.` : '' }</p>
-         
-         <span className='close-modal-btn' onClick={this.props.onRequestClose}>
-            <FontAwesomeIcon 
-              icon={faWindowClose}
-            />
-          </span>
-          <div className= "button-controls">
-            <button className="cancel" onClick={this.props.onRequestClose}>Cancel</button>
-            <button className="confirm" onClick={this.props.handleConfirm}>Delete</button>
-          </div>
+        isOpen={this.props.isOpen}
+        onRequestClose={this.props.onRequestClose}
+        style={modalStyles}
+        contentLabel={'Delete Video'}
+        closeTimeoutMS={200}
+      >
+        <h2 className="add-video-header">Are you sure?</h2>
+        <p>Delete {video.title}?</p>
+        <p>{this.renderPreviewCount(video)}</p>
+        
+        <span className='close-modal-btn' onClick={this.props.onRequestClose}>
+          <FontAwesomeIcon 
+            icon={faWindowClose}
+          />
+        </span>
+        <div className= "button-controls">
+          <button className="cancel" onClick={this.props.onRequestClose}>Cancel</button>
+          <button className="confirm" onClick={this.props.handleDelete}>Delete</button>
+        </div>
       </Modal>
     )
   }

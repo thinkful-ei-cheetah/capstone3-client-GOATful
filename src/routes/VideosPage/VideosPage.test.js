@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import EditVideoModal from './EditVideoModal';
+import VideosPage from './VideosPage';
 
-describe('EditVideoModal Component', () => {
+describe('VideosPage Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(< EditVideoModal />, div);
+    ReactDOM.render(< VideosPage />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })

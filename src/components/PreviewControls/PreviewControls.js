@@ -2,8 +2,7 @@ import React from 'react';
 import PreviewItem from '../PreviewItem/PreviewItem'
 import './PreviewControls.css'
 
-const PreviewControls = ({ prevList, selected, previewClick , editClick, delClick}) => {
-
+export default function PreviewControls({ prevList, selected, previewClick , editClick, delClick}) {
   let renderPreviews = () => {
     return prevList.map(preview => {
       if (preview.id !== selected.id) {
@@ -45,6 +44,7 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
 
   return (
     <div className="preview-controls-container">
+<<<<<<< HEAD
       <h2 className="preview-title">Previews</h2>
       <div 
       className="preview-tiles" 
@@ -54,6 +54,10 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
       onMouseLeave={(e)=> handleMouseOut(e)}
       >
         
+=======
+      <h2 className="preview-title">Created Previews</h2>
+      <ul className="preview-tiles">
+>>>>>>> a808723e447cc1cae8a9ec3d5f3a51813b08053f
         {(!selected) ? false : renderPreviews()}
       </div>
       {/* <Link to='/creator' className="add-new">
@@ -61,4 +65,11 @@ const PreviewControls = ({ prevList, selected, previewClick , editClick, delClic
     </div>
   )
 }
-export default PreviewControls;
+
+PreviewControls.defaultProps = {
+  prevList: [],
+  selected: {},
+  previewClick: () => {},
+  editClick: () => {},
+  deleteClick: () => {}
+}

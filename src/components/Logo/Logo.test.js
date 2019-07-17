@@ -1,12 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import Icon from './Icon';
+import Logo from './Logo';
 
-describe('icon Component', () => {
+describe('Logo Component', () => {
   it('renders without crashing', () => {
     const div = document.createElement('div');
-    ReactDOM.render(<Icon icon={faHome}/>, div);
+    ReactDOM.render(< Logo />, div);
     ReactDOM.unmountComponentAtNode(div);
   });
 })
