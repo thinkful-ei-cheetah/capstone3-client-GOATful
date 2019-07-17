@@ -20,7 +20,7 @@ class Team extends Component {
     window.scrollTo(0, 0);
     return (
       <>
-        <section className='hero'>
+        <section className='Teamhero'>
           <h1>
             Let your thumbnail do the talking.
         </h1>
@@ -30,11 +30,11 @@ class Team extends Component {
           </h2>
           </div>
         </section>
-        <div className='landing-container'>
+        <div className='team-container'>
           <section className='david'>
             <figure className='picSwap'>
               <img src={David} alt="David K. Nordeen" />
-              <img class='goat' src={goat1} alt="goat" />
+              <img className='goat' src={goat1} alt="goat" />
             </figure>
             <h3>
               David K. Nordeen
@@ -47,7 +47,7 @@ class Team extends Component {
           <section className='elan'>
             <figure className='picSwap'>
               <img src={Elan} alt="Elan Green" />
-              <img class='goat' src={goat2} alt="goat" />
+              <img className='goat' src={goat2} alt="goat" />
             </figure>
             <h3>
               Elan Green
@@ -60,7 +60,7 @@ class Team extends Component {
           <section className='kp'>
             <figure className='picSwap'>
               <img src={Kp} alt="Kristof-Pierre Cummings" />
-              <img class='goat' src={goat3} alt="goat" />
+              <img className='goat' src={goat3} alt="goat" />
             </figure>
             <h3>
               Kristof-Pierre Cummings
@@ -72,19 +72,19 @@ class Team extends Component {
           <section className='verdi'>
             <figure className='picSwap'>
               <img src={Verdi} alt="Michael Verdi" />
-              <img class='goat' src={goat4} alt="goat" />
+              <img className='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
               Michael Verdi
             </h3>
             <p>
-              Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies. Outside of programming, my passions include fitness and being sexy as hell.
+              Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies.
             </p>
           </section>
           <section className='peter'>
             <figure className='picSwap'>
               <img src={Peter} alt="Peter Pae" />
-              <img class='goat' src={goat5} alt="goat" />
+              <img className='goat' src={goat5} alt="goat" />
             </figure>
             <h3>
               Peter Pae

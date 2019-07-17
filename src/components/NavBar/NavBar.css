@@ -54,3 +54,9 @@ nav a:hover{
   transition: .5s;
 
 }
+.navLinks{
+  font-size: 20px;
+}
+.navControls{
+  text-align: center;
+}
