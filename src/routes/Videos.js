@@ -7,6 +7,7 @@ import VideoService from '../services/video-api';
 import VideoStorage from '../services/video-storage';
 import FAB from '../components/FAB/FAB'
 import { withAppContext } from '../contexts/AppContext'
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import { checkTime, tagStringToArray, errorCheckNewVideo } from '../Utils/Utils'
 
@@ -22,6 +23,10 @@ class Videos extends Component {
     youtube_display_name: '',
     addError: '',
     modalIsOpen: false,
+    //for infinite scroll
+      currentPage: 1,
+      lastPage: null,
+      hasMoreVideosForScroll: true
   }
 
   errorHandler = err => {
@@ -34,22 +39,42 @@ class Videos extends Component {
     setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
-  async componentDidMount() {
-    try {
-      const videos = await VideoService.getVideos();
-      this.setState({ videos, isLoading: false })
-    } catch(err) {
-      this.setState({ isLoading: false }, this.props.appContext.setAppError(err.message))
+  componentDidMount() {
+    this.grabVideos();
+  }
+
+  grabVideos = async () => {
+    try{
+      const videos = await VideoService.getVideos(this.state.currentPage++);
+    
+      this.setState({ videos: [...this.state.videos, ...videos.data],
+       isLoading: false, 
+       lastPage: videos.last_page
+      });
+
+      if (this.state.currentPage === this.state.lastPage + 1 ){
+        this.setState({
+          hasMoreVideosForScroll: false,
+        })
+      }
+    
+    } catch (e){
+      console.log(e);
     }
   }
 
   async updateSelectedVideo(id, updates) {
     try{
       await VideoService.patchVideo(id, updates)
-      const videos = await VideoService.getVideos();
-      this.setState({ videos })
+      this.setState({
+        currentPage: 1,
+        lastPage: null,
+        hasMoreVideosForScroll: true,
+        videos:[]
+      })
+      this.grabVideos();
     } catch(e){ 
-      this.errorHandler(e)
+      console.log(e)
     }
   } 
 
@@ -166,6 +191,7 @@ class Videos extends Component {
 
   render() {
     return (
+      
       <section className='videos-page'>
         <Loader isLoading={this.state.isLoading} />
         <FAB onClick={this.openModal}/>
@@ -176,9 +202,23 @@ class Videos extends Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
         />
-        <div className='my-videos-container'>
-          {this.state.videos.length ? this.renderVideos() : <p className="no-videos-text">You currently have 0 videos</p>}
-        </div>
+          {this.state.videos.length ? 
+          
+          <InfiniteScroll
+          dataLength={this.state.videos.length} //This is important field to render the next data
+          next={this.grabVideos}
+          hasMore={this.state.hasMoreVideosForScroll}
+          loader={<h4>Grabbing Videos...</h4>}
+          endMessage={
+            <p style={{textAlign: 'center'}}>
+              <b>No more videos</b>
+            </p>
+          }>
+            <div className='my-videos-container'>{this.renderVideos()} </div>
+          </InfiniteScroll> 
+            
+            : <p className="no-videos-text">You currently have 0 videos</p>}
+
       </section>
     );
   }

@@ -2,8 +2,8 @@ import config from '../config';
 import TokenService from './token-service'
 
 export default {
-  async getVideos(){
-    const userVideos = await fetch(`${config.API_ENDPOINT}/videos`, {
+  async getVideos(page){
+    const userVideos = await fetch(`${config.API_ENDPOINT}/videos?page=${page}`, {
       headers:{
         "Authorization": `Bearer ${TokenService.getAuthToken()}`
       }
