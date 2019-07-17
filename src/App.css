@@ -2,7 +2,9 @@
     animation-name: test;
     animation-duration: .5s;
 }
-
+::-webkit-scrollbar { 
+    display: none; 
+}
 @keyframes test {
     0% {
         opacity: 0;

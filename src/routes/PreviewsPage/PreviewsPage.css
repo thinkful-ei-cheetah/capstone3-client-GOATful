@@ -4,6 +4,8 @@
 
 .previews-display-section {
   padding: 2em;
+  padding-top:0;
+  padding-bottom:0;
   margin: auto;
 }
 

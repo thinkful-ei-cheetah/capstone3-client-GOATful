@@ -85,10 +85,12 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
+    // console.log(e.target.id)
     e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
+    console.log(selected)
     this.setState({
       selectedPrev: selected
     })
@@ -124,6 +126,10 @@ class Previews extends Component {
     })
   }
 
+  handleTouchStart = () => {
+    document.body.style.overflow = 'auto';
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -135,7 +141,7 @@ class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
-        <div className="previews-display-section">
+        <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
         {(this.state.isAdd)? <Redirect to='/creator' />: false}

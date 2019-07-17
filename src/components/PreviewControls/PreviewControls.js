@@ -5,7 +5,10 @@ import './PreviewControls.css'
 export default function PreviewControls({ prevList, selected, previewClick , editClick, delClick}) {
   let renderPreviews = () => {
     return prevList.map(preview => {
-      if (preview.id !== selected.id) {
+      console.log(preview.id)
+      console.log(selected.id)
+      if (preview.id !== selected.id) { 
+      
         return (
           <PreviewItem
             key={preview.id}
@@ -14,6 +17,7 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
           />
         )
       } else {
+      console.log("i am elsed")
         return (
           <PreviewItem
             key={preview.id}
@@ -26,15 +30,33 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
     })
   }
 
+  let horizontalScroll = (e) => {
+    const left = document.getElementById('hScroll')
+    left.scrollLeft += e.deltaY
+    
+    }
+
+  let handleMouseIn = (e) => {
+    document.body.style.overflow = 'hidden';
+  }
+
+  let handleMouseOut = (e) => {
+    document.body.style.overflow = 'auto';
+  }
+
   return (
     <div className="preview-controls-container">
-      <h2 className="preview-title">Created Previews</h2>
-      <ul className="preview-tiles">
+      <h2 className="preview-title">Previews</h2>
+      <div 
+      className="preview-tiles" 
+      id="hScroll" 
+      onWheel={(e) => horizontalScroll(e)}
+      onMouseEnter={(e)=> handleMouseIn(e)}
+      onMouseLeave={(e)=> handleMouseOut(e)}
+      >
+        
         {(!selected) ? false : renderPreviews()}
-      </ul>
-      {/* <Link to='/creator' className="add-new">
-      </Link> */}
-    </div>
+      </div>
   )
 }
 
