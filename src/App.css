@@ -2,8 +2,8 @@
     animation-name: test;
     animation-duration: .5s;
 }
-body{
-    pointer-events:none;
+::-webkit-scrollbar { 
+    display: none; 
 }
 @keyframes test {
     0% {

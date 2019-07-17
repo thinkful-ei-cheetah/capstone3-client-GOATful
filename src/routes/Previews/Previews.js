@@ -117,6 +117,10 @@ class Previews extends Component {
     })
   }
 
+  handleTouchStart = () => {
+    document.body.style.overflow = 'auto';
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -128,7 +132,7 @@ class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
-        <div className="previews-display-section" >
+        <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
         {(this.state.isAdd)? <Redirect to='/creator' />: false}
