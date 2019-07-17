@@ -7,6 +7,12 @@ body {
   padding: 0;
   font-family: 'Raleway', sans-serif;
   -moz-osx-font-smoothing: grayscale;
+  background-color: hsl(0, 0%, 98%);
+}
+
+main {
+  background-color: hsl(0, 0%, 98%);
+  height: 100%;
 }
 
 a {

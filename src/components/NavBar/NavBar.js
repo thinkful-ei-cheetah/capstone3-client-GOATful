@@ -47,6 +47,7 @@ class NavBar extends Component {
               <h2 className='app-title'>Laconic</h2>
             </Link>
         </div>
+     
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()
           : this.renderLoginLink()}

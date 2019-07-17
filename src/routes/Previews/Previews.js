@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import {  Redirect } from 'react-router-dom'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
-import MockYoutubeData from '../../Utils/mock-youtube-date'
 import PreviewsApi from '../../services/previews-api'
 import './Previews.css'
 import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
 import FAB from '../../components/FAB/FAB'
+import YoutubeApiService from '../../services/youtube-api'
+import mockYoutubeData from '../../Utils/mock-youtube-date'
+import VideoApi from '../../services/video-api'
 
 class Previews extends Component {
   constructor(props) {
@@ -42,18 +44,27 @@ class Previews extends Component {
       const prevObj = await PreviewsApi.getPreviews(this.vidId)
       VideoStorage.saveKey('laconic_current_video', prevObj.video);
       let selected = this.findSelect(prevObj)
-      // const results = await YoutubeApi.search(prevObj.video.tags)
-      const results = MockYoutubeData
-  
+
+      let youtubeSearchResults;
+      try {
+        youtubeSearchResults = await VideoApi.getYoutubeSearchResults(this.vidId)
+        if (!youtubeSearchResults.length) {
+          youtubeSearchResults = await YoutubeApiService.search(prevObj.video.tags)
+          await VideoApi.postYoutubeSearchResults(this.vidId, youtubeSearchResults)
+        }
+      } catch(err) {
+        youtubeSearchResults = mockYoutubeData
+      }
+
       this.setState({
         video: prevObj.video,
         vidPreviews: [...prevObj.previews],
         selectedPrev: selected,
-        youtubeSearchResults: [...results],
+        youtubeSearchResults: youtubeSearchResults,
         isLoading: false
       })
     } catch(err) {
-      this.setState({isLoading: false}, this.props.withAppContext.setAppError(`An error occurred while trying to load your video previews, the server responded with: ${err.message}`))
+      this.setState({isLoading: false}, this.props.appContext.setAppError(`An error occurred while trying to load your video previews, the server responded with: ${err.message}`))
     }
   }
 
