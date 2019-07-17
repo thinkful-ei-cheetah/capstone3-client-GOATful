@@ -16,15 +16,25 @@ const modalStyles = {
     transform             : 'translate(-50%, -50%)'
   }
 };
-Modal.setAppElement('#root')
+
+// Fix for React Modal testing
+if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export default class DeleteVideoModal extends Component {
+  static defaultProps = {
+    video: {},
+    isOpen: false,
+    onRequestClose: () => {},
+    handleDelete: () => {}
+  }
+  
   renderPreviewCount = (video) => {
     if (video.preview_count > 0) {
       return video.preview_count === 1 ? `1 preview will also be deleted.` : `${video.preview_count} previews will also be deleted.`
     }
     return ''
   }
+
   render() {
     const {video} = this.props
     return (

@@ -1,17 +1,16 @@
 import React, { Component } from 'react'
-import AddVideos from '../components/AddVideo/AddVideo';
-import VideoStorage from '../services/video-storage';
-import {errorCheckNewVideo, tagStringToArray, checkTime} from '../Utils/Utils'
+import AddVideoForm from '../../components/AddVideoForm/AddVideoForm';
+import VideoStorage from '../../services/video-storage';
+import {errorCheckNewVideo, tagStringToArray, checkTime} from '../../Utils/Utils'
 
 export default class AddVid extends Component {
-  state={
+  state = {
     title: "",
     tags: '',
     video_length: "",
     youtube_display_name: "",
     addError: null,
   }
-
 
   cssRouteClasses = {
     form: 'add-video-form-route',
@@ -61,7 +60,7 @@ export default class AddVid extends Component {
     return (
       <section className="add-video-container page">
         <h2 className= "provide-info-text">Please provide information on your video below</h2>
-        <AddVideos 
+        <AddVideoForm 
           cssRouteProps = {this.cssRouteClasses}
           fields={this.state} 
           handleFields={this.handleFields}

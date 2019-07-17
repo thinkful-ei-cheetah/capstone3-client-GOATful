@@ -3,7 +3,7 @@ import {  Redirect } from 'react-router-dom'
 import VideoStorage from '../../services/video-storage'
 import PreviewControls from '../../components/PreviewControls/PreviewControls'
 import PreviewsApi from '../../services/previews-api'
-import './Previews.css'
+import './PreviewsPage.css'
 import { withAppContext } from '../../contexts/AppContext';
 import CreatorPreview from '../../components/CreatorPreview/CreatorPreview'
 import FAB from '../../components/FAB/FAB'
@@ -12,6 +12,13 @@ import mockYoutubeData from '../../Utils/mock-youtube-date'
 import VideoApi from '../../services/video-api'
 
 class Previews extends Component {
+  static defaultProps = {
+    match: {
+      params: {
+        video_id: 0
+      }
+    }
+  }
   constructor(props) {
     super(props)
     this.state = {
@@ -78,10 +85,12 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
+    // console.log(e.target.id)
     e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
+    console.log(selected)
     this.setState({
       selectedPrev: selected
     })
@@ -117,6 +126,10 @@ class Previews extends Component {
     })
   }
 
+  handleTouchStart = () => {
+    document.body.style.overflow = 'auto';
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -128,7 +141,7 @@ class Previews extends Component {
           editClick={this.editClick}
           delClick={this.delClick}
         />
-        <div className="previews-display-section">
+        <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
         </div>
         {(this.state.isAdd)? <Redirect to='/creator' />: false}

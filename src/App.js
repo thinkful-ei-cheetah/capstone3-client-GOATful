@@ -3,16 +3,16 @@ import { Route, Switch, Link } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 import NavBar from './components/NavBar/NavBar'
-import Landing from './routes/Landing'
-import Team from './routes/MeetTeam'
-import AddVid from './routes/AddVideo'
-import Creator from './routes/Creator'
-import Login from './routes/Login'
-import Previews from './routes/Previews/Previews'
-import Videos from './routes/Videos'
-import NotFound from './routes/NotFound'
+import LandingPage from './routes/LandingPage/LandingPage'
+import TeamPage from './routes/MeetTeamPage/MeetTeamPage'
+import AddVidPage from './routes/AddVideoPage/AddVideoPage'
+import CreatorPage from './routes/CreatorPage/CreatorPage'
+import LoginPage from './routes/LoginPage/LoginPage'
+import PreviewsPage from './routes/PreviewsPage/PreviewsPage'
+import VideosPage from './routes/VideosPage/VideosPage'
+import NotFoundPage from './routes/NotFoundPage/NotFoundPage'
 import './App.css';
-import { withAppContext } from './contexts/AppContext';
+import { withAppContext } from './contexts/AppContext'
 import ErrorBar from './components/ErrorBar/ErrorBar'
 import Loader from '../src/components/Loader/Loader'
 
@@ -31,47 +31,6 @@ class App extends Component {
   }
 
   render() {
-    const landPage = (props) => {
-      return (
-        <Landing {...props} />
-      )
-    }
-
-    const loginPage = (props) => {
-      return (
-        <Login {...props} />
-      )
-    }
-    const meetTeam = () => {
-      return (
-        <Team />
-      )
-    }
-
-    const creatorPage = (props) => {
-      return (
-        <Creator {...props} />
-      )
-    }
-
-    const addVidPage = (props) => {
-      return (
-        <AddVid {...props} />
-      )
-    }
-
-    const PreviewsPage = (props) => {
-      return(
-        <Previews className='page' {...props}/>
-      )
-    }
-
-    const videosPage = (props) => {
-      return(
-        <Videos className='page' {...props}/>
-      )
-    }
-
     return (
       <div className="App">
         <Loader />
@@ -81,28 +40,28 @@ class App extends Component {
         <main>
           <Switch>
             <PublicOnlyRoute
-              exact path={'/'} component={landPage}
+              exact path={'/'} component={LandingPage}
             />
             <Route
-              exact path={'/creator'} component={creatorPage}
+              exact path={'/creator'} component={CreatorPage}
             />
             <Route
-              exact path={'/Team'} component={meetTeam}
+              exact path={'/Team'} component={TeamPage}
             />
             <PublicOnlyRoute
-              exact path={'/add-video'} component={addVidPage}
+              exact path={'/add-video'} component={AddVidPage}
             />
             <PublicOnlyRoute
-              exact path={'/login'} component={loginPage}
+              exact path={'/login'} component={LoginPage}
             />
             <PrivateRoute
-              exact path={'/videos'} component={videosPage}
+              exact path={'/videos'} component={VideosPage}
             />
             <PrivateRoute
               exact path={'/videos/:video_id/previews'} component={PreviewsPage}
             />
             <Route
-              component={NotFound}
+              component={NotFoundPage}
             />
           </Switch>
           <footer className='footer'>

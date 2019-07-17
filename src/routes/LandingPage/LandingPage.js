@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './Landing.css'
+import './LandingPage.css'
 
 class Landing extends Component {
   pushToLogin = () =>{

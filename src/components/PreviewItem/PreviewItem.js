@@ -7,7 +7,7 @@ import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
   if (previewClick) {
     return (
-      <li
+      <div
         className="preview-tile" 
         key={preview.id}>
         <a
@@ -17,22 +17,23 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
           href='#preview'
         >
           <img
+            className="preview-tile-image"
             id={preview.id}
             src={preview.thumbnail_url}
             alt="preview thumbnail"
           />
         </a>
-      </li>
+      </div>
     )
   } else {
     return (
-      <li 
+      <div 
         className="preview-tile selection-card" 
         key={preview.id}>
           <img 
             src={preview.thumbnail_url} 
             alt="preview thumbnail"
-            className="preview-thumbnail" />
+            className="preview-thumbnail preview-tile-image" />
           <div className="preview-control-icons">
             <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
               <FontAwesomeIcon className="pencil-f-icon" icon={faPencilAlt} />
@@ -42,8 +43,17 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
           <button className="set-active-btn">
             Set Active
           </button>
-      </li>
+      </div>
     )
   }
+}
+
+PreviewItem.defaultProps = {
+  preview: {
+    id: 0,
+    thumbnail_url: ''
+  },
+  // previewClick: () => {},
+  editClick: () => {}
 }
 
