@@ -13,7 +13,7 @@ class Videos extends Component {
 
   state = {
     videos: [],
-    isLoading: true,
+    isLoading: false,
     modalIsOpen: false,
     //for infinite scroll
       currentPage: 1,
@@ -60,7 +60,7 @@ class Videos extends Component {
 
     if (resetScroll){
       this.setState({
-        isLoading: true,
+        // isLoading: true,
         currentPage : 1,
         lastPage: null,
         hasMoreVideosForScroll: true,
@@ -68,7 +68,7 @@ class Videos extends Component {
       })
     } else {
       this.setState({
-        isLoading: true
+        // isLoading: true
       })
     }
 
