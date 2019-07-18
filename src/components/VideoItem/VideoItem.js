@@ -86,7 +86,12 @@ class VideoItem extends Component {
           onRequestClose={this.closeDeleteModal}
         />
   
-        <input type="image" src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} alt={`Thumbnail of ${video.title}`} onClick={this.redirectToPreviewsOrCreator}/>
+        <input 
+          className="video-image-link"
+          type="image" 
+          src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} 
+          alt={`Thumbnail of ${video.title}`} 
+          onClick={this.redirectToPreviewsOrCreator}/>
         </div>
         <h2>{video.title}</h2>
         <p>{`Previews: ${video.preview_count}`}</p>

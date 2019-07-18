@@ -48,6 +48,10 @@
   text-align: center;
 }
 
+.lf-submit:hover {
+  background: #C4302B;
+}
+
 .lf-title {
   margin: 0;
   margin-bottom: 2em;
