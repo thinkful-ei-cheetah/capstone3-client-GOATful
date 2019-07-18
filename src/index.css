@@ -10,6 +10,11 @@ body {
   background-color: hsl(0, 0%, 98%);
 }
 
+#root {
+  position: relative;
+  min-height: 100vh;
+}
+
 main {
   background-color: hsl(0, 0%, 98%);
   height: 100%;
@@ -41,6 +46,11 @@ button {
   background-color: #C4302B;
   border-radius: 3px;
   font-family: Raleway;
+  transition-duration: .4s;
+}
+
+button:hover {
+  background: #333;
 }
 
 button:disabled {
@@ -70,4 +80,10 @@ span.close-modal-btn {
 
 span.close-modal-btn i{
   font-size: 10px;
+}
+
+@media (max-width: 400px) {
+  .ReactModal__Content {
+    min-width: 300px !important;
+  }
 }

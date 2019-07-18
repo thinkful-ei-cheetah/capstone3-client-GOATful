@@ -24,6 +24,7 @@ class Previews extends Component {
     this.state = {
       video: {},
       vidPreviews: [],
+      activePrev:{},
       selectedPrev: null,
       userPreview: {},
       youtubeSearchResults: [],
@@ -34,22 +35,34 @@ class Previews extends Component {
   }
 
   findSelect = (prevObj) => {
-    let select = null
-    let temp = prevObj.previews.find(preview => {
-      return preview.is_active === true
-    })
-    if (temp !== undefined) {
-      select = temp
+    let select = false
+    let active = this.findActive(prevObj)
+    if (active !== false) {
+      select = active
     } else {
       select = prevObj.previews[0]
     }
     return select
   }
 
+  findActive = (prevObj) => {
+    let active = false;
+    let temp = prevObj.previews.find(preview => {
+      return preview.is_active === true
+    })
+    if (temp !== undefined) {
+      active = temp
+    } else {
+      active = false
+    }
+    return active
+  }
+
   async componentDidMount() {
     try {
       const prevObj = await PreviewsApi.getPreviews(this.vidId)
       VideoStorage.saveKey('laconic_current_video', prevObj.video);
+      let activePreview = this.findActive(prevObj);
       let selected = this.findSelect(prevObj)
 
       let youtubeSearchResults;
@@ -62,10 +75,10 @@ class Previews extends Component {
       } catch(err) {
         youtubeSearchResults = mockYoutubeData
       }
-
       this.setState({
         video: prevObj.video,
         vidPreviews: [...prevObj.previews],
+        activePrev: activePreview,
         selectedPrev: selected,
         youtubeSearchResults: youtubeSearchResults,
         isLoading: false
@@ -85,12 +98,11 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
-    // console.log(e.target.id)
     e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
-    console.log(selected)
+    console.log(this.state.activePrev)
     this.setState({
       selectedPrev: selected
     })
@@ -130,6 +142,20 @@ class Previews extends Component {
     document.body.style.overflow = 'auto';
   }
 
+  handleSetActive = async () => {
+    let preview = {...this.state.selectedPrev};
+    preview.is_active = true;
+    let active = {...this.state.activePrev}
+    active.is_active=false;
+
+    // await PreviewsApi.patchPreview(this.vidId, preview)
+    // await PreviewsApi.patchPreview(this.vidId, preview)
+
+    this.setState({
+      activePrev: {...preview}
+    })
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -137,9 +163,11 @@ class Previews extends Component {
         <PreviewControls
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}
+          activePrev={this.state.activePrev}
           previewClick={this.previewClick}
           editClick={this.editClick}
           delClick={this.delClick}
+          setActive={this.handleSetActive}
         />
         <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}

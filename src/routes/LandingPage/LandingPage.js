@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import './LandingPage.css'
+// import './LandingPage.css'
 import CTR from '../../img/CTRwide.jpg'
 import AB from '../../img/ABwide.png'
 import YT from '../../img/youtubewide.jpg'
