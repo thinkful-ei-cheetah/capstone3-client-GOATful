@@ -1,7 +1,7 @@
 .Modal {
   z-index:100;
   position: absolute;
-  top:60px;
+  top:70px;
   left: 50%;
   transform: translate(-50%, 0);
   width: 100%;
@@ -25,7 +25,8 @@
     top:20%;
     left: 50%;
     width: 450px;
-    height: 70%
+    height: 70%;
+    border-radius: 5px;
   }
 
   .Modal form{
@@ -33,10 +34,10 @@
   }
 }
 
-@media screen and (min-height: 800px){
+@media screen and (min-height: 850px){
   .Modal{
 
-    height: 550px;
+    height: 500px;
   }
 
 }

@@ -113,6 +113,7 @@ export default class VideoModalForm extends Component {
           <h2 className="add-video-header">{this.renderFormTitle()}</h2>
           <span className='close-modal-btn' onClick={this.props.onRequestClose}>
             <FontAwesomeIcon 
+              size={'lg'}
               icon={faWindowClose}
             />
           </span>

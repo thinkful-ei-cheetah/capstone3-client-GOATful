@@ -116,6 +116,10 @@
     display: none;
   }
 
+  /* .directions{
+    display: none;
+  } */
+
   .flex-form{
     flex-direction: column;
   }
@@ -144,7 +148,9 @@
   }
 
   .inputs{
+
     margin: auto;
+    margin-top: 50px;
     border: none;
     width: 100%;
     margin-left: 0px;
@@ -158,15 +164,19 @@
   .inputs > input{
     padding-left: 20px;
     display: inline-block;
-    width: 70%;
+    width: 80%;
+    /* margin: auto; */
+    margin-left: 20px;
   }
 
   .inputs > label{
     text-align: left;
-    margin-left: 30px;
+    /* margin-left: 0px; */
+    padding-left: 20px;
   }
 
   .add-video-header{
     margin-bottom: 0px;
+    font-size: 1.3em;
   }
 }
