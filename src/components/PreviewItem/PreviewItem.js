@@ -34,15 +34,16 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
             src={preview.thumbnail_url} 
             alt="preview thumbnail"
             className="preview-thumbnail preview-tile-image" />
-          <div className="preview-control-icons">
-            <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
-              <FontAwesomeIcon className="pencil-f-icon" icon={faPencilAlt} />
-            </Link>
-            <FontAwesomeIcon className="f-icon delete-preview-btn" icon={faTrashAlt} />
-          </div>
+          <div className="selected-buttons">
           <button className="set-active-btn">
             Set Active
           </button>
+          <Link to="/creator?edit=true" className="edit-link preview-svg" onClick={editClick} >
+              <FontAwesomeIcon className="pencil-f-icon preview-svg" icon={faPencilAlt} />
+          </Link>
+          <FontAwesomeIcon className="f-icon delete-preview-btn preview-svg" icon={faTrashAlt} />
+          
+        </div>
       </div>
     )
   }
@@ -53,7 +54,6 @@ PreviewItem.defaultProps = {
     id: 0,
     thumbnail_url: ''
   },
-  // previewClick: () => {},
   editClick: () => {}
 }
 
