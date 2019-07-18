@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import './VideoItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
+import {faPencilAlt, faTrashAlt, faEye } from '@fortawesome/free-solid-svg-icons'
 import VideoStorage from '../../services/video-storage';
 import DeleteVideoModal from '../../components/DeleteVideoModal/DeleteVideoModal'
 import VideoModalForm from '../VideoModalForm/VideoModalForm'
+import CopyVideoModal from '../CopyVideoModal/CopyVideoModal'
 
 class VideoItem extends Component {
   static defaultProps = {
@@ -26,6 +27,7 @@ class VideoItem extends Component {
   state = {
     editModalIsOpen: false,
     deleteModalIsOpen: false,
+    copyModalIsOpen: false,
   }
 
   closeEditModal = () => {
@@ -42,6 +44,14 @@ class VideoItem extends Component {
 
   openDeleteModal = () => {
     this.setState({deleteModalIsOpen: true})
+  }
+
+  closeCopyModal = () => {
+    this.setState({copyModalIsOpen: false})
+  }
+
+  openCopyModal = () => {
+    this.setState({copyModalIsOpen: true})
   }
 
   handleDelete = () => {
@@ -64,34 +74,43 @@ class VideoItem extends Component {
     return (
       <div className='video-item'>
         <div className="image-section">
-        
-        <button className="edit-video-btn" onClick={this.openEditModal}>
-          <FontAwesomeIcon className="f-icon" icon={faPencilAlt} />
-        </button>
-        <button className="delete-video-btn" onClick={this.openDeleteModal}>
-          <FontAwesomeIcon className="f-icon" icon={faTrashAlt} />
-        </button>
-  
-        <VideoModalForm
-          video={video}
-          isOpen={this.state.editModalIsOpen}
-          onRequestClose={this.closeEditModal}
-          action='edit'
-          getVideoList={this.props.getVideoList}
-        />
-        <DeleteVideoModal
-          video={video}
-          handleDelete={this.handleDelete}
-          isOpen={this.state.deleteModalIsOpen}
-          onRequestClose={this.closeDeleteModal}
-        />
-  
-        <input 
-          className="video-image-link"
-          type="image" 
-          src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} 
-          alt={`Thumbnail of ${video.title}`} 
-          onClick={this.redirectToPreviewsOrCreator}/>
+          <div className='video-controls'>
+            <FontAwesomeIcon className="f-icon" icon={faTrashAlt} onClick={this.openDeleteModal} />
+            <FontAwesomeIcon className="f-icon" icon={faPencilAlt} onClick={this.openEditModal}/>
+            {video.preview_count > 0 ? 
+              <FontAwesomeIcon className="f-icon" icon={faEye} onClick={this.openCopyModal} />
+              : <></>
+            }
+            
+          </div>
+          <VideoModalForm
+            video={video}
+            isOpen={this.state.editModalIsOpen}
+            onRequestClose={this.closeEditModal}
+            action='edit'
+            getVideoList={this.props.getVideoList}
+          />
+          <DeleteVideoModal
+            video={video}
+            handleDelete={this.handleDelete}
+            isOpen={this.state.deleteModalIsOpen}
+            onRequestClose={this.closeDeleteModal}
+          />
+
+          {video.preview_count > 0 ?
+            <CopyVideoModal
+              video={video}
+              isOpen={this.state.copyModalIsOpen}
+              onRequestClose={this.closeCopyModal}
+            />
+            : <></>}
+    
+          <input 
+            className="video-image-link"
+            type="image" 
+            src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} 
+            alt={`Thumbnail of ${video.title}`} 
+            onClick={this.redirectToPreviewsOrCreator}/>
         </div>
         <h2>{video.title}</h2>
         <p>{`Previews: ${video.preview_count}`}</p>
