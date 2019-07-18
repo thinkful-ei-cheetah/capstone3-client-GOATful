@@ -1,20 +1,121 @@
-.landing-container {
-  display: flex;
-  flex-flow: column wrap;
-  align-items: center;
+
+.images{
+    box-sizing: border-box;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
 }
 
+.about, .click-through, .AB-testing {
+  display: flex;
+  flex-direction: row;
+
+}
+
+.CTRtext, .AboutText{
+    min-width: 680px;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* max-width: 680px; */
+    max-height: 720px;
+    padding: 0 20px;
+    margin: 0;
+    outline: 0;
+    vertical-align: baseline;
+    border: black solid .02px;
+} 
+.CTRtext{
+  max-height: 430px;
+}
+
+.CTRimage, .AboutImage{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    /* max-width: 680px;
+    max-height: 720px; */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+    background: transparent;
+}
+
+.ABimage{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+    flex-basis: 50%;
+    /* max-width: 999px;
+    max-height: 750px; */
+    align-self: stretch;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    background: transparent;
+    box-sizing: border-box;
+    position: relative;
+    display: block;
+}
+
+.ABtext{
+    /* min-width: 680px; */
+    /* max-width: 999px; */
+    max-height: 352px;
+    margin: auto;
+    padding: 0 20px;
+    margin: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    box-sizing: border-box;
+    position: relative;
+    border: black solid .02px;
+}
+
+
+
+.p{
+  font-size: 20px;
+  display: block;
+  margin: 1px;
+}
+
+h3{
+  font-size: 36px;
+}
+
+
+
+
+
 .hero {
-  background: url('../../img/sfr.jpg');
+  background: url('../../img/hero.jpg');
   background-size: cover;
-  background-position: center;
+  background-position: top;
   padding: 4rem 2rem;
   display: grid;
   height: 30vh;
+  width: 100%
 }
 
 .red {
-  color: rgb(13, 22, 43);
+  color: #C4302B;
   font-weight: 900;
   font-size: 28px;
 }
@@ -23,28 +124,12 @@
   color: white;
 }
 
-.click-through, .AB-testing, .about {
-  max-width: 850px;
-  margin: 1.5rem;
-  padding: 2rem;
-  border: 1px solid #E2E2E2;
-  border-radius: .5rem;
-}
-
-.click-through > figure, .AB-testing > figure, .about > figure {
-  margin: auto;
-  max-height: 400px;
-  max-width: 600px;
-  overflow: hidden;
-  position: relative;
-}
-
-.click-through > figure > img, .AB-testing > figure > img, .about > figure > img {
-  width: 100%;
-}
-
-.btn-container {
+@media screen and (max-width: 900px) {
+.landing-container, .about, .click-through, .AB-testing {
   display: flex;
-  justify-content: center;
-  padding-bottom: 1rem;
+  flex-flow: column wrap;
+  align-items: center;
+  /* justify-content: space-evenly; */
+ 
+}
 }

@@ -16,11 +16,11 @@
   padding: 4rem 2rem;
   display: grid;
   height: 30vh;
-  width: 100vw;
+  width: 100%;
 }
 
-.red {
-  color: rgb(13, 22, 43);
+.intro {
+  color: #C4302B;
   font-weight: 900;
   font-size: 28px;
 }
@@ -31,12 +31,13 @@
 
 
 .verdi, .peter, .elan, .david, .kp {
-  max-width: 650px;
+  max-width: 400px;
   margin: 1rem;
   padding: 2rem;
   border: 1px solid #E2E2E2;
   border-radius: .5rem;
-  max-height: 550px;
+  min-height: 450px;
+  width: auto;
 }
 
 .picSwap .goat{
@@ -54,8 +55,8 @@
 
 .verdi > figure, .peter > figure, .elan > figure, .kp > figure, .david > figure{
   margin: auto;
-  max-height: 400px;
-  max-width: 400px;
+  max-height: 200px;
+  max-width: 200px;
   overflow: hidden;
   position: relative;
 }
@@ -66,7 +67,7 @@
 }
 
 
-@media screen and (max-width: 420px) {
+/* @media screen and (max-width: 420px) {
 
 .verdi, .peter, .elan, .david, .kp{
   width: 250px;
@@ -86,4 +87,4 @@
   max-height: 250px;
 }
 
-}
+} */
