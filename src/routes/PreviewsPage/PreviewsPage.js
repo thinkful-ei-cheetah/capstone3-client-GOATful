@@ -31,7 +31,7 @@ class Previews extends Component {
       isLoading: true,
       isAdd:false,
     }
-    this.vidId = this.props.match.params.video_id;
+    this.vidId = Number(this.props.match.params.video_id);
   }
 
   findSelect = (prevObj) => {
@@ -145,11 +145,8 @@ class Previews extends Component {
   handleSetActive = async () => {
     let preview = {...this.state.selectedPrev};
     preview.is_active = true;
-    let active = {...this.state.activePrev}
-    active.is_active=false;
-
-    // await PreviewsApi.patchPreview(this.vidId, preview)
-    // await PreviewsApi.patchPreview(this.vidId, preview)
+    preview.changeActive = true;
+    await PreviewsApi.patchPreview(this.vidId, preview)
 
     this.setState({
       activePrev: {...preview}
