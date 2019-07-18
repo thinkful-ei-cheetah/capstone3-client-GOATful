@@ -45,3 +45,7 @@ button.fab:active:after {
   opacity: 1;
   transition: 0s
 }
+
+.videos-page > .fab {
+  bottom: 80px;
+}
