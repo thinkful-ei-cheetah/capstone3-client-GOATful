@@ -7,6 +7,7 @@
   border-right: 1px solid grey;
   margin: 0;
   overflow:scroll;
+  z-index:13;
 }
 
 .preview-tiles {
