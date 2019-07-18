@@ -1,5 +1,5 @@
-/* 
-figure {
+
+.images{
     box-sizing: border-box;
     position: relative;
     margin: 0;
@@ -11,7 +11,7 @@ figure {
     background: transparent;
 }
 
-section{
+.about, .click-through, .AB-testing {
   display: flex;
   flex-direction: row;
 
@@ -41,8 +41,8 @@ section{
     border: 0;
     outline: 0;
     font-size: 100%;
-    max-width: 680px;
-    max-height: 720px;
+    /* max-width: 680px;
+    max-height: 720px; */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 50%;
@@ -57,8 +57,8 @@ section{
     background-size: cover;
     background-position: 50%;
     flex-basis: 50%;
-    max-width: 999px;
-    max-height: 750px;
+    /* max-width: 999px;
+    max-height: 750px; */
     align-self: stretch;
     margin: 0;
     padding: 0;
@@ -72,7 +72,7 @@ section{
 }
 
 .ABtext{
-    min-width: 680px;
+    /* min-width: 680px; */
     /* max-width: 999px; */
     max-height: 352px;
     margin: auto;
@@ -90,9 +90,10 @@ section{
 
 
 
-p{
+.p{
   font-size: 20px;
   display: block;
+  margin: 1px;
 }
 
 h3{
@@ -114,7 +115,7 @@ h3{
 }
 
 .red {
-  color: rgb(13, 22, 43);
+  color: #C4302B;
   font-weight: 900;
   font-size: 28px;
 }
@@ -124,11 +125,11 @@ h3{
 }
 
 @media screen and (max-width: 900px) {
-.landing-container, section {
+.landing-container, .about, .click-through, .AB-testing {
   display: flex;
   flex-flow: column wrap;
   align-items: center;
   /* justify-content: space-evenly; */
  
 }
-} */
+}
