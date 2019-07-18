@@ -5,8 +5,6 @@ import './PreviewControls.css'
 export default function PreviewControls({ prevList, selected, previewClick , editClick, delClick}) {
   let renderPreviews = () => {
     return prevList.map(preview => {
-      console.log(preview.id)
-      console.log(selected.id)
       if (preview.id !== selected.id) { 
       
         return (
@@ -17,7 +15,6 @@ export default function PreviewControls({ prevList, selected, previewClick , edi
           />
         )
       } else {
-      console.log("i am elsed")
         return (
           <PreviewItem
             key={preview.id}
