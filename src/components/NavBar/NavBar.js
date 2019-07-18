@@ -50,7 +50,6 @@ class NavBar extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <header>
         <div className="title-container">
