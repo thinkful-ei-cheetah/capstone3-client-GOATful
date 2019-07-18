@@ -4,7 +4,7 @@ import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
+export default function PreviewItem({ setActive, preview, previewClick, editClick, delClick  }) {
   if (previewClick) {
     return (
       <div
@@ -35,13 +35,13 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
             alt="preview thumbnail"
             className="preview-thumbnail preview-tile-image" />
           <div className="selected-buttons">
-          <button className="set-active-btn">
+          <button className="set-active-btn" onClick={setActive}>
             Set Active
           </button>
           <Link to="/creator?edit=true" className="edit-link preview-svg" onClick={editClick} >
               <FontAwesomeIcon className="pencil-f-icon preview-svg" icon={faPencilAlt} />
           </Link>
-          <FontAwesomeIcon className="f-icon delete-preview-btn preview-svg" icon={faTrashAlt} />
+          <FontAwesomeIcon className="f-icon delete-preview-btn preview-svg" icon={faTrashAlt} onClick={delClick}/>
           
         </div>
       </div>

@@ -81,27 +81,26 @@
 
   }
   .preview-tile > img {
-   
-    width: 76vw;
-    height: 42.75vw;
+    width: 46vw;
+    height: 25.875vw;
+    /* width: 76vw;
+    height: 42.75vw; */
   }
 
   .preview-tile {
     display:inline-block;
-    width:60vw;
+    width:46vw;
   }
 
   .preview-tile > a > img {
-    width: 58vw;
-    height: 32.625vw;
-    margin-bottom:9vw;
+    width: 42vw;
+    height: 23.625vw;
+    margin-bottom:3vw;
   }
 
   .selection-card {
-    width:76vw;
-    margin: 1em;
-    margin-bottom: 1em;
-    margin-top: 0;
+    width:46vw;
+    margin-right: 4vw;
     box-shadow:
       0 0 0 2px hsl(0, 0%, 80%),
       0 0 0 4px hsl(0, 0%, 90%);

@@ -130,6 +130,10 @@ class Previews extends Component {
     document.body.style.overflow = 'auto';
   }
 
+  handleSetActive = () => {
+    console.log('I was clicked')
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -140,6 +144,7 @@ class Previews extends Component {
           previewClick={this.previewClick}
           editClick={this.editClick}
           delClick={this.delClick}
+          setActive={this.handleSetActive}
         />
         <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}
