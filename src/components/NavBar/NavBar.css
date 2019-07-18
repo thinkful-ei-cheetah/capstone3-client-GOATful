@@ -39,6 +39,9 @@ nav {
 nav div a,
 nav div a:after,
 nav div a:before,
+nav a,
+nav a:after,
+nav a:before,
 footer div a,
 footer div a:after,
 footer div a:before {
@@ -46,8 +49,10 @@ footer div a:before {
 }
 
 nav div a:hover,
+nav a:hover,
 footer div a:hover {
   color: rgb(255, 255, 255);
+  font-size: 18px;
 }
 
 nav a {
@@ -85,11 +90,14 @@ nav a {
 }
 
 nav.stroke div a,
-footer div a {
+nav.stroke a,
+footer div a,
+footer a {
   position: relative;
 }
 
 nav.stroke div a:after,
+nav.stroke a:after,
 footer div a:after {
   position: absolute;
   bottom: 0;
@@ -104,6 +112,7 @@ footer div a:after {
   margin-top: .5em;
 }
 nav.stroke div a:hover:after,
+nav.stroke a:hover:after,
 footer div a:hover:after {
   width: 100%;
 }
