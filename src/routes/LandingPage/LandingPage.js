@@ -3,51 +3,53 @@ import './LandingPage.css'
 import { Link } from 'react-router-dom'
 
 class Landing extends Component {
-  pushToLogin = () =>{
+  pushToLogin = () => {
     this.props.history.push('/login')
   }
   render() {
     return (
       <>
-      <section className='hero page'>
-        <h1>
-        Let your thumbnail do the talking.
-        </h1> 
-        <div>
-          <h2 className='red'>
-            With Laconic
+        <section className='hero page'>
+          <h1>
+            Let your thumbnail do the talking.
+        </h1>
+          <div>
+            <h2 className='red'>
+              With Laconic
           </h2>
-        </div>
+          </div>
         </section>
         <div className='landing-container'>
           <section className='click-through'>
             <figure>
-              <img src="https://www.lyfemarketing.com/blog/wp-content/uploads/2018/06/what-is-CTR.jpg" alt="Click through rate" />
+              <img className="CTRimage"  src="https://www.lyfemarketing.com/blog/wp-content/uploads/2018/06/what-is-CTR.jpg" alt="Click through rate" />
             </figure>
+            <div className="CTRtext">
             <h3>
-            So What Is Click-Through Rate, Anyway?
+              So What Is Click-Through Rate, Anyway?
             </h3>
             <p>
-            is the rate at which your videos are clicked. This number is the percentage of people who view your video (impressions) and then actually go on to click the video (clicks). The formula for CTR looks like this:
+              is the rate at which your videos are clicked. This number is the percentage of people who view your video (impressions) and then actually go on to click the video (clicks). The formula for CTR looks like this:
             </p>
             <h4>
-            (Total Clicks on Video) / (Total Impressions) = Click Through Rate
+              (Total Clicks on Video) / (Total Impressions) = Click Through Rate
             </h4>
             <p>
-            Generally, you can view your click-thru rate within the dashboard of your YouTube account. A high CTR means that a high percentage of people who see your video click it.
+              Generally, you can view your click-thru rate within the dashboard of your YouTube account. A high CTR means that a high percentage of people who see your video click it.
             </p>
+            </div>
           </section>
 
           <section className='AB-testing'>
-          <figure>
+            <figure>
               <img src="https://mzdpd1mg35f29101q1lbu25g-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/AB-guide-small.png" alt="A/B Testing" />
             </figure>
             <h3>
-            WHAT IS A/B TESTING
+              WHAT IS A/B TESTING
             </h3>
             <p>
-            An “A/B Test” is a test where 2 variants of something (anything) is tested for equal amounts of time, to see which version performs the best.
-            In this case, what is being tested and compared is 2 versions of a thumbnail, of your own choosing. By uploading 2 thumbnails into the system, they are changed each day automatically on your channel (for a chosen period), and by the end of the test we automatically gather the data from your YouTube Analytics and see which of the thumbnails resulted in the most views.
+              An “A/B Test” is a test where 2 variants of something (anything) is tested for equal amounts of time, to see which version performs the best.
+              In this case, what is being tested and compared is 2 versions of a thumbnail, of your own choosing. By uploading 2 thumbnails into the system, they are changed each day automatically on your channel (for a chosen period), and by the end of the test we automatically gather the data from your YouTube Analytics and see which of the thumbnails resulted in the most views.
             </p>
           </section>
 
@@ -65,7 +67,7 @@ class Landing extends Component {
             </p>
           </section>
           <div className="btn-container">
-            <button  onClick={this.pushToLogin} className='create-laconic'>
+            <button onClick={this.pushToLogin} className='create-laconic'>
               Create with Laconic
             </button>
 
@@ -80,7 +82,7 @@ class Landing extends Component {
             </div>
             <span>Copyright GOATful 2019 </span>
           </footer>
-      </div>
+        </div>
       </>
     );
   }
