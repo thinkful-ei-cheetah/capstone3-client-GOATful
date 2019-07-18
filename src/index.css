@@ -81,3 +81,9 @@ span.close-modal-btn {
 span.close-modal-btn i{
   font-size: 10px;
 }
+
+@media (max-width: 400px) {
+  .ReactModal__Content {
+    min-width: 300px !important;
+  }
+}

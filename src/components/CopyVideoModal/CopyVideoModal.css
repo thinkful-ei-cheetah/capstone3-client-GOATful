@@ -1,0 +1,19 @@
+.copy-video-modal .field-group {
+  margin-bottom: 15px;
+}
+
+.copy-video-modal .copy-wrapper {
+  background: lightgray;
+  padding: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.copy-video-modal h3 {
+  margin: 0;
+}
+
+.copy-video-modal .f-icon {
+  cursor: pointer;
+}
