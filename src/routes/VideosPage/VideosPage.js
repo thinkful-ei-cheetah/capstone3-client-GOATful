@@ -7,12 +7,13 @@ import VideoService from '../../services/video-api';
 import FAB from '../../components/FAB/FAB'
 import { withAppContext } from '../../contexts/AppContext'
 import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteLoader from '../../components/InfiniteLoader/InfiniteLoader'
 
 class Videos extends Component {
 
   state = {
     videos: [],
-    isLoading: true,
+    isLoading: false,
     modalIsOpen: false,
     //for infinite scroll
       currentPage: 1,
@@ -59,7 +60,7 @@ class Videos extends Component {
 
     if (resetScroll){
       this.setState({
-        isLoading: true,
+        // isLoading: true,
         currentPage : 1,
         lastPage: null,
         hasMoreVideosForScroll: true,
@@ -67,7 +68,7 @@ class Videos extends Component {
       })
     } else {
       this.setState({
-        isLoading: true
+        // isLoading: true
       })
     }
 
@@ -96,12 +97,7 @@ class Videos extends Component {
             dataLength={this.state.videos.length} //This is important field to render the next data
             next={this.getVideoList}
             hasMore={this.state.hasMoreVideosForScroll}
-            loader={<h4>Grabbing Videos...</h4>}
-            endMessage={
-              <p style={{textAlign: 'center'}}>
-                <b>No more videos</b>
-              </p>
-            }
+            loader={<InfiniteLoader style={{textAlign: 'center'}}/>}
           >
             <div className='my-videos-container'>
               <h2 id='page-title'>Your Video Dashboard</h2>
