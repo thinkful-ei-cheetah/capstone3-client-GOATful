@@ -92,12 +92,6 @@ class Videos extends Component {
     if (this.state.videos.length){
       return (
         <div>
-          <div className='filter-container'>
-            <form id='filter-videos'>
-              <label htmlFor='title'>Filter by title</label>
-              <input type='text' name='title' id='title'/>
-            </form>
-          </div>
           <InfiniteScroll
             dataLength={this.state.videos.length} //This is important field to render the next data
             next={this.getVideoList}
@@ -109,7 +103,10 @@ class Videos extends Component {
               </p>
             }
           >
-            <div className='my-videos-container'>{this.renderVideos()} </div>
+            <div className='my-videos-container'>
+              <h2 id='page-title'>Your Video Dashboard</h2>
+              {this.renderVideos()}
+            </div>
           </InfiniteScroll>
         </div>
       )
@@ -127,7 +124,6 @@ class Videos extends Component {
           onRequestClose={this.closeModal}
           action='new'
         />
-        <h2>Your Video Dashboard</h2>
         {this.displayVideos()}
       </section>
     );
