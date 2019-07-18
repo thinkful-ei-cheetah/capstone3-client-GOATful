@@ -29,7 +29,7 @@ export default function PreviewItem({ activePrev, setActive, preview, previewCli
     let activeButton = <button className="set-active-btn" onClick={setActive}>Set Active</button>
     if(activePrev){
       if(activePrev.id === preview.id){
-        activeButton = <button className="active-indicator" onClick={setActive}>Active</button>;
+        activeButton = <button className="active-indicator" >Active</button>;
       }
     }
     return (
