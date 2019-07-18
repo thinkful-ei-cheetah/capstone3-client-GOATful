@@ -63,7 +63,16 @@ class Previews extends Component {
       const prevObj = await PreviewsApi.getPreviews(this.vidId)
       VideoStorage.saveKey('laconic_current_video', prevObj.video);
       let activePreview = this.findActive(prevObj);
-      let selected = this.findSelect(prevObj)
+      let selected = this.findSelect(prevObj);
+      let previews = [...prevObj.previews]
+      if(activePreview){
+        let activeIndex = previews.findIndex((prev) => {
+          return prev.is_active;
+        })
+        let activePreview = previews[activeIndex]
+        previews[activeIndex] = previews[0]
+        previews[0] = activePreview
+      }
 
       let youtubeSearchResults;
       try {
@@ -77,7 +86,7 @@ class Previews extends Component {
       }
       this.setState({
         video: prevObj.video,
-        vidPreviews: [...prevObj.previews],
+        vidPreviews: previews,
         activePrev: activePreview,
         selectedPrev: selected,
         youtubeSearchResults: youtubeSearchResults,
