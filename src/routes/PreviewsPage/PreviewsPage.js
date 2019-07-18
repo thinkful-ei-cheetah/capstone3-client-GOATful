@@ -102,7 +102,7 @@ class Previews extends Component {
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
-    console.log(this.state.activePrev)
+    
     this.setState({
       selectedPrev: selected
     })
