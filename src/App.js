@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Route, Switch } from 'react-router-dom'
+import React, { Component } from 'react';
+import { Route, Switch, Link } from 'react-router-dom'
 import PrivateRoute from './protected/PrivateRoute'
 import PublicOnlyRoute from './protected/PublicOnlyRoute'
 import NavBar from './components/NavBar/NavBar'
@@ -64,6 +64,16 @@ class App extends Component {
               component={NotFoundPage}
             />
           </Switch>
+          <footer className='footer'>
+            <span>Laconic: Better Thumbnails</span>
+            <div>
+              <Link
+                to='/team'>
+                Meet The Team
+              </Link>
+            </div>
+            <span>Copyright GOATful 2019 </span>
+          </footer>
         </main>
       </div>
     )

@@ -14,16 +14,21 @@ class NavBar extends Component {
 
   renderLogoutLink() {
     return (
-      <div>
+      <div className='navControls'>
         <span>
           {this.context.user.name}
         </span>
         <nav>
+          <div className='navLinks'>
+          <Link className="videosLink" to='/videos'>
+           My Videos
+          </Link>
           <Link
             onClick={this.handleLogoutClick}
             to='/'>
             Logout
           </Link>
+          </div>
         </nav>
       </div>
     )
@@ -46,6 +51,7 @@ class NavBar extends Component {
               <Logo className="logo" />
               <h2 className='app-title'>Laconic</h2>
             </Link>
+         
         </div>
      
         {TokenService.hasAuthToken()
