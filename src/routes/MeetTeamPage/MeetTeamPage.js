@@ -3,7 +3,7 @@ import './MeetTeamPage.css'
 import David from '../../img/david.jpeg'
 import Kp from '../../img/KP.jpg'
 import Elan from '../../img/elan.jpg'
-import Verdi from '../../img/verdi.jpeg'
+import Verdi from '../../img/verdi.JPG'
 import Peter from '../../img/peter.png'
 import goat1 from '../../img/goat1.jpg'
 import goat2 from '../../img/goat2.jpg'
@@ -17,10 +17,10 @@ class Team extends Component {
   }
 
   render() {
-
+    window.scrollTo(0, 0);
     return (
       <>
-        <section className='hero'>
+        <section className='Teamhero'>
           <h1>
             Let your thumbnail do the talking.
         </h1>
@@ -30,7 +30,7 @@ class Team extends Component {
           </h2>
           </div>
         </section>
-        <div className='landing-container'>
+        <div className='team-container'>
           <section className='david'>
             <figure className='picSwap'>
               <img src={David} alt="David K. Nordeen" />
@@ -71,14 +71,14 @@ class Team extends Component {
           </section>
           <section className='verdi'>
             <figure className='picSwap'>
-              <img src={goat1} alt="Michael Verdi" />
+              <img src={Verdi} alt="Michael Verdi" />
               <img className='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
               Michael Verdi
             </h3>
             <p>
-              Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies. Outside of programming, my passions include fitness and being sexy as hell.
+              Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies.
             </p>
           </section>
           <section className='peter'>

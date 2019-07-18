@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import './LandingPage.css'
-import { Link } from 'react-router-dom'
 
 class Landing extends Component {
   pushToLogin = () => {
@@ -72,17 +71,7 @@ class Landing extends Component {
             </button>
 
           </div>
-          <footer>
-            <span>Laconic: Better Thumbnails</span>
-            <div>
-              <Link
-                to='/team'>
-                Meet The Team
-          </Link>
-            </div>
-            <span>Copyright GOATful 2019 </span>
-          </footer>
-        </div>
+      </div>
       </>
     );
   }
