@@ -6,8 +6,9 @@
   transform: translate(-50%, 0);
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.7);
+  background: linear-gradient( 135deg, rgba(36, 46, 77, .9), rgba(137, 126, 121, 1) );
   color: white;
+  outline: none;
 }
 
 .Modal label{
@@ -17,8 +18,9 @@
 .Modal form{
   border: none;
   background: none;
-
+  outline: none;
 }
+
 
 @media screen and (min-width: 500px){
   .Modal{

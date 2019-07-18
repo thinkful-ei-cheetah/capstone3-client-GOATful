@@ -1,5 +1,6 @@
 .copy-video-modal .field-group {
   margin-bottom: 15px;
+  color: black
 }
 
 .copy-video-modal .copy-wrapper {
@@ -12,8 +13,15 @@
 
 .copy-video-modal h3 {
   margin: 0;
+  padding-bottom:5px;
 }
 
 .copy-video-modal .f-icon {
   cursor: pointer;
+}
+
+@media screen and (max-width:500px){
+  .copy-video-modal{
+    margin-top: 20px;
+  }
 }
