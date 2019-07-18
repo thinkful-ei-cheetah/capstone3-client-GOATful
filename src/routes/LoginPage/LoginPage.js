@@ -29,25 +29,31 @@ class Login extends Component {
       <section className='login-form-container page'>
         <div className='login-form'>
           <div>
-            <h2 className='lf-title'>Login With Google</h2>
+            <h2 className='lf-title'>Login</h2>
             <p>Creating an account allows you to save your work!</p>
             <GoogleLogin
               className='lf-submit'
               clientId={config.GOOGLE_CLIENT_ID}
-              buttonText="Login"
+              buttonText="Sign in with Google"
               onSuccess={this.responseGoogle}
               onFailure={this.responseGoogle}
               cookiePolicy={'single_host_origin'}
             />
           </div>
           <div className="trial-link-container">
-            <Link className='trial-link' to='/add-video'><button>Try Laconic without logging in!</button></Link>
+            <Link className='trial-link' to='/add-video'><button>Demo Laconic!</button></Link>
           </div>
         </div>
         
       </section>
     );
   }
+}
+
+const LoginStyles = {
+  marginTop: '1.5em',
+  padding: '8px 10px',
+  color: 'white'
 }
 
 export default withUserContext(Login);
