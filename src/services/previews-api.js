@@ -59,6 +59,18 @@ export default {
       return previewToDelete.json().then(e => Promise.reject(e))
     }
     return previewToDelete.json();
-  }
+  },
+
+  async getActivePreview(video_id) {
+    const activePreview = await fetch(`${config.API_ENDPOINT}/videos/${video_id}/previews/active`, {
+      headers: {
+        'Authorization': `Bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    if (!activePreview.ok) {
+      return activePreview.json().then(e => Promise.reject(e))
+    }
+    return activePreview.json();
+  },
 
 }
