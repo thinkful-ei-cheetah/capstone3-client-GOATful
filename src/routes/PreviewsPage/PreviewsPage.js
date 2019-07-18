@@ -24,33 +24,55 @@ class Previews extends Component {
     this.state = {
       video: {},
       vidPreviews: [],
+      activePrev:{},
       selectedPrev: null,
       userPreview: {},
       youtubeSearchResults: [],
       isLoading: true,
       isAdd:false,
     }
-    this.vidId = this.props.match.params.video_id;
+    this.vidId = Number(this.props.match.params.video_id);
   }
 
   findSelect = (prevObj) => {
-    let select = null
-    let temp = prevObj.previews.find(preview => {
-      return preview.is_active === true
-    })
-    if (temp !== undefined) {
-      select = temp
+    let select = false
+    let active = this.findActive(prevObj)
+    if (active !== false) {
+      select = active
     } else {
       select = prevObj.previews[0]
     }
     return select
   }
 
+  findActive = (prevObj) => {
+    let active = false;
+    let temp = prevObj.previews.find(preview => {
+      return preview.is_active === true
+    })
+    if (temp !== undefined) {
+      active = temp
+    } else {
+      active = false
+    }
+    return active
+  }
+
   async componentDidMount() {
     try {
       const prevObj = await PreviewsApi.getPreviews(this.vidId)
       VideoStorage.saveKey('laconic_current_video', prevObj.video);
-      let selected = this.findSelect(prevObj)
+      let activePreview = this.findActive(prevObj);
+      let selected = this.findSelect(prevObj);
+      let previews = [...prevObj.previews]
+      if(activePreview){
+        let activeIndex = previews.findIndex((prev) => {
+          return prev.is_active;
+        })
+        let activePreview = previews[activeIndex]
+        previews[activeIndex] = previews[0]
+        previews[0] = activePreview
+      }
 
       let youtubeSearchResults;
       try {
@@ -62,10 +84,10 @@ class Previews extends Component {
       } catch(err) {
         youtubeSearchResults = mockYoutubeData
       }
-
       this.setState({
         video: prevObj.video,
-        vidPreviews: [...prevObj.previews],
+        vidPreviews: previews,
+        activePrev: activePreview,
         selectedPrev: selected,
         youtubeSearchResults: youtubeSearchResults,
         isLoading: false
@@ -85,12 +107,11 @@ class Previews extends Component {
   }
 
   previewClick = (e) => {
-    // console.log(e.target.id)
     e.preventDefault();
     let selected = this.state.vidPreviews.find(preview => {
       return preview.id === parseInt(e.target.id)
     })
-    console.log(selected)
+    
     this.setState({
       selectedPrev: selected
     })
@@ -130,6 +151,17 @@ class Previews extends Component {
     document.body.style.overflow = 'auto';
   }
 
+  handleSetActive = async () => {
+    let preview = {...this.state.selectedPrev};
+    preview.is_active = true;
+    preview.changeActive = true;
+    await PreviewsApi.patchPreview(this.vidId, preview)
+
+    this.setState({
+      activePrev: {...preview}
+    })
+  }
+
   render() {
     return (
       <section className="previews-page page">
@@ -137,9 +169,11 @@ class Previews extends Component {
         <PreviewControls
           prevList={this.state.vidPreviews}
           selected={this.state.selectedPrev}
+          activePrev={this.state.activePrev}
           previewClick={this.previewClick}
           editClick={this.editClick}
           delClick={this.delClick}
+          setActive={this.handleSetActive}
         />
         <div className="previews-display-section" onTouchStart={this.handleTouchStart}>
           {(this.state.selectedPrev === null) ? false : this.renderPreviews()}

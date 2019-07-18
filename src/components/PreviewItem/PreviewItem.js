@@ -4,7 +4,7 @@ import './PreviewItem.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPencilAlt, faTrashAlt } from '@fortawesome/free-solid-svg-icons'
 
-export default function PreviewItem({ preview, previewClick, editClick, delClick  }) {
+export default function PreviewItem({ activePrev, setActive, preview, previewClick, editClick, delClick  }) {
   if (previewClick) {
     return (
       <div
@@ -26,6 +26,12 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
       </div>
     )
   } else {
+    let activeButton = <button className="set-active-btn" onClick={setActive}>Set Active</button>
+    if(activePrev){
+      if(activePrev.id === preview.id){
+        activeButton = <button className="active-indicator" >Active</button>;
+      }
+    }
     return (
       <div 
         className="preview-tile selection-card" 
@@ -34,15 +40,14 @@ export default function PreviewItem({ preview, previewClick, editClick, delClick
             src={preview.thumbnail_url} 
             alt="preview thumbnail"
             className="preview-thumbnail preview-tile-image" />
-          <div className="preview-control-icons">
-            <Link to="/creator?edit=true" className="edit-link" onClick={editClick} >
-              <FontAwesomeIcon className="pencil-f-icon" icon={faPencilAlt} />
-            </Link>
-            <FontAwesomeIcon className="f-icon delete-preview-btn" icon={faTrashAlt} />
-          </div>
-          <button className="set-active-btn">
-            Set Active
-          </button>
+          <div className="selected-buttons">
+          {activeButton}
+          <Link to="/creator?edit=true" className="edit-link preview-svg" onClick={editClick} >
+              <FontAwesomeIcon className="pencil-f-icon preview-svg" icon={faPencilAlt} />
+          </Link>
+          <FontAwesomeIcon className="f-icon delete-preview-btn preview-svg" icon={faTrashAlt} onClick={delClick}/>
+          
+        </div>
       </div>
     )
   }
@@ -53,7 +58,6 @@ PreviewItem.defaultProps = {
     id: 0,
     thumbnail_url: ''
   },
-  // previewClick: () => {},
   editClick: () => {}
 }
 

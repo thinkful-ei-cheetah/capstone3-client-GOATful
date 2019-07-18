@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router'
 import TokenService from '../../services/token-service'
 import UserContext from '../../contexts/UserContext'
 import Logo from '../Logo/Logo'
@@ -15,15 +16,16 @@ class NavBar extends Component {
   renderLogoutLink() {
     return (
       <div className='navControls'>
-        <span>
-          {this.context.user.name}
+        <span className="user-welcome">
+          {`Welcome back, ${this.context.user.name}!`}
         </span>
-        <nav>
+        <nav className='stroke'>
           <div className='navLinks'>
-          <Link className="videosLink" to='/videos'>
+          {this.props.location.pathname !== "/videos" && <Link className="videosLink" to='/videos'>
            My Videos
-          </Link>
+          </Link>}
           <Link
+            className="logout link"
             onClick={this.handleLogoutClick}
             to='/'>
             Logout
@@ -36,8 +38,12 @@ class NavBar extends Component {
 
   renderLoginLink() {
     return (
-      <nav>
-        <Link to='/login'>Login</Link>
+      <nav className='stroke'>
+        <Link 
+          className="login link"
+          to='/login'>
+          Login
+        </Link>
         {' '}
       </nav>
     )
@@ -62,4 +68,4 @@ class NavBar extends Component {
   }
 }
 
-export default NavBar
+export default withRouter(NavBar)

@@ -7,6 +7,7 @@
   border-right: 1px solid grey;
   margin: 0;
   overflow:scroll;
+  z-index:13;
 }
 
 .preview-tiles {
@@ -65,6 +66,10 @@
 
   .preview-controls-container {
     margin-right: -400px;
+  }
+
+  .preview-svg{
+    margin-right: 5px;
   }
 
 }
