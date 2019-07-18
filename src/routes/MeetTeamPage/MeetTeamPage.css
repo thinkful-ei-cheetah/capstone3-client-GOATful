@@ -5,17 +5,12 @@
   justify-content: space-evenly;
 }
 
-<<<<<<< HEAD:src/routes/MeetTeam.css
 .team-container h3{
   text-align: center
 }
 
 .Teamhero {
-  background: url('../img/sfr.jpg');
-=======
-.hero {
   background: url('../../img/sfr.jpg');
->>>>>>> febf7671c050f74e5466fb3c94f3c29d522333d6:src/routes/MeetTeamPage/MeetTeamPage.css
   background-size: cover;
   background-position: center;
   padding: 4rem 2rem;

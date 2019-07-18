@@ -1,29 +1,15 @@
 import React, { Component } from 'react'
-<<<<<<< HEAD:src/routes/MeetTeam.js
-import './MeetTeam.css'
-import David from '../img/david.jpeg'
-import Kp from '../img/KP.jpg'
-import Elan from '../img/elan.jpg'
-import Verdi from '../img/verdi.JPG'
-import Peter from '../img/peter.png'
-import goat1 from '../img/goat1.jpg'
-import goat2 from '../img/goat2.jpg'
-import goat3 from '../img/goat3.jpg'
-import goat4 from '../img/goat4.jpg'
-import goat5 from '../img/goat5.jpg'
-=======
 import './MeetTeamPage.css'
 import David from '../../img/david.jpeg'
 import Kp from '../../img/KP.jpg'
 import Elan from '../../img/elan.jpg'
-import Verdi from '../../img/verdi.jpeg'
+import Verdi from '../../img/verdi.JPG'
 import Peter from '../../img/peter.png'
 import goat1 from '../../img/goat1.jpg'
 import goat2 from '../../img/goat2.jpg'
 import goat3 from '../../img/goat3.jpg'
 import goat4 from '../../img/goat4.jpg'
 import goat5 from '../../img/goat5.jpg'
->>>>>>> febf7671c050f74e5466fb3c94f3c29d522333d6:src/routes/MeetTeamPage/MeetTeamPage.js
 
 class Team extends Component {
   componentDidMount() {
@@ -85,11 +71,7 @@ class Team extends Component {
           </section>
           <section className='verdi'>
             <figure className='picSwap'>
-<<<<<<< HEAD:src/routes/MeetTeam.js
               <img src={Verdi} alt="Michael Verdi" />
-=======
-              <img src={goat1} alt="Michael Verdi" />
->>>>>>> febf7671c050f74e5466fb3c94f3c29d522333d6:src/routes/MeetTeamPage/MeetTeamPage.js
               <img className='goat' src={goat4} alt="goat" />
             </figure>
             <h3>
