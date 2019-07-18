@@ -2,7 +2,7 @@ import React from 'react';
 import PreviewItem from '../PreviewItem/PreviewItem'
 import './PreviewControls.css'
 
-export default function PreviewControls({ setActive, prevList, selected, previewClick , editClick, delClick}) {
+export default function PreviewControls({ activePrev, setActive, prevList, selected, previewClick , editClick, delClick}) {
   let renderPreviews = () => {
     return prevList.map(preview => {
       if (preview.id !== selected.id) { 
@@ -22,6 +22,7 @@ export default function PreviewControls({ setActive, prevList, selected, preview
             editClick={editClick}
             delClick={delClick}
             setActive={setActive}
+            activePrev={activePrev}
           />
         )
       }
