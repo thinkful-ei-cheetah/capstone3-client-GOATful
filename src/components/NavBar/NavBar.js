@@ -15,15 +15,16 @@ class NavBar extends Component {
   renderLogoutLink() {
     return (
       <div className='navControls'>
-        <span>
-          {this.context.user.name}
+        <span className="user-welcome">
+          {`Welcome back, ${this.context.user.name}!`}
         </span>
-        <nav>
+        <nav className='stroke'>
           <div className='navLinks'>
           <Link className="videosLink" to='/videos'>
            My Videos
           </Link>
           <Link
+            className="logout link"
             onClick={this.handleLogoutClick}
             to='/'>
             Logout
@@ -36,8 +37,12 @@ class NavBar extends Component {
 
   renderLoginLink() {
     return (
-      <nav>
-        <Link to='/login'>Login</Link>
+      <nav className='stroke'>
+        <Link 
+          className="login link"
+          to='/login'>
+          Login
+        </Link>
         {' '}
       </nav>
     )
