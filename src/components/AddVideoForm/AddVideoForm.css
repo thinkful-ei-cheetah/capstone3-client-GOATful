@@ -1,14 +1,7 @@
 .flex-form{
-  
  display: flex;
+ width: 100%;
   
-}
-
-.add-video-form{
-  max-width: 300px;
-  /* border: 1px solid grey; */
-  border-radius: 5px;
-  margin: auto;
 }
 
 .add-video-form > button{
@@ -18,9 +11,10 @@
 }
 
 .inputs{
-  width: 50%;
+  width: 200px;
   border-right: 1px solid rgb(214, 201, 201);
-  padding-right: 15px;
+
+  margin-left: 0px;
 }
 .inputs > label{
   display: block;
@@ -28,8 +22,12 @@
 }
 
 .inputs > input{
+  
   display: block;
+  
   margin-bottom: 10px;
+  width: 130px;
+
 }
 
 .directions{
@@ -62,6 +60,10 @@
   text-overflow: ellipsis;
 }
 
+.add-video-form label{
+ text-align: left;
+}
+
 .add-video-input:focus {
   background-color:#e8e8e8;
   outline: solid #C4302B;
@@ -69,17 +71,17 @@
 
 /* Adding css classes to parent that will be passed to child on render */
 
-.add-video-form-route{
-  max-width: 800px;
+.add-video-form{
+  max-width: 600px;
   min-width: 300px;
   border: 1px solid black;
-  padding: 15px;
+  padding: 10px;
   margin: 0 auto;
-  width: 60vw;
-  height: 35vh;
+  height: 37vh;
   padding: 2em;
   position: relative;
-  background:rgba(0, 0, 0, .15)
+  background:rgba(0, 0, 0, .15);
+  border-radius: 5px;
 }
 
 .add-video-container {
@@ -104,8 +106,8 @@
   margin-bottom: 100px;
 }
 
-.add-video-form-instructions{
-  font-size: 1.1em;
+.instructions-text{
+  font-size: 1em;
 }
 
 @media screen and (max-width: 500px){
@@ -114,40 +116,67 @@
     display: none;
   }
 
-  .flex-form-route{
+  /* .directions{
+    display: none;
+  } */
+
+  .flex-form{
     flex-direction: column;
   }
 
-  .directions-route{
+  .directions{
     order: -1;
-    height: 180px;
+    height: 140px;
   }
 
-  .add-video-form-route{
+  .directions > h4 {
+    display: none;
+  }
+
+  .leggo-text{
+    text-align: center;
+  }
+
+  .add-video-form{
     border: none;
     padding: 0px;
     margin: 0 auto;
-    width: 320px;
+    width: 300px;
     height: 85vh;
     justify-self: unset;
     background: none;
-    
   }
 
-  .inputs-route{
-    margin-right: none;
+  .inputs{
+
+    margin: auto;
+    margin-top: 50px;
     border: none;
     width: 100%;
+    margin-left: 0px;
     padding-right: 0px;
   }
 
-  .add-video-form-instructions{
+  .instructions-text{
     font-size: .8em;
   }
 
-  .inputs-route > input{
-    padding-right: 0px;
+  .inputs > input{
+    padding-left: 20px;
     display: inline-block;
-    width: 70%;
+    width: 80%;
+    /* margin: auto; */
+    margin-left: 20px;
+  }
+
+  .inputs > label{
+    text-align: left;
+    /* margin-left: 0px; */
+    padding-left: 20px;
+  }
+
+  .add-video-header{
+    margin-bottom: 0px;
+    font-size: 1.3em;
   }
 }
