@@ -17,11 +17,10 @@
 .login-form {
   display: flex;
   justify-content: center;
-  align-items: center;
   flex-flow: column wrap;
   margin: 0 auto;
   width: 60vw;
-  height: 35vh;
+  height: 300px;
   padding: 2em;
   position: relative;
   background:rgba(0, 0, 0, .15)
@@ -33,11 +32,13 @@
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 340px) {
   .login-form {
-    height: 40vh;
+    height: 320px;
   }
+}
 
+@media screen and (max-width: 600px) {
   .lf-title {
     font-size: 22px;
   }
