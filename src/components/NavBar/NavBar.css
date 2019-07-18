@@ -2,10 +2,10 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0 3px 2px -2px rgba(114, 114, 114, 0.3);
-    background: white;
+    box-shadow: 0 3px 2px -2px rgb(60, 56, 56);
+    background: rgba(36, 46, 77, 0.76);
     width: 100%;
-    height: 60px;
+    height: 75px;
     top: 0;
     z-index: 10;
     position: relative;
@@ -18,45 +18,112 @@ header {
   display: flex;
 }
 
-.app-title a{
-  text-decoration: none;
-  color: var(--primary);
+.root-link:hover > .logo {
+  animation-play-state: running;
+  transition: 1s ease-in-out;
+  fill: rgb(255, 77, 71);
+  transition-delay: .25s;
 }
-.app-title a:hover{
-  color: var(--Green);
-  text-decoration: underline;
+
+.root-link > .app-title {
+  color: white;
 }
+
 nav {
     /* position: fixed; */
     right: 0;
     font-size: 22px;
     top: 18px;
 }
-nav a{
+
+nav div a,
+nav div a:after,
+nav div a:before,
+footer div a,
+footer div a:after,
+footer div a:before {
+  transition: all .5s;
+}
+
+nav div a:hover,
+footer div a:hover {
+  color: rgb(255, 255, 255);
+}
+
+nav a {
     margin-right: 25px;
     text-decoration: none;
-    /* color: var(--primary); */
+    color: rgb(203, 201, 201);
     font-weight: 800;
 }
-nav a:hover{
-  color: var(--Green);
-  text-decoration: underline;
-}
+
 .logo {
   width: 40px;
   height: 40px;
+  padding-top: 7px;
   margin: auto 5px;
-  margin-top: 5px;
   font-weight: bolder;
-}
-.root-link:hover {
-  fill: rgb(196, 48, 43);
+  fill: white;
   transition: .5s;
-
+  animation-name: spin;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  transform-origin: 50% 50%;
+  animation-play-state: paused;
 }
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+    transform-origin: center center;
+  }
+  to {
+    transform: rotate(360deg);
+    transform-origin: center center;
+  }
+}
+
+nav.stroke div a,
+footer div a {
+  position: relative;
+}
+
+nav.stroke div a:after,
+footer div a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: '.';
+  color: transparent;
+  background: white;
+  height: 2px;
+  margin-top: .5em;
+}
+nav.stroke div a:hover:after,
+footer div a:hover:after {
+  width: 100%;
+}
+
 .navLinks{
   font-size: 20px;
 }
+
 .navControls{
-  text-align: center;
+  text-align: right;
+}
+
+.navControls > span {
+  color: white;
+}
+
+.login.link, .logout.link, .videosLink {
+  font-size: .85em;
+}
+
+.navControls > .user-welcome {
+  margin-right: 1em;
 }
