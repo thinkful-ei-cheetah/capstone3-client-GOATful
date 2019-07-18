@@ -1,0 +1,44 @@
+
+ 
+ .delete-video-modal{
+   max-width: 320px;
+   min-width: 300px;
+   border: 1px solid black;
+   padding: 15px;
+   border-radius: 5px;
+   width: 60vw;
+   height: 30vh;
+   padding: 2em;
+   position: relative;
+   background:rgba(0, 0, 0, .7);
+   color: white;
+ }
+
+ .cancel-btn{
+  border: 1px solid white;
+  background: none;
+  box-shadow: 1px 1px white;
+}
+
+.cancel-btn:hover, .confirm-btn:hover{
+ box-shadow: none;
+}
+
+.blank-space-delete{
+  padding-bottom: 15px;
+}
+
+.delete-button-controls{
+  padding-top: 20px;
+ display: flex;
+ justify-content: space-around
+}
+ 
+ @media screen and (max-width: 500px){
+  .delete-video-modal{
+    border: none;
+    padding:20px;
+    width: 300px;
+    height: 40vh;     
+   }
+ }
