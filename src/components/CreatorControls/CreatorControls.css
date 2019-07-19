@@ -65,9 +65,9 @@ input[type="file"] {
 }
 
 #creator-title{
-  max-width: 85%;
+  max-width: 80%;
   padding: 8px 10px;
-  width: 85%;
+  width: 80%;
 }
 
 
@@ -91,10 +91,10 @@ input[type="file"] + label:active{
 }
 
 #creator-description{
-  max-width: 85%;
+  max-width: 80%;
   height: 150px;
   resize: none;
-  width: 85%;
+  width: 80%;
 }
 
 .save-preview-btn{
@@ -117,6 +117,10 @@ input[type="file"] + label:active{
   .aside-controls {
     position: fixed;
     padding-top: 75px;
+  }
+
+  .creator-input, #creator-title {
+    width: 75% !important;
   }
 }
 
