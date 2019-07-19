@@ -13,11 +13,10 @@ import goat5 from '../../img/goat5.jpg'
 
 class Team extends Component {
   componentDidMount() {
-    console.log('I was mounted')
+    if (process.env.NODE_ENV !== 'test') window.scrollTo(0, 0);
   }
 
   render() {
-    window.scrollTo(0, 0);
     return (
       <>
         <section className='Teamhero'>

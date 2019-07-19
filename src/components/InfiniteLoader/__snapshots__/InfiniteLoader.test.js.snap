@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InfiniteLoader Component renders the UI as expected 1`] = `
+<div
+  className="loader-ellips"
+>
+  <span
+    className="loader-ellips__dot"
+  />
+  <span
+    className="loader-ellips__dot"
+  />
+  <span
+    className="loader-ellips__dot"
+  />
+  <span
+    className="loader-ellips__dot"
+  />
+</div>
+`;

@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MeetTeamPage Component renders the UI as expected 1`] = `
+Array [
+  <section
+    className="Teamhero"
+  >
+    <h1>
+      Let your thumbnail do the talking.
+    </h1>
+    <div>
+      <h2
+        className="red"
+      >
+        Meet the Laconic Team
+      </h2>
+    </div>
+  </section>,
+  <div
+    className="team-container"
+  >
+    <section
+      className="david"
+    >
+      <figure
+        className="picSwap"
+      >
+        <img
+          alt="David K. Nordeen"
+          src="david.jpeg"
+        />
+        <img
+          alt="goat"
+          className="goat"
+          src="goat1.jpg"
+        />
+      </figure>
+      <h3>
+        David K. Nordeen
+      </h3>
+      <p>
+        Full stack developer web developer located in Scottsdale, AZ. I graduated from Drake University in 2016 with a Bachelor’s degree in marketing and entrepreneurial management. When i’m not programming, you can find me getting buckets at the local gym or watching a sci fi movie.
+      </p>
+    </section>
+    <section
+      className="elan"
+    >
+      <figure
+        className="picSwap"
+      >
+        <img
+          alt="Elan Green"
+          src="elan.jpg"
+        />
+        <img
+          alt="goat"
+          className="goat"
+          src="goat2.jpg"
+        />
+      </figure>
+      <h3>
+        Elan Green
+      </h3>
+      <p>
+        Full stack web developer currently living in Austin, TX. I am a classically trained cellist with 20 years of experience. I believe the intersection of music and technology is extremely powerful, and it is a great dream of mine to someday work for a music-focused tech company!
+      </p>
+    </section>
+    <section
+      className="kp"
+    >
+      <figure
+        className="picSwap"
+      >
+        <img
+          alt="Kristof-Pierre Cummings"
+          src="KP.jpg"
+        />
+        <img
+          alt="goat"
+          className="goat"
+          src="goat3.jpg"
+        />
+      </figure>
+      <h3>
+        Kristof-Pierre Cummings
+      </h3>
+      <p>
+        Full stack web developer located near Austin, TX. I love to camp, cook, and crack open a beer- especially in that order. Go Liverpool!
+      </p>
+    </section>
+    <section
+      className="verdi"
+    >
+      <figure
+        className="picSwap"
+      >
+        <img
+          alt="Michael Verdi"
+          src="verdi.JPG"
+        />
+        <img
+          alt="goat"
+          className="goat"
+          src="goat4.jpg"
+        />
+      </figure>
+      <h3>
+        Michael Verdi
+      </h3>
+      <p>
+        Full stack developer located in Tampa, FL. I'm a self taught engineer with three years experience in Ruby on Rails development working at both start ups and publicly traded companies.
+      </p>
+    </section>
+    <section
+      className="peter"
+    >
+      <figure
+        className="picSwap"
+      >
+        <img
+          alt="Peter Pae"
+          src="peter.png"
+        />
+        <img
+          alt="goat"
+          className="goat"
+          src="goat5.jpg"
+        />
+      </figure>
+      <h3>
+        Peter Pae
+      </h3>
+      <p>
+        Full stack developer and data/AI enthusiast from the DMV. I like to make keyboards, listen to music, and I smoke a mean brisket. I stay open minded and always seek new ways to improve my craft.
+      </p>
+    </section>
+  </div>,
+]
+`;
