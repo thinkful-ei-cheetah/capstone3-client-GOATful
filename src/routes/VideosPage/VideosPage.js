@@ -78,9 +78,9 @@ class Videos extends Component {
       this.setState({ videos: [...this.state.videos, ...videos.data],
         isLoading: false, 
         lastPage: videos.last_page
-       });
+      });
 
-       if (this.state.currentPage === this.state.lastPage + 1 ){
+      if (this.state.currentPage === this.state.lastPage + 1 ){
         this.setState({
           hasMoreVideosForScroll: false,
         })
@@ -97,7 +97,6 @@ class Videos extends Component {
           <div className="header-container">
             <h2 id='page-title'>Your Video Dashboard</h2>
           </div>
-
           <InfiniteScroll
             dataLength={this.state.videos.length} //This is important field to render the next data
             next={this.getVideoList}
@@ -113,7 +112,6 @@ class Videos extends Component {
       )
     } else return <p className="no-videos-text">You currently have 0 videos</p>
   }
-
 
   render() {
     return (
