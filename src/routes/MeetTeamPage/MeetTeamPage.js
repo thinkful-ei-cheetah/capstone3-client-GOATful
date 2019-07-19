@@ -66,7 +66,7 @@ class Team extends Component {
               Kristof-Pierre Cummings
             </h3>
             <p>
-              Full stack web developer located near Austin, TX. I love to camp, cook, and crack open a beer- especially in that order. Go Liverpool!
+              Full stack web developer located near Austin, TX. I love to camp, cook, and crack open a beer- especially in that order. I think the future will be paved with AI and automation, and I want to help build it.
             </p>
           </section>
           <section className='verdi'>
