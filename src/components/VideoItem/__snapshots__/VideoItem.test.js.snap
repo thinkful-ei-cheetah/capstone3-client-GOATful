@@ -50,12 +50,15 @@ exports[`VideoItem Component renders the UI as expected 1`] = `
     <input
       alt="Thumbnail of "
       className="video-image-link"
+      id="video-image"
       onClick={[Function]}
       src="https://picsum.photos/"
       type="image"
     />
   </div>
-  <h2>
+  <h2
+    className="video-title"
+  >
     
   </h2>
   <p>
