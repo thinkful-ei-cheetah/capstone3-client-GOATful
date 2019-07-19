@@ -19,6 +19,7 @@
   color: white;
   height: 100vh;
   transition: .4s;
+  margin-bottom: -3.5em;
 }
 
 .controls-header{
@@ -100,6 +101,7 @@ input[type="file"] + label:active{
 .save-preview-btn{
   display: block;
   box-shadow: 1px 1px grey;
+  margin-top: 1em;
 }
 
 .save-preview-btn:hover{
@@ -154,6 +156,12 @@ input[type="file"] + label:active{
 
   #creator-description {
     max-height: 125px;
+  }
+}
+
+@media screen and (max-height: 700px) {
+  .save-preview-btn {
+    margin-bottom: 3em;
   }
 }
 

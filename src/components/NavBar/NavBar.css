@@ -42,15 +42,15 @@ nav div a:before,
 nav a,
 nav a:after,
 nav a:before,
-footer div a,
-footer div a:after,
-footer div a:before {
+.footer a,
+.footer a:after,
+.footer a:before {
   transition: all .5s;
 }
 
 nav div a:hover,
 nav a:hover,
-footer div a:hover {
+.footer a:hover {
   color: rgb(255, 255, 255);
   font-size: 18px;
 }
@@ -91,14 +91,14 @@ nav a {
 
 nav.stroke div a,
 nav.stroke a,
-footer div a,
-footer a {
+.footer a,
+.footer a {
   position: relative;
 }
 
 nav.stroke div a:after,
 nav.stroke a:after,
-footer div a:after {
+.footer a:after {
   position: absolute;
   bottom: 0;
   left: 0;
@@ -114,7 +114,7 @@ footer div a:after {
 
 nav.stroke div a:hover:after,
 nav.stroke a:hover:after,
-footer div a:hover:after {
+.footer a:hover:after {
   width: 100%;
 }
 
