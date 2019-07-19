@@ -1,0 +1,180 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App Component renders the UI as expected 1`] = `
+<div
+  className="App"
+>
+  <header>
+    <div
+      className="title-container"
+    >
+      <a
+        className="root-link"
+        href="/"
+        onClick={[Function]}
+      >
+        <svg
+          className="logo"
+          style={
+            Object {
+              "height": "40px",
+              "width": "40px",
+            }
+          }
+          version="1.1"
+          viewBox="0 0 32 40"
+          x="0px"
+          xmlns="http://www.w3.org/2000/svg"
+          y="0px"
+        >
+          <title>
+            shutter
+          </title>
+          <path
+            d="M16 0.6c-8.498 0-15.4 6.903-15.4 15.4s6.903 15.4 15.4 15.4c8.498 0 15.4-6.903 15.4-15.4s-6.903-15.4-15.4-15.4zM15.611 1.602l1.098 0.053c4.354 0.211 8.206 2.377 10.699 5.627l0.244 0.32-4.316 7.393-7.176-12.439zM14.471 1.715l4.287 7.434h-15.418l0.598-0.926c2.229-3.447 5.888-5.881 10.135-6.453zM28.314 8.535l0.498 0.982c0.988 1.949 1.547 4.153 1.547 6.482 0 1.927-0.383 3.763-1.070 5.445l-0.152 0.373h-8.572l7.195-12.332zM2.863 10.182h8.578l-7.715 13.352-0.504-0.977c-1.015-1.969-1.59-4.2-1.59-6.557v-0.002c0.007-1.926 0.39-3.761 1.078-5.443zM12.645 10.184h6.719l3.379 5.846-3.375 5.783h-6.695l-3.387-5.816 3.186-5.514zM8.684 17.037l7.787 13.365-1.098-0.049c-4.361-0.191-8.226-2.34-10.734-5.576l-0.246-0.318 3.773-6.527zM13.277 22.857h15.395l-0.602 0.926c-2.221 3.42-5.852 5.847-10.064 6.439l-0.041 0.006h-0.391l-3.77-6.469z"
+          />
+          <text
+            fill="#000000"
+            fontFamily="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+            fontSize="5px"
+            fontWeight="bold"
+            x="0"
+            y="47"
+          >
+            Created by vectlab
+          </text>
+          <text
+            fill="#000000"
+            fontFamily="'Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif"
+            fontSize="5px"
+            fontWeight="bold"
+            x="0"
+            y="52"
+          >
+            from the Noun Project
+          </text>
+        </svg>
+        <h2
+          className="app-title"
+        >
+          Laconic
+        </h2>
+      </a>
+    </div>
+    <nav
+      className="stroke"
+    >
+      <a
+        className="login link"
+        href="/login"
+        onClick={[Function]}
+      >
+        Login
+      </a>
+       
+    </nav>
+  </header>
+  <main>
+    <section
+      className="hero page"
+    >
+      <h1>
+        Let your thumbnail do the talking.
+      </h1>
+      <div>
+        <h2
+          className="red"
+        >
+          With Laconic
+        </h2>
+      </div>
+    </section>
+    <div
+      className="landing-container"
+    >
+      <section
+        className="click-through"
+      >
+        <figure>
+          <img
+            alt="Click through rate"
+            src="https://www.lyfemarketing.com/blog/wp-content/uploads/2018/06/what-is-CTR.jpg"
+          />
+        </figure>
+        <h3>
+          So What Is Click-Through Rate, Anyway?
+        </h3>
+        <p>
+          is the rate at which your videos are clicked. This number is the percentage of people who view your video (impressions) and then actually go on to click the video (clicks). The formula for CTR looks like this:
+        </p>
+        <h4>
+          (Total Clicks on Video) / (Total Impressions) = Click Through Rate
+        </h4>
+        <p>
+          Generally, you can view your click-thru rate within the dashboard of your YouTube account. A high CTR means that a high percentage of people who see your video click it.
+        </p>
+      </section>
+      <section
+        className="AB-testing"
+      >
+        <figure>
+          <img
+            alt="A/B Testing"
+            src="https://mzdpd1mg35f29101q1lbu25g-wpengine.netdna-ssl.com/wp-content/uploads/2019/01/AB-guide-small.png"
+          />
+        </figure>
+        <h3>
+          WHAT IS A/B TESTING
+        </h3>
+        <p>
+          An “A/B Test” is a test where 2 variants of something (anything) is tested for equal amounts of time, to see which version performs the best. In this case, what is being tested and compared is 2 versions of a thumbnail, of your own choosing. By uploading 2 thumbnails into the system, they are changed each day automatically on your channel (for a chosen period), and by the end of the test we automatically gather the data from your YouTube Analytics and see which of the thumbnails resulted in the most views.
+        </p>
+      </section>
+      <section
+        className="about"
+      >
+        <figure>
+          <img
+            alt="YouTube"
+            src="https://images.unsplash.com/photo-1521302200778-33500795e128?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+          />
+        </figure>
+        <h3>
+          What we do
+        </h3>
+        <p>
+          We Preview your thumbnails, so you can see what they will look like in Youtube's styling in both desktop and App view. Save your thumbnails so you can easily see the difference between the two. Keep all your thumbnail Ideas in one place!
+        </p>
+      </section>
+      <div
+        className="btn-container"
+      >
+        <button
+          className="create-laconic"
+          onClick={[Function]}
+        >
+          Create with Laconic
+        </button>
+      </div>
+    </div>
+    <footer
+      className="footer"
+    >
+      <span>
+        Laconic: Better Thumbnails
+      </span>
+      <div>
+        <a
+          href="/team"
+          onClick={[Function]}
+        >
+          Meet The Team
+        </a>
+      </div>
+      <span>
+        Copyright GOATful 2019 
+      </span>
+    </footer>
+  </main>
+</div>
+`;
