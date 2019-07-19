@@ -9,7 +9,7 @@ A live version of the app can be found at [https://laconic.now.sh/](https://laco
  
 ## Quick App Demo
 
-placeholder gif here
+![landing page](Landing.JPG)
 
 ## Technology
 
@@ -21,10 +21,16 @@ placeholder gif here
 * Testing
   * Smoketest (integration)
   * Snapshot
-* Other-packages
-  * TBA
-  * TBA
+
 
 #### Production
 
 Deployed via Zeit
+
+## Team
+* David K. Nordeen
+* Elan Green
+* Kristof-Pierre Cummings
+* Michael Verdi
+* Peter Pae
+
