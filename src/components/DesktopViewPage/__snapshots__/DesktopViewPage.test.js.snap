@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DesktopViewPage Component renders the UI as expected 1`] = `
+<div
+  className="desktop-view-page"
+  id="dvp"
+/>
+`;

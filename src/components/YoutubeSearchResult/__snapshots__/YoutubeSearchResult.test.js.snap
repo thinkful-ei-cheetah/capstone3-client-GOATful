@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`YoutubeSearchResult Component renders the UI as expected 1`] = `
+<div
+  className="youtube-search-result"
+>
+  <div
+    className="left-col"
+  >
+    <img
+      alt="youtube-thumbnail"
+      className="responsive-img"
+    />
+    <span
+      className="video-length"
+    >
+      0:00
+    </span>
+  </div>
+  <div
+    className="right-col"
+  >
+    <h2>
+      this is a fake header
+    </h2>
+    <p
+      className="sub-headings"
+    >
+      
+       
+      <span
+        className="desktop-only"
+      >
+        •
+      </span>
+       
+      <span
+        className="mobile-clear"
+      >
+        100
+         views • 
+        11 hours ago
+      </span>
+    </p>
+    <p
+      className="truncate"
+    >
+      this is a fake description
+    </p>
+  </div>
+  <div
+    className="ellipsis-menu"
+  >
+    <svg
+      aria-hidden="true"
+      className="svg-inline--fa fa-ellipsis-v fa-w-6 "
+      data-icon="ellipsis-v"
+      data-prefix="fas"
+      focusable="false"
+      role="img"
+      style={Object {}}
+      viewBox="0 0 192 512"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M96 184c39.8 0 72 32.2 72 72s-32.2 72-72 72-72-32.2-72-72 32.2-72 72-72zM24 80c0 39.8 32.2 72 72 72s72-32.2 72-72S135.8 8 96 8 24 40.2 24 80zm0 352c0 39.8 32.2 72 72 72s72-32.2 72-72-32.2-72-72-72-72 32.2-72 72z"
+        fill="currentColor"
+        style={Object {}}
+      />
+    </svg>
+  </div>
+</div>
+`;

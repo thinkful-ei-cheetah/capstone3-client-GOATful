@@ -1,18 +1,20 @@
 .video-item > div > input {
-  width: 300px;
-  max-height: 200px;
+  object-fit: cover;
+  width: 290px;
+  height: 163.125px;
   max-width: 300px;
   margin: auto;
   text-align: center;
 }
 
 .image-section{
-  max-width: 300px;
+  max-width: 290px;
+  height: 163.125px;
   position: relative;
 }
 
 .video-item > h2{
-  margin: 0px;
+  margin: 5px 0 5px 5px;
   font-size: 20px;
 }
 
@@ -22,15 +24,30 @@
 }
 
 .video-item > p{
-  margin: 0px;
+  margin: 0 0 0 5px;
   font-size: 17px;
 }
 
 .video-item{
-  margin:auto;
+  margin: auto;
+  height: 217.5px;
   margin-top: 0px;
-  margin-bottom: 20px;
+  padding-bottom: 10px;
+  transition: box-shadow .3s;
+}
 
+.video-item:hover{
+  border: 1px solid #e1e1e1;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
+  background-color:white;
+}
+
+.video-item:hover > .image-section{
+  border:1px solid #c4302b;
+}
+
+.video-title{
+  margin: 5px 0 0 5px;
 }
 
 .black-btn{

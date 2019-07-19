@@ -11,15 +11,6 @@ export default class AddVid extends Component {
     youtube_display_name: "",
     addError: null,
   }
-
-  cssRouteClasses = {
-    form: 'add-video-form-route',
-    instructions: 'add-video-form-instructions',
-    flex: 'flex-form-route',
-    directionsBox: 'directions-route',
-    inputBox: 'inputs-route',
-    labelBox: 'label-route'
-  }
   
   errorHandler = err => {
     this.setState({addError: err.error})

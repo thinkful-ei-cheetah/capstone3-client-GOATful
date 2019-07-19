@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage Component renders the UI as expected 1`] = `
+<section
+  className="not-found-page"
+>
+  <div>
+    <h2>
+      404
+    </h2>
+    <p>
+      The page you requested no longer exists!
+    </p>
+  </div>
+</section>
+`;
