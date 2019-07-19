@@ -14,7 +14,6 @@ export default class AddVid extends Component {
   
   errorHandler = err => {
     this.setState({addError: err.error})
-    console.log('here')
     setTimeout(()=>this.setState({addError: null}), 3000)
   }
 
