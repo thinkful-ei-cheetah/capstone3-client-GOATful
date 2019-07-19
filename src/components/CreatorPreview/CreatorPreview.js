@@ -25,7 +25,7 @@ class CreatorPreview extends Component {
     youtubeSearchResults: [],
     userVideo: {},
     videos: [],
-    isDesktopView: true
+    isDesktopView: false
   }
 
   async componentDidMount() {
@@ -66,7 +66,7 @@ class CreatorPreview extends Component {
 
       this.setState({
         userPreview: this.props.userPreview,
-        videos: [this.props.userPreview, ...this.state.youtubeSearchResults]
+        videos: [this.props.userPreview, ...this.state.youtubeSearchResults],
       })
     }
   }
@@ -100,6 +100,13 @@ class CreatorPreview extends Component {
     this.setState({ isDesktopView: desktopOrMobile })
   }
 
+  componentWillUnmount(){
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "flex";
+    }
+  }
+
   render() {
     const { isDesktopView, videos } = this.state
     return (
@@ -107,8 +114,8 @@ class CreatorPreview extends Component {
         <h2>Video Project: {this.state.userVideo.title}</h2>
         <div className='preview-controls'>
           <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
-            <option value="desktop">Desktop</option>
             <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
           </select>
           <button title='change the ordering in which your thumbnail appears to ensure it stands out' className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>

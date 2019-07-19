@@ -25,6 +25,12 @@
   margin-bottom:10px;
 }
 
+@media screen and (min-width: 630px) {
+  .preview-controls-container {
+    margin-bottom: -75px;
+  }
+}
+
 @media screen and (max-width: 630px) {
   .preview-controls-container {
     width: 100%;

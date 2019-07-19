@@ -32,8 +32,7 @@ export default function PreviewControls({ activePrev, setActive, prevList, selec
   let horizontalScroll = (e) => {
     const left = document.getElementById('hScroll')
     left.scrollLeft += e.deltaY
-    
-    }
+  }
 
   let handleMouseIn = (e) => {
     document.body.style.overflow = 'hidden';
