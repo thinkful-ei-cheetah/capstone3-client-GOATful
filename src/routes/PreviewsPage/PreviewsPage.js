@@ -156,9 +156,19 @@ class Previews extends Component {
     preview.is_active = true;
     preview.changeActive = true;
     await PreviewsApi.patchPreview(this.vidId, preview)
-
+    
+    let previews = this.state.vidPreviews
+    let activeIndex = previews.findIndex((prev) => {
+      return prev.id === preview.id;
+    })
+    let activePreview = previews[activeIndex]
+    previews[activeIndex] = previews[0]
+    previews[0] = activePreview
+    document.getElementById('hScroll').scrollLeft=0;
+    document.getElementById('hScroll').scrollTop=0;
     this.setState({
-      activePrev: {...preview}
+      activePrev: {...preview},
+      vidPreviews:[...previews],
     })
   }
 

@@ -53,7 +53,6 @@ export default function PreviewControls({ activePrev, setActive, prevList, selec
       onMouseEnter={(e)=> handleMouseIn(e)}
       onMouseLeave={(e)=> handleMouseOut(e)}
       >
-        
         {(!selected) ? false : renderPreviews()}
       </div>
     </div>
