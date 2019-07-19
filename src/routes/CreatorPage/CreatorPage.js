@@ -94,6 +94,8 @@ class Creator extends Component {
   }
 
   componentDidMount() {
+   
+    // document.getElementsByClassName("footer").display = "none";
     let title = '';
     let description = '';
     let thumbnail_url = null;
@@ -195,10 +197,20 @@ class Creator extends Component {
   setLoading = (bool) => {
     this.setState({isLoading: bool})
   }
+  handleTouchStart = () => {
+    document.body.style.overflow = 'auto';
+  }
+  handleMouseEnter = () => {
+    document.body.style.overflow = 'auto';
+  }
 
   render() {
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "none";
+    }
     return (
-      <section className="creator-page page">
+      <section className="creator-page page" onTouchStart={this.handleTouchStart} onMouseEnter={this.handleMouseEnter}>
         <Loader isLoading={this.state.isLoading}></Loader>
         <CreatorControls 
           {...this.state}

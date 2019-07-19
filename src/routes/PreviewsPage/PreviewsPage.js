@@ -173,6 +173,10 @@ class Previews extends Component {
   }
 
   render() {
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "none";
+    }
     return (
       <section className="previews-page page">
         <FAB onClick={this.handleFab} />

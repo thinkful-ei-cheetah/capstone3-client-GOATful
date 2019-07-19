@@ -51,7 +51,6 @@ export default function CreatorControls(props) {
 
   return (
     <>
-
     <div className="aside-controls" id="edit-form">
       <div className="form-heading">
         <FontAwesomeIcon 

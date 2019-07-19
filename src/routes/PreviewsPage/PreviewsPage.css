@@ -14,4 +14,7 @@
     flex-flow: row wrap;
     justify-content: center;
   }
+  .previews-display-section {
+    padding: 0;
+  }
 }

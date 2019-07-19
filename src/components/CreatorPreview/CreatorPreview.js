@@ -25,7 +25,7 @@ class CreatorPreview extends Component {
     youtubeSearchResults: [],
     userVideo: {},
     videos: [],
-    isDesktopView: true
+    isDesktopView: false
   }
 
   async componentDidMount() {
@@ -66,7 +66,7 @@ class CreatorPreview extends Component {
 
       this.setState({
         userPreview: this.props.userPreview,
-        videos: [this.props.userPreview, ...this.state.youtubeSearchResults]
+        videos: [this.props.userPreview, ...this.state.youtubeSearchResults],
       })
     }
   }
