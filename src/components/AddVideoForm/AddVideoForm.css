@@ -7,7 +7,7 @@
 .add-video-form > button{
   display: block;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .inputs{
@@ -103,7 +103,6 @@
 .provide-info-text{
   justify-self: normal;
   margin-top: -100px;
-  margin-bottom: 100px;
 }
 
 .instructions-text{
