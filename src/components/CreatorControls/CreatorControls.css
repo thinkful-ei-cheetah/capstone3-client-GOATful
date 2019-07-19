@@ -42,6 +42,12 @@
 
 .creator-input{
   margin-bottom: 20px;
+  padding: 10px;
+}
+
+.creator-input, #creator-title {
+  font-size: 16px;
+  font-family: Raleway, sans-serif;
 }
 
 .creator-upload{
@@ -59,8 +65,9 @@ input[type="file"] {
 }
 
 #creator-title{
-  max-width: 75%;
+  max-width: 85%;
   padding: 8px 10px;
+  width: 85%;
 }
 
 
@@ -87,6 +94,7 @@ input[type="file"] + label:active{
   max-width: 85%;
   height: 150px;
   resize: none;
+  width: 85%;
 }
 
 .save-preview-btn{
