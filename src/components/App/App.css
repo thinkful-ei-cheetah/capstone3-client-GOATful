@@ -28,6 +28,7 @@
   align-items: center;
   bottom: 0;
   position: absolute;
+  margin-top: 2em;
 }
 
 .footer > span {
