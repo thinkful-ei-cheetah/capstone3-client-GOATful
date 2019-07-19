@@ -34,9 +34,19 @@ footer {
     color:rgb(203, 201, 201);
 }
 
+footer > span {
+  padding: .75em;
+}
+
+
+
 @media screen and (max-width: 730px) {
     footer {
         font-size: 12px;
+    }
+
+    footer div a:hover {
+      font-size: 14px;
     }
 }
 

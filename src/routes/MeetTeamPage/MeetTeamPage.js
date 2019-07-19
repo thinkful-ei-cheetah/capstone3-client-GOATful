@@ -24,7 +24,7 @@ class Team extends Component {
             Let your thumbnail do the talking.
         </h1>
           <div>
-            <h2 className='red'>
+            <h2 className='intro'>
               Meet the Laconic Team
           </h2>
           </div>
