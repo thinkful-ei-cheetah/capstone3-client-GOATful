@@ -16,7 +16,9 @@ const modalStyles = {
     right                 : 'auto',
     bottom                : 'auto',
     marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
+    transform             : 'translate(-50%, -50%)',
+    background: 'linear-gradient( 135deg, rgba(36, 46, 77, .9), rgba(137, 126, 121, 1) )',
+    color: 'white'
   }
 };
 

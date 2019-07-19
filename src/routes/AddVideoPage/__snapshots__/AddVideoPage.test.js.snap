@@ -1,0 +1,114 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AddVideoPage Component renders the UI as expected 1`] = `
+<section
+  className="add-video-container page"
+>
+  <h2
+    className="provide-info-text"
+  >
+    Please provide information on your video below
+  </h2>
+  <form
+    className="add-video-form"
+    onSubmit={[Function]}
+  >
+    <div
+      className="flex-form"
+    >
+      <div
+        className="inputs"
+      >
+        <label
+          className="add-label"
+          htmlFor="add-video-title"
+        >
+          Title:
+        </label>
+        <input
+          className="add-video-input"
+          id="add-video-title"
+          name="title"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="fitness 100"
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          className="add-label"
+          htmlFor="add-video-tags"
+        >
+          Tags:
+        </label>
+        <input
+          className="add-video-input"
+          id="add-video-tags"
+          name="tags"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="workout, fitness, gym"
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          className="add-label"
+          htmlFor="add-video-length"
+        >
+          Video Length:
+        </label>
+        <input
+          className="add-video-input"
+          id="add-video-length"
+          name="video_length"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="04:13:22"
+          required={true}
+          type="text"
+          value=""
+        />
+        <label
+          className="add-label"
+          htmlFor="add-video-youtube-name"
+        >
+          YouTube Name:
+        </label>
+        <input
+          className="add-video-input"
+          id="add-video-youtube-name"
+          minLength="3"
+          name="youtube_display_name"
+          onChange={[Function]}
+          onFocus={[Function]}
+          placeholder="haloking"
+          required={true}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="directions"
+      >
+        <h4>
+          Instructions
+        </h4>
+        <div
+          className="instructions-text"
+        >
+          <p
+            className="leggo-text"
+          >
+            Let's Go!
+          </p>
+        </div>
+      </div>
+    </div>
+    <button>
+      Create!
+    </button>
+  </form>
+</section>
+`;

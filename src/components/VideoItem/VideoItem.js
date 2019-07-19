@@ -81,7 +81,6 @@ class VideoItem extends Component {
               <FontAwesomeIcon className="f-icon" icon={faEye} onClick={this.openCopyModal} />
               : <></>
             }
-            
           </div>
           <VideoModalForm
             video={video}
@@ -96,7 +95,6 @@ class VideoItem extends Component {
             isOpen={this.state.deleteModalIsOpen}
             onRequestClose={this.closeDeleteModal}
           />
-
           {video.preview_count > 0 ?
             <CopyVideoModal
               video={video}
@@ -104,16 +102,16 @@ class VideoItem extends Component {
               onRequestClose={this.closeCopyModal}
             />
             : <></>}
-    
           <input 
+            id='video-image'
             className="video-image-link"
             type="image" 
             src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} 
             alt={`Thumbnail of ${video.title}`} 
             onClick={this.redirectToPreviewsOrCreator}/>
         </div>
-        <h2>{video.title}</h2>
-        <p>{`Previews: ${video.preview_count}`}</p>
+          <h2 className='video-title'>{video.title}</h2>
+          <p>{`Previews: ${video.preview_count}`}</p>
       </div>
     )
   }

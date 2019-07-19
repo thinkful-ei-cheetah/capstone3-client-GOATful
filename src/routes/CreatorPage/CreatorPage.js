@@ -25,7 +25,7 @@ class Creator extends Component {
     title: '',
     description: '',
     thumbnail_url: null,
-    default_thumbnail: 'https://res.cloudinary.com/goatful/image/upload/v1562355377/goat-1270851_1920_cpgpf3.jpg',
+    default_thumbnail: 'https://res.cloudinary.com/goatful/image/upload/v1563550487/placeholder-300x168_d0capf.png',
     loggedIn: false,
     errorMessages: {},
     titleValid: false,
@@ -125,6 +125,7 @@ class Creator extends Component {
   }
 
   grabPhoto = async e => {
+    this.setState({isLoading: true})
     let thumbnailValid = true;
     let errorMessages = {...this.state.errorMessages}
 
@@ -136,11 +137,11 @@ class Creator extends Component {
     }
     try {
       const thumbnail_url = await UploadService(e.target.files[0])
-      this.setState({thumbnail_url, thumbnailValid, errorMessages}, this.validateForm)
+      this.setState({thumbnail_url, thumbnailValid, errorMessages, isLoading: false}, this.validateForm)
     } catch(err) {
       thumbnailValid = false
       errorMessages.thumbnail = err.message
-      this.setState({thumbnailValid, errorMessages})
+      this.setState({thumbnailValid, errorMessages, isLoading: false})
     }
   }
 

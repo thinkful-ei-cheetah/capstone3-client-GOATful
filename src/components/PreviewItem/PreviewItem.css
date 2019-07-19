@@ -39,7 +39,6 @@
 .set-active-btn {
   font-size: 14px;
   padding: 4px 6px;
-
   background-color:#C4302B;
   border: 1px solid black;
   color: white;
@@ -49,12 +48,15 @@
   height:4vw;
   min-height: 30px;
   max-height:45px;
+  border-radius: 3px;
+  transition-duration: .4s;
 }
 
 .active-indicator {
-  cursor:default;
+  display: flex;
+  justify-content:center;
+  align-content: center;
   font-size: 14px;
-  padding: 4px 6px;
   background-color:white;
   border: 1px solid #C4302B;
   color: #C4302B;
@@ -64,7 +66,14 @@
   height:4vw;
   min-height: 30px;
   max-height:45px;
+  border-radius: 3px;
+  transition-duration: .4s;
+}
 
+.indicator-text{
+  display: inline-block;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .delete-preview-btn {
@@ -96,6 +105,11 @@
   height:4vw;
   min-height: 30px;
   max-height:45px;
+}
+
+.preview-tile-image:hover {
+  border:1px solid #f9f9f9;
+  box-shadow: 0 0 11px rgba(33,33,33,.2); 
 }
 
 @media screen and (max-width: 630px) {

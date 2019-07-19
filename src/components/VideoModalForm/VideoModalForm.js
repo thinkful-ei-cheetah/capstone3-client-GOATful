@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons'
 import VideoStorage from '../../services/video-storage';
 import VideoService from '../../services/video-api';
-
+import '../ModalStyling/ModalStyling.css'
 import { 
   checkTime,
   tagStringToArray,
@@ -13,20 +13,11 @@ import {
   formatDuration
 } from '../../Utils/Utils'
 
-const modalStyles = {
-  content : {
-    maxWidth              : '80%',
-    width                 : '350px',
-    top                   : '50%',
-    left                  : '50%',
-    right                 : 'auto',
-    bottom                : 'auto',
-    marginRight           : '-50%',
-    transform             : 'translate(-50%, -50%)'
-  }
-};
+//Allow modal overlay to cover fab button
+Modal.defaultStyles.overlay.zIndex = '2';
 
 // Fix for React Modal testing
+
 if (process.env.NODE_ENV !== 'test') Modal.setAppElement('#root');
 
 export default class VideoModalForm extends Component {
@@ -107,21 +98,22 @@ export default class VideoModalForm extends Component {
 
   renderFormTitle = () => {
     if (this.props.action === 'edit') return 'Edit Video Project'
-    return 'Add New Video Project'
+    return 'Add Video Project'
   }
 
   render() {
     return (
-      <Modal
+      <Modal className="Modal"
       isOpen={this.props.isOpen}
       onRequestClose={this.props.onRequestClose}
-      style={modalStyles}
+      // style={modalStyles}
       contentLabel={'Video Modal Form'}
       closeTimeoutMS={200}
         >
           <h2 className="add-video-header">{this.renderFormTitle()}</h2>
           <span className='close-modal-btn' onClick={this.props.onRequestClose}>
             <FontAwesomeIcon 
+              size={'lg'}
               icon={faWindowClose}
             />
           </span>

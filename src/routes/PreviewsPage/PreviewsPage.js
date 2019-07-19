@@ -63,7 +63,16 @@ class Previews extends Component {
       const prevObj = await PreviewsApi.getPreviews(this.vidId)
       VideoStorage.saveKey('laconic_current_video', prevObj.video);
       let activePreview = this.findActive(prevObj);
-      let selected = this.findSelect(prevObj)
+      let selected = this.findSelect(prevObj);
+      let previews = [...prevObj.previews]
+      if(activePreview){
+        let activeIndex = previews.findIndex((prev) => {
+          return prev.is_active;
+        })
+        let activePreview = previews[activeIndex]
+        previews[activeIndex] = previews[0]
+        previews[0] = activePreview
+      }
 
       let youtubeSearchResults;
       try {
@@ -77,7 +86,7 @@ class Previews extends Component {
       }
       this.setState({
         video: prevObj.video,
-        vidPreviews: [...prevObj.previews],
+        vidPreviews: previews,
         activePrev: activePreview,
         selectedPrev: selected,
         youtubeSearchResults: youtubeSearchResults,
@@ -147,9 +156,19 @@ class Previews extends Component {
     preview.is_active = true;
     preview.changeActive = true;
     await PreviewsApi.patchPreview(this.vidId, preview)
-
+    
+    let previews = this.state.vidPreviews
+    let activeIndex = previews.findIndex((prev) => {
+      return prev.id === preview.id;
+    })
+    let activePreview = previews[activeIndex]
+    previews[activeIndex] = previews[0]
+    previews[0] = activePreview
+    document.getElementById('hScroll').scrollLeft=0;
+    document.getElementById('hScroll').scrollTop=0;
     this.setState({
-      activePrev: {...preview}
+      activePrev: {...preview},
+      vidPreviews:[...previews],
     })
   }
 

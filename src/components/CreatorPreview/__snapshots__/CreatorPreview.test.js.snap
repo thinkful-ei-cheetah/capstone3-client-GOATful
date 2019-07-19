@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreatorPreview Component renders the UI as expected 1`] = `
+<div
+  className="creator-preview"
+  id="creator-preview"
+>
+  <h2>
+    Video Project: 
+  </h2>
+  <div
+    className="preview-controls"
+  >
+    <select
+      className="device-selector"
+      onChange={[Function]}
+    >
+      <option
+        value="desktop"
+      >
+        Desktop
+      </option>
+      <option
+        value="mobile"
+      >
+        Mobile
+      </option>
+    </select>
+    <button
+      className="randomize button"
+      onClick={[Function]}
+      title="change the ordering in which your thumbnail appears to ensure it stands out"
+    >
+      Randomize
+    </button>
+  </div>
+  <div
+    className="desktop-view-page"
+    id="dvp"
+  />
+</div>
+`;
