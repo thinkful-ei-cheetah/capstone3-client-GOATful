@@ -6,17 +6,19 @@
 
 .aside-controls{
   width: 0;
-  transition: .4s;
-  position: fixed;
+  position: sticky;
   z-index: 11;
   top: 0;
   left: 0;
   overflow-x: hidden;
-  /* padding-top: 60px; */
-  background-color: rgb(60, 57, 57);
+  background: linear-gradient(
+    135deg,
+    rgba(36, 46, 77, .9),
+    rgba(137, 126, 121, .9)
+  );
   color: white;
   height: 100vh;
-  transition: .3s;
+  transition: .4s;
 }
 
 .controls-header{
@@ -96,12 +98,26 @@ input[type="file"] + label:active{
   box-shadow: none;
 }
 
+#edit-btn {
+  font-size: 1.7rem;
+  margin: .5rem;
+  position: absolute;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 630px) {
+  .aside-controls {
+    position: fixed;
+    padding-top: 75px;
+  }
+}
+
 @media screen and (min-width: 1000px) {
   #edit-form {
     width: 20%;
   }
 
-  #creator-preview {
-    margin-left: 200px;
+  #edit-btn {
+    visibility: hidden;
   }
 }
