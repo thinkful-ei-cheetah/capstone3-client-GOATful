@@ -204,6 +204,13 @@ class Creator extends Component {
     document.body.style.overflow = 'auto';
   }
 
+  componentWillUnmount(){
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "flex";
+    }
+  }
+
   render() {
     let footer  = (document.getElementById("footer"))
     if (footer !== null){ 

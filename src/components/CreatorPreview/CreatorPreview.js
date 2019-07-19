@@ -100,6 +100,13 @@ class CreatorPreview extends Component {
     this.setState({ isDesktopView: desktopOrMobile })
   }
 
+  componentWillUnmount(){
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "flex";
+    }
+  }
+
   render() {
     const { isDesktopView, videos } = this.state
     return (
