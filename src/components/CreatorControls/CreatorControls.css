@@ -115,6 +115,11 @@ input[type="file"] + label:active{
   cursor: pointer;
 }
 
+.error-msg {
+  padding: 5px;
+  text-align: center;
+}
+
 @media screen and (max-width: 630px) {
   .error-msg {
     margin: 0;
