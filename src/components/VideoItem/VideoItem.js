@@ -70,6 +70,8 @@ class VideoItem extends Component {
   }
 
   render() {
+    //     let divWidth = document.getElementById('video-image').offsetWidth
+    // console.log(divWidth)
     const {video} = this.props
     return (
       <div className='video-item'>
@@ -106,14 +108,17 @@ class VideoItem extends Component {
             : <></>}
     
           <input 
+            id='video-image'
             className="video-image-link"
             type="image" 
             src={video.active_thumbnail_url || 'https://picsum.photos/300/200'} 
             alt={`Thumbnail of ${video.title}`} 
             onClick={this.redirectToPreviewsOrCreator}/>
         </div>
-        <h2>{video.title}</h2>
-        <p>{`Previews: ${video.preview_count}`}</p>
+       
+          <h2 className='video-title'>{video.title}</h2>
+          <p>{`Previews: ${video.preview_count}`}</p>
+      
       </div>
     )
   }

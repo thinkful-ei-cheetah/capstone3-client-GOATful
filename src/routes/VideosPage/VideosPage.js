@@ -22,6 +22,7 @@ class Videos extends Component {
   }
 
   async componentDidMount() {
+
     this.getVideoList()
   } 
 
@@ -93,6 +94,10 @@ class Videos extends Component {
     if (this.state.videos.length){
       return (
         <div>
+          <div className="header-container">
+            <h2 id='page-title'>Your Video Dashboard</h2>
+          </div>
+
           <InfiniteScroll
             dataLength={this.state.videos.length} //This is important field to render the next data
             next={this.getVideoList}
@@ -100,7 +105,7 @@ class Videos extends Component {
             loader={<InfiniteLoader style={{textAlign: 'center'}}/>}
           >
             <div className='my-videos-container'>
-              <h2 id='page-title'>Your Video Dashboard</h2>
+              
               {this.renderVideos()}
             </div>
           </InfiniteScroll>
@@ -108,6 +113,7 @@ class Videos extends Component {
       )
     } else return <p className="no-videos-text">You currently have 0 videos</p>
   }
+
 
   render() {
     return (
