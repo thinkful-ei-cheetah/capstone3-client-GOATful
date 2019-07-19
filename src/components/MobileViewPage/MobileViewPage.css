@@ -185,4 +185,9 @@
     max-width: 140px;
     max-height: 85px;
   }
+
+  #edit-btn {
+    margin-top: .88em;
+    margin-left: .5em;
+  }
 }
