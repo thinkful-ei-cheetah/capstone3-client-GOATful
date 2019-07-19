@@ -28,6 +28,10 @@
   
 }
 
+.videos-page {
+  padding-bottom: 60px;
+}
+
 .videos-page > .btn-container {
   margin-top: 1rem;
   display: flex;
