@@ -25,11 +25,11 @@ export default function CreatorControls(props) {
     const screenWidth = document.documentElement.clientWidth
     if (screenWidth > 1000) {
       editForm.style.width = '20%'
-      creatorPreview.style.marginLeft = '200px'
+      creatorPreview.style.marginLeft = '100px'
     } else if (screenWidth < 630) {
-      editForm.style.width = '50%'
+      editForm.style.width = '65%'
     } else {
-      editForm.style.width = '25%'
+      editForm.style.width = '35%'
     }
   }
 
@@ -39,7 +39,9 @@ export default function CreatorControls(props) {
     editForm.style.width = '0'
     creatorPreview.style.marginLeft = '0'
     const editBtn = document.getElementById('edit-btn')
-    editBtn.style.visibility = 'visible'
+    setTimeout(() => {
+      editBtn.style.visibility = 'visible'
+    }, 250)
   }
 
   const editFormStyles = {
@@ -78,7 +80,6 @@ export default function CreatorControls(props) {
       icon={faEdit} 
       id='edit-btn'
       className='edit-menu-btn' 
-      style={editFormStyles}
       onClick={(ev) => handleSetOpen(ev)}
     />
   </>

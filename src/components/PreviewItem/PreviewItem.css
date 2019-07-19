@@ -116,13 +116,16 @@
 
   .preview-tile {
     display: inline-block;
-
   }
   .preview-tile > img {
     width: 46vw;
     height: 25.875vw;
     /* width: 76vw;
     height: 42.75vw; */
+  }
+
+  .preview-tile:first-child {
+    margin-left: .5em;
   }
 
   .preview-tile {
@@ -142,5 +145,6 @@
     box-shadow:
       0 0 0 2px hsl(0, 0%, 80%),
       0 0 0 4px hsl(0, 0%, 90%);
+    margin-top: .5em;
   }
 }

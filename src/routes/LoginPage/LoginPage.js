@@ -50,10 +50,4 @@ class Login extends Component {
   }
 }
 
-const LoginStyles = {
-  marginTop: '1.5em',
-  padding: '8px 10px',
-  color: 'white'
-}
-
 export default withUserContext(Login);
