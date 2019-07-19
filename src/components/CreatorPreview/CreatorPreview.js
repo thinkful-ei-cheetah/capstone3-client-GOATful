@@ -114,8 +114,8 @@ class CreatorPreview extends Component {
         <h2>Video Project: {this.state.userVideo.title}</h2>
         <div className='preview-controls'>
           <select className="device-selector" onChange={ev => this.handleViewChange(ev)}>
-            <option value="desktop">Desktop</option>
             <option value="mobile">Mobile</option>
+            <option value="desktop">Desktop</option>
           </select>
           <button title='change the ordering in which your thumbnail appears to ensure it stands out' className='randomize button' onClick={this.renderShuffledPreviews}>Randomize</button>
         </div>
