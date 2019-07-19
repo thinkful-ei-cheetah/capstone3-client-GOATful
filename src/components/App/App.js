@@ -64,7 +64,7 @@ class App extends Component {
               component={NotFoundPage}
             />
           </Switch>
-          <footer className='footer'>
+          <div id='footer' className='footer'>
             <span>Laconic: Better Thumbnails</span>
             <div>
               <Link
@@ -73,7 +73,7 @@ class App extends Component {
               </Link>
             </div>
             <span>Copyright GOATful 2019 </span>
-          </footer>
+          </div>
         </main>
       </div>
     )

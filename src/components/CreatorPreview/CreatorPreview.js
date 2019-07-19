@@ -25,7 +25,7 @@ class CreatorPreview extends Component {
     youtubeSearchResults: [],
     userVideo: {},
     videos: [],
-    isDesktopView: true
+    isDesktopView: false
   }
 
   async componentDidMount() {
@@ -66,7 +66,7 @@ class CreatorPreview extends Component {
 
       this.setState({
         userPreview: this.props.userPreview,
-        videos: [this.props.userPreview, ...this.state.youtubeSearchResults]
+        videos: [this.props.userPreview, ...this.state.youtubeSearchResults],
       })
     }
   }
@@ -98,6 +98,13 @@ class CreatorPreview extends Component {
       desktopOrMobile = false
     }
     this.setState({ isDesktopView: desktopOrMobile })
+  }
+
+  componentWillUnmount(){
+    let footer  = (document.getElementById("footer"))
+    if (footer !== null){ 
+      footer.style.display = "flex";
+    }
   }
 
   render() {
