@@ -25,7 +25,7 @@ class Creator extends Component {
     title: '',
     description: '',
     thumbnail_url: null,
-    default_thumbnail: 'https://res.cloudinary.com/goatful/image/upload/v1562355377/goat-1270851_1920_cpgpf3.jpg',
+    default_thumbnail: 'https://res.cloudinary.com/goatful/image/upload/v1563550487/placeholder-300x168_d0capf.png',
     loggedIn: false,
     errorMessages: {},
     titleValid: false,
