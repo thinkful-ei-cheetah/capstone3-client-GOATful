@@ -28,3 +28,6 @@ placeholder gif here
 #### Production
 
 Deployed via Zeit
+
+
+This project was built by David Nordeen, Elan Green, Kristof-Pierre Cummings, Michael Verdi, & Peter Pae
