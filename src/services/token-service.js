@@ -22,7 +22,7 @@ const TokenService = {
     if (authToken)
       return TokenService.parseJwt(authToken)
     else
-      return undefined
+      return false
   }
 }
 
