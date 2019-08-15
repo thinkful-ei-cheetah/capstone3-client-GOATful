@@ -16,6 +16,9 @@
 .video-item > h2{
   margin: 5px 0 5px 5px;
   font-size: 20px;
+  text-overflow: ellipsis;
+  white-space:nowrap;
+  overflow:hidden;
 }
 
 .video-image-link:active {
